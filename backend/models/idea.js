@@ -4,11 +4,12 @@ const { Schema } = mongoose;
 
 const IdeaSchema = new Schema({
   title: { type: String, required: true },
-  description: String,
+  description: { type: String, required: true },
+  author: { type: String, required: true },
   votes: { type: Number, default: 0 },
   comments: [{
-    body: String,
-    author: String,
+    body: { type: String, required: true },
+    author: { type: String, required: true },
   }],
 });
 
