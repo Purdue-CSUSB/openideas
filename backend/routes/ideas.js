@@ -37,4 +37,15 @@ router.route('/ideas/:idea_id')
       .catch(err => res.send(err));
   });
 
+router.route('/idea/:idea_id/vote')
+  .post((req, res) => {
+    Idea.findById(req.params.idea_id).exec()
+      .then((idea) => {
+        idea.set({ votes: idea.votes + 1 });
+        idea.save()
+          .then(() => res.json(idea))
+          .catch(err => res.send(err));
+      });
+  });
+
 module.exports = router;
