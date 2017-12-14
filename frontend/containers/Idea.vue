@@ -9,10 +9,11 @@ export default {
     return {
       title: 'Make CS better',
       description: 'Fix stuff',
+      author: 'mess@purdue.edu',
       votes: 1,
       comments: [
-        { body: 'good idea!' }
-      ]
+        { body: 'good idea!', author: 'jh@purdue.edu' },
+      ],
     };
   },
 };
