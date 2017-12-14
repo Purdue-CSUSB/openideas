@@ -1,21 +1,8 @@
 const express = require('express');
-const Idea = require('../models/idea');
+const ideas = require('./ideas');
 
 const router = express.Router();
 
-router.route('/ideas')
-.post((req, res) => {
-  const idea = new Idea(req.body);
-  idea.save((err) => {
-    if (err) res.send(err);
-    return res.json(idea);
-  });
-})
-.get((req, res) => {
-  Idea.find((err, ideas) => {
-    if (err) res.send(err);
-    return res.json(ideas);
-  });
-});
+router.use('/ideas', ideas);
 
 export default router;
