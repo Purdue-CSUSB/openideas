@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const bluebird = require('bluebird');
+const bodyParser = require('body-parser');
 const router = require('./routes');
 
 const app = express();
@@ -12,10 +12,9 @@ mongoose.Promise = bluebird;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 8080;
-
 app.use('/api', router);
 
+const port = process.env.PORT || 8080;
 app.listen(port);
 
 // eslint-disable-next-line
