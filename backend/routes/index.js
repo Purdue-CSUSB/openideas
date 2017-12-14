@@ -1,8 +1,7 @@
 const express = require('express');
-const ideas = require('./ideas');
 
 const router = express.Router();
 
-router.use('/ideas', ideas);
+router.use('/ideas', require('./ideas'));
 
-export default router;
+module.exports = router;
