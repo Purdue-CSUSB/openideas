@@ -8,7 +8,7 @@
         h3.card-title {{ idea.votes }}
       .column
         .card-header
-          router-link.h5.card-title(:to='"/" + idea._id') {{ idea.title }}
+          router-link.h5.card-title(:to='idea._id') {{ idea.title }}
         .card-body
           p {{ idea.description }}
 </template>
