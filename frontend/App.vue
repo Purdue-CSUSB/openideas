@@ -1,7 +1,6 @@
 <template lang="pug">
 #app
-  .container
-    router-view
+  router-view
 </template>
 
 <script>
@@ -13,3 +12,4 @@ export default {
 <style lang="scss">
 @import 'assets/openissues.scss';
 </style>
+``
