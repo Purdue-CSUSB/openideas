@@ -1,16 +1,14 @@
 <template lang="pug">
-#home.section.section-hero
+#home.container.grid-lg
     header.navbar
       <section class="navbar-section">
         <a href="#" class="navbar-brand mr-2">OpenIdeas</a>
-        <a href="#" class="btn btn-link">Docs</a>
-        <a href="https://github.com/picturepan2/spectre" class="btn btn-link">GitHub</a>
+        <a href="#" class="btn btn-link active"><span>Home</span></a>
+        <a href="#" class="btn btn-link">All Ideas</a>
+        <a href="#" class="btn btn-link">About</a>
       </section>
       <section class="navbar-section">
-        <div class="input-group input-inline">
-          <input class="form-input" type="text" placeholder="search">
-          <button class="btn btn-primary input-group-btn">Search</button>
-        </div>
+      user botton?
       </section>
 </template>
 

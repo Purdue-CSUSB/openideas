@@ -1,10 +1,40 @@
 // Example of project-name.scss
 // Define variables to override default ones
-$primary-color: #2e5bec;
-$dark-color: #3e396b;
+$primary-color: #F4BA47;
+$dark-color: rgb(46, 46, 46);
 
 // Import full Spectre source code
 @import "../node_modules/spectre.css/src/spectre";
+
+#app:first-child {
+  padding-top: 0.85rem;
+}
+
+#app {
+  border-top-style: solid;
+  border-top-width: 0.3rem;
+  border-top-color: $primary-color;
+}
+
+.navbar-brand {
+  color: $dark-color;
+}
+
+.navbar .btn-link {
+  color: $dark-color;
+}
+
+.navbar .btn-link.active span {
+  padding-bottom: 0.6rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  border-bottom-style: solid;
+  border-bottom-color: $primary-color;
+  border-bottom-width: 0.2rem;
+
+  color: $dark-color;
+  font-weight: 600;
+}
 
 // Ripped from the spectre dots
 .section-hero {
