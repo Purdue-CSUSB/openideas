@@ -1,5 +1,5 @@
 <template lang="pug">
-#home.container.grid-lg
+#home.section.section-hero
     header.navbar
       <section class="navbar-section">
         <a href="#" class="navbar-brand mr-2">OpenIdeas</a>

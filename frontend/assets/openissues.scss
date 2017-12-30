@@ -5,3 +5,50 @@ $dark-color: #3e396b;
 
 // Import full Spectre source code
 @import "../node_modules/spectre.css/src/spectre";
+
+// Ripped from the spectre dots
+.section-hero {
+  padding: 1rem .5rem;
+}
+
+.section-hero .docs-brand {
+  position: absolute;
+  top: .85rem;
+}
+
+.section-hero .docs-brand h2 {
+  color: #5755d9;
+}
+
+.section-hero .column {
+  padding: .4rem;
+}
+
+.section-updates {
+  padding: 4.5rem .5rem 3.5rem .5rem;
+}
+
+.section-updates .card {
+  border: 0;
+  color: #727e96;
+  margin-bottom: 1rem;
+}
+
+.section-features {
+  padding: 4.5rem .5rem;
+}
+
+.section-features .column {
+  padding: .4rem;
+}
+
+.section-footer {
+  color: #acb3c2;
+  padding: 1.8rem .75rem 1rem .75rem;
+  position: relative;
+  z-index: 200;
+}
+
+.section-footer a {
+  color: #667189;
+}
