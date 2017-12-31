@@ -1,23 +1,21 @@
 <template lang="pug">
 #home.container.grid-lg
-    header.navbar
-      <section class="navbar-section">
-        <a href="#" class="navbar-brand mr-2">OpenIdeas</a>
-        <a href="#" class="btn btn-link active"><span>Home</span></a>
-        <a href="#" class="btn btn-link">All Ideas</a>
-        <a href="#" class="btn btn-link">About</a>
-      </section>
-      <section class="navbar-section">
-      user botton?
-      </section>
+  site-header
+  hero
 </template>
 
 <script>
+import siteHeader from '@/components/siteHeader';
+import hero from '@/components/hero';
+
 export default {
   name: 'Home',
+  components: {
+    siteHeader,
+    hero,
+  },
   data() {
     return {
-      message: 'Hello Vue.js!',
       ideas: [
         {
           title: 'Make CS better',
