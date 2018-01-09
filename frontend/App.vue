@@ -17,4 +17,3 @@ export default {
 <style lang="scss">
 @import 'assets/openissues.scss';
 </style>
-``
