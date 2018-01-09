@@ -21,17 +21,18 @@ router.route('/ideas/:idea_id')
     Idea.findById(req.params.idea_id).exec()
       .then(idea => res.json(idea))
       .catch(err => res.send(err));
-  })
-  .patch((req, res) => {
-    Idea.findByIdAndUpdate(req.params.idea_id, { $set: req.body }, { new: true }).exec()
-      .then(idea => res.json(idea))
-      .catch(err => res.send(err));
-  })
-  .delete((req, res) => {
-    Idea.remove({ _id: req.params.idea_id })
-      .then(() => res.json({ success: true }))
-      .catch(err => res.send(err));
   });
+  // TODO: these are probably a security flaw
+  // .patch((req, res) => {
+  //   Idea.findByIdAndUpdate(req.params.idea_id, { $set: req.body }, { new: true }).exec()
+  //     .then(idea => res.json(idea))
+  //     .catch(err => res.send(err));
+  // })
+  // .delete((req, res) => {
+  //   Idea.remove({ _id: req.params.idea_id })
+  //     .then(() => res.json({ success: true }))
+  //     .catch(err => res.send(err));
+  // });
 
 router.route('/idea/:idea_id/vote')
   .post((req, res) => {
