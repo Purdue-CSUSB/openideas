@@ -16,6 +16,10 @@ $dark-color: rgb(46, 46, 46);
   border-top-color: $primary-color;
 }
 
+#site-header {
+  margin-bottom: 2.0rem;
+}
+
 .navbar-brand {
   color: $dark-color;
 }
@@ -36,7 +40,7 @@ $dark-color: rgb(46, 46, 46);
   font-weight: 600;
 }
 
-// Ripped from the spectre dots
+// Ripped from the Spectre docs
 .section-hero {
   padding: 1rem .5rem;
 }
