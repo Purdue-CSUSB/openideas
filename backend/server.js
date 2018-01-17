@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bluebird = require('bluebird');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const passport = require('passport');
+// TODO: const FacebookStrategy = require('passport-facebook').Strategy;
 const router = require('./routes');
 
 const app = express();
@@ -11,6 +14,12 @@ mongoose.Promise = bluebird;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(session({ secret: process.env.SESSION_SECRET }));
+
+// TODO: configure passport to use FacebookStrategy
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/api', router);
 
