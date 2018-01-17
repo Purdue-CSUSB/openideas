@@ -5,7 +5,8 @@ const User = require('./models/user');
 const strategy = new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: process.env.FACEBOOK_APP_CALLBACK,
+  callbackURL: 'openideas.example/auth/facebook/callback',
+  // TODO: register domain
 },
 (accessToken, refreshToken, profile, done) => {
   User.findOne({ facebookId: profile.id }).exec()
