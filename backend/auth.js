@@ -12,21 +12,20 @@ const strategy = new FacebookStrategy({
   User.findOne({ facebookId: profile.id }).exec()
     .then((user) => {
       if (user) {
-        done(null, user);
-      } else {
-        const newUser = new User({
-          name: profile.displayName,
-          email: profile.emails[0].value,
-          encrypted_password: 'secret',
-          facebookId: profile.id,
-        });
-        newUser.save()
-          .then(() => done(null, newUser))
-          .catch(err => done(err));
+        return done(null, user);
       }
+      const newUser = new User({
+        name: profile.displayName,
+        email: profile.emails[0].value,
+        encrypted_password: 'secret',
+        facebookId: profile.id,
+      });
+      return newUser.save()
+        .then(() => done(null, newUser))
+        .catch(err => done(err));
     })
     .catch(err => done(err));
 });
 passport.use(strategy);
 
-export default passport;
+module.exports = passport;
