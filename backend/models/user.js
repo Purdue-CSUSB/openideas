@@ -5,7 +5,6 @@ const { Schema } = mongoose;
 const UserSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
-  encrypted_password: { type: String, required: true },
   facebookId: { type: String, required: true },
 });
 
