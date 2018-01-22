@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bluebird = require('bluebird');
 const bodyParser = require('body-parser');
-const session = require('express-session');
+const session = require('cookie-session');
 const passport = require('./auth');
 const router = require('./routes');
 
@@ -16,18 +16,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(session({
+  name: 'session',
   secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true },
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/api', router);
+app.use('/', router);
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 app.listen(port);
 
 // eslint-disable-next-line

@@ -5,7 +5,7 @@ const User = require('./models/user');
 const strategy = new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: `${process.env.APP_DOMAIN}/api/auth/facebook/callback`,
+  callbackURL: `${process.env.APP_DOMAIN}/auth/facebook/callback`,
   profileFields: ['id', 'emails', 'displayName'],
 },
 (accessToken, refreshToken, profile, done) => {
@@ -15,7 +15,7 @@ const strategy = new FacebookStrategy({
         return done(null, user);
       }
       const newUser = new User({
-        displayName: profile.displayName,
+        display_name: profile.displayName,
         email: profile.emails[0].value,
         facebookId: profile.id,
       });

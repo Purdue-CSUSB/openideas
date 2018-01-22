@@ -11,7 +11,7 @@
       a.btn.btn-link(href='#')
         span About
     section.navbar-section
-      a user botton?
+      a(href='http://localhost:8081/auth/facebook') Login
 </template>
 
 <script>
