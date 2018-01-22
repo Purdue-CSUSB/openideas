@@ -3,7 +3,7 @@ const Idea = require('../models/idea');
 
 const router = express.Router();
 
-router.route('/ideas')
+router.route('/')
   .post((req, res) => {
     const idea = new Idea(req.body);
     idea.save()
@@ -16,21 +16,21 @@ router.route('/ideas')
       .catch(err => res.send(err));
   });
 
-router.route('/ideas/:idea_id')
+router.route('/:idea_id')
   .get((req, res) => {
     Idea.findById(req.params.idea_id).exec()
       .then(idea => res.json(idea))
       .catch(err => res.send(err));
   });
 
-router.route('/idea/:idea_id/vote')
+router.route('/:idea_id/vote')
   .post((req, res) => {
     Idea.findByIdAndUpdate(req.params.idea_id, { $inc: { votes: 1 } }, { new: true }).exec()
       .then(idea => res.json(idea))
       .catch(err => res.send(err));
   });
 
-router.route('/idea/:idea_id/comment')
+router.route('/:idea_id/comment')
   .post((req, res) => {
     Idea.findByIdAndUpdate(
       req.params.idea_id,

@@ -15,7 +15,12 @@ mongoose.Promise = bluebird;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true },
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());

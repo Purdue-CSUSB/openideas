@@ -5,7 +5,8 @@ const User = require('./models/user');
 const strategy = new FacebookStrategy({
   clientID: process.env.FACEBOOK_APP_ID,
   clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: `${process.env.APP_DOMAIN}/auth/facebook/callback`,
+  callbackURL: `${process.env.APP_DOMAIN}/api/auth/facebook/callback`,
+  profileFields: ['id', 'emails', 'displayName'],
 },
 (accessToken, refreshToken, profile, done) => {
   User.findOne({ facebookId: profile.id }).exec()
@@ -14,7 +15,7 @@ const strategy = new FacebookStrategy({
         return done(null, user);
       }
       const newUser = new User({
-        name: profile.displayName,
+        displayName: profile.displayName,
         email: profile.emails[0].value,
         facebookId: profile.id,
       });
@@ -23,6 +24,15 @@ const strategy = new FacebookStrategy({
         .catch(err => done(err));
     })
     .catch(err => done(err));
+});
+passport.serializeUser((user, done) => {
+  // eslint-disable-next-line
+  done(null, user._id);
+});
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user);
+  });
 });
 passport.use(strategy);
 
