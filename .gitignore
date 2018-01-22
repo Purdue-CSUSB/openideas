@@ -15,9 +15,5 @@ yarn-error.log*
 
 frontend/.sass-cache/
 
-<<<<<<< HEAD
 # Do NOT commit any env files!
 *.env
-=======
-.env
->>>>>>> Env tweaks

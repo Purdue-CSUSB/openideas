@@ -7,7 +7,7 @@
       navbarLink(to='ideas') All Ideas
       navbarLink(to='about') About
     section.navbar-section
-      navbarLink(to='signin') Sign In
+      a(href='http://localhost:8081/auth/facebook') Sign In
 </template>
 
 <script>
