@@ -24,10 +24,8 @@ const strategy = new FacebookTokenStrategy({
     })
     .catch(err => done(err));
 });
-passport.serializeUser((user, done) => {
-  // eslint-disable-next-line
-  done(null, user._id);
-});
+// eslint-disable-next-line
+passport.serializeUser((user, done) => done(null, user._id));
 passport.deserializeUser((id, done) => {
   User.findById(id).exec()
     .then(user => done(null, user))
