@@ -4,10 +4,14 @@ const mongoose = require('mongoose');
 const bluebird = require('bluebird');
 const bodyParser = require('body-parser');
 const session = require('cookie-session');
-const passport = require('./auth');
+const cors = require('cors');
+const morgan = require('morgan');
 const router = require('./routes');
 
 const app = express();
+
+app.use(cors());
+app.use(morgan('short'));
 
 mongoose.connect(process.env.DATABASE_URL, { useMongoClient: true });
 mongoose.Promise = bluebird;
@@ -19,9 +23,6 @@ app.use(session({
   name: 'session',
   secret: process.env.SESSION_SECRET,
 }));
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use('/', router);
 

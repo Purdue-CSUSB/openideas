@@ -7,16 +7,14 @@
       navbarLink(to='ideas') All Ideas
       navbarLink(to='about') About
     section.navbar-section
-<<<<<<< HEAD
       a(href='http://localhost:8081/auth/facebook') Sign In
-=======
-      a(href='#') Login
->>>>>>> Clean up front end changes
 </template>
 
 <script>
 import navbarLink from '@/components/navbarLink';
 import navbarSiteName from '@/components/navbarSiteName';
+import { mapActions } from 'vuex';
+import types from '../store/modules/login/types';
 
 export default {
   components: {
@@ -24,6 +22,9 @@ export default {
     navbarSiteName,
   },
   name: 'SiteHeader',
+  methods: {
+    ...mapActions([types.action.LOG_IN]),
+  },
 };
 </script>
 
