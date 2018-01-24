@@ -48,7 +48,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'frontend/index.html',
-      favicon: 'static/favicon.ico',
+      favicon: 'frontend/assets/favicon.ico',
       inject: true
     }),
   ]
