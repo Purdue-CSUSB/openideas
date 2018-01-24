@@ -1,6 +1,6 @@
 const state = {
-  loggedIn: false,
   user: null,
+  isAuthenticated: false,
 };
 
 export default state;

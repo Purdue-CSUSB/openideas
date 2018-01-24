@@ -13,6 +13,7 @@ const router = new Router({
       name: 'Home',
       component: Home,
     },
+    // TODO: delete?
     {
       path: '/login',
       name: 'LoginCallbackHandler',

@@ -7,7 +7,11 @@
       navbarLink(to='ideas') All Ideas
       navbarLink(to='about') About
     section.navbar-section
-      a(href='http://localhost:8081/auth/facebook') Sign In
+      a.btn.btn-link(@click='logIn' v-if='!isAuthenticated')
+        span Login
+      //- TODO: implement logOut action
+      a.btn.btn-link(@click='logOut' v-if='isAuthenticated')
+        span {{ user.name }}
 </template>
 
 <script>
@@ -22,8 +26,16 @@ export default {
     navbarSiteName,
   },
   name: 'SiteHeader',
+  computed: {
+    user() {
+      return this.$store.state.login.user;
+    },
+    isAuthenticated() {
+      return this.$store.state.login.isAuthenticated;
+    },
+  },
   methods: {
-    ...mapActions([types.action.LOG_IN]),
+    ...mapActions([types.action.LOG_IN, types.action.LOG_OUT]),
   },
 };
 </script>
