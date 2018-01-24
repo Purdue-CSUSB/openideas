@@ -14,3 +14,6 @@ yarn-error.log*
 *.sln
 
 frontend/.sass-cache/
+
+# Do NOT commit any env files!
+*.env
