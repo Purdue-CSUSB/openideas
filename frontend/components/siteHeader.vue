@@ -11,11 +11,17 @@
       a.btn.btn-link(href='#')
         span About
     section.navbar-section
-      a(href='#') Login
+      button(@click='logIn') Login
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import types from '../store/modules/login/types';
+
 export default {
   name: 'SiteHeader',
+  methods: {
+    ...mapActions([types.action.LOG_IN]),
+  },
 };
 </script>
