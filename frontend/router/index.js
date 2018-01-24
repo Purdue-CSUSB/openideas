@@ -5,7 +5,6 @@ import Home from '@/containers/Home';
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history', // enable HTML5 history mode
   routes: [
     {
       path: '/',
