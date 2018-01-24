@@ -1,4 +1,4 @@
-# OpenIdeas
+# OpenIdeas [![Build Status](https://travis-ci.org/Purdue-CSUSB/openideas.svg?branch=master)](https://travis-ci.org/Purdue-CSUSB/openideas)
 
 > Vote on ideas to improve your community
 
