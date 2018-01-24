@@ -15,5 +15,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'assets/openissues.scss';
+@import 'assets/openideas.scss';
 </style>
