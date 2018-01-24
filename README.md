@@ -1,4 +1,4 @@
-# openissues
+# OpenIdeas
 
 > Vote on ideas to improve your community
 
