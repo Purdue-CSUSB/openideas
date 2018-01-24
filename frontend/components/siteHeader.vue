@@ -11,7 +11,11 @@
       a.btn.btn-link(href='#')
         span About
     section.navbar-section
-      button(@click='logIn') Login
+      a.btn.btn-link(@click='logIn' v-if='!isAuthenticated')
+        span Login
+      //- TODO: implement logOut action
+      a.btn.btn-link(@click='logOut' v-if='isAuthenticated')
+        span {{ user.name }}
 </template>
 
 <script>
@@ -20,8 +24,16 @@ import types from '../store/modules/login/types';
 
 export default {
   name: 'SiteHeader',
+  computed: {
+    user() {
+      return this.$store.state.login.user;
+    },
+    isAuthenticated() {
+      return this.$store.state.login.isAuthenticated;
+    },
+  },
   methods: {
-    ...mapActions([types.action.LOG_IN]),
+    ...mapActions([types.action.LOG_IN, types.action.LOG_OUT]),
   },
 };
 </script>

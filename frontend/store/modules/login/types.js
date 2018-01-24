@@ -6,6 +6,7 @@ const types = {
   },
   action: {
     LOG_IN: 'logIn',
+    LOG_OUT: 'logOut',
   },
 };
 
