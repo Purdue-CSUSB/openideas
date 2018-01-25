@@ -19,6 +19,9 @@ const actions = {
       });
   },
   logOut({ commit }) {
+    axios.delete('http://localhost:8081/auth')
+    // eslint-disable-next-line
+      .catch(err => console.log(err));
     commit(types.mutation.SET_LOGGED_OUT);
   },
 };

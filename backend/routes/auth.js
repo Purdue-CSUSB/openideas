@@ -3,7 +3,7 @@ const axios = require('axios');
 const User = require('../models/user');
 
 const router = express.Router();
-
+/* eslint-disable */
 router.post('/facebook', (req, res) => {
   axios.post('https://graph.facebook.com/v2.11/oauth/access_token', {
     client_id: process.env.FACEBOOK_APP_ID,
@@ -22,16 +22,19 @@ router.post('/facebook', (req, res) => {
             email: '',
           },
         ).then((user) => {
-          // eslint-disable-next-line
           req.session.user = user.result;
           res.json(tokenResponse.data);
         });
       }).catch(() => {
-        // eslint-disable-next-line
         res.code = 500;
         res.json({ message: 'Backend failure' });
       });
     }).catch(err => res.json(err));
+});
+
+router.delete('/', (req, res) => {
+  req.session = null;
+  res.json({ success: true });
 });
 
 module.exports = router;
