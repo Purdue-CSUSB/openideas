@@ -12,8 +12,7 @@ router.post('/facebook', (req, res) => {
     redirect_uri: req.body.redirectUri,
   }, { 'Content-Type': 'application/json' })
     .then((tokenResponse) => {
-      res.json(tokenResponse.data);
-      axios.post('https://graph.facebook.com/v2.11/me', {
+      axios.get('https://graph.facebook.com/v2.11/me', {
         params: { access_token: tokenResponse.data.access_token },
       }).then((userData) => {
         User.findOrCreate(
@@ -25,11 +24,11 @@ router.post('/facebook', (req, res) => {
         ).then((user) => {
           // eslint-disable-next-line
           req.session.user = user.result;
+          res.json(user);
         });
-      }).catch((err) => {
+      }).catch(() => {
         // eslint-disable-next-line
-        console.log(err.data);
-        res.json(err.data);
+        res.code = 500;
       });
     }).catch(err => res.json(err));
 });
