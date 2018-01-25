@@ -3,8 +3,16 @@ const Idea = require('../models/idea');
 
 const router = express.Router();
 
+const protect = (req, res, next) => {
+  if (!req.user) {
+    res.code(401);
+  } else {
+    next();
+  }
+};
+
 router.route('/')
-  .post((req, res) => {
+  .post(protect, (req, res) => {
     const idea = new Idea(req.body);
     idea.save()
       .then(() => res.json(idea))
@@ -24,14 +32,14 @@ router.route('/:idea_id')
   });
 
 router.route('/:idea_id/vote')
-  .post((req, res) => {
+  .post(protect, (req, res) => {
     Idea.findByIdAndUpdate(req.params.idea_id, { $inc: { votes: 1 } }, { new: true }).exec()
       .then(idea => res.json(idea))
       .catch(err => res.send(err));
   });
 
 router.route('/:idea_id/comment')
-  .post((req, res) => {
+  .post(protect, (req, res) => {
     Idea.findByIdAndUpdate(
       req.params.idea_id,
       { $push: { comments: { author: req.body.author, body: req.body.body } } },
