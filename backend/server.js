@@ -24,6 +24,8 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
 }));
 
+app.use();
+
 app.use('/', router);
 
 const port = process.env.PORT || 8081;
