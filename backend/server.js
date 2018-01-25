@@ -7,6 +7,7 @@ const session = require('cookie-session');
 const cors = require('cors');
 const morgan = require('morgan');
 const router = require('./routes');
+const user = require('./user');
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
 }));
 
-app.use();
+app.use(user);
 
 app.use('/', router);
 
