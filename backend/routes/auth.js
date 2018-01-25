@@ -24,11 +24,12 @@ router.post('/facebook', (req, res) => {
         ).then((user) => {
           // eslint-disable-next-line
           req.session.user = user.result;
-          res.json(user);
+          res.json(tokenResponse.data);
         });
       }).catch(() => {
         // eslint-disable-next-line
         res.code = 500;
+        res.json({ message: 'Backend failure' });
       });
     }).catch(err => res.json(err));
 });
