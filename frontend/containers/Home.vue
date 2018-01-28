@@ -1,12 +1,13 @@
 <template lang="pug">
 #home.container.grid-lg
-  site-header
+  siteHeader
   hero
 </template>
 
 <script>
-import siteHeader from '@/components/siteHeader';
+
 import hero from '@/components/hero';
+import siteHeader from '@/components/siteHeader';
 
 export default {
   name: 'Home',

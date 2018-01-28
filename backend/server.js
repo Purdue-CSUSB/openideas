@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const router = require('./routes');
 
 const app = express();
-
 mongoose.connect(process.env.DATABASE_URL, { useMongoClient: true });
 mongoose.Promise = bluebird;
 
