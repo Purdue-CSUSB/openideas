@@ -6,7 +6,10 @@ import LoginCallbackHandler from '@/containers/LoginCallbackHandler';
 Vue.use(Router);
 
 const router = new Router({
+<<<<<<< HEAD
   mode: 'history', // enable HTML5 history mode
+=======
+>>>>>>> ef4024ff37cbf2df969748d72dfff245700ae60e
   routes: [
     {
       path: '/',

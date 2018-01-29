@@ -15,8 +15,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import navbarLink from '@/components/navbarLink';
 import navbarSiteName from '@/components/navbarSiteName';
+=======
+>>>>>>> ef4024ff37cbf2df969748d72dfff245700ae60e
 import { mapActions } from 'vuex';
 import types from '../store/modules/login/types';
 
