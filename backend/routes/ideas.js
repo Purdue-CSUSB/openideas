@@ -13,7 +13,7 @@ const protect = (req, res, next) => {
 
 router.route('/')
   .post(protect, (req, res) => {
-    const idea = new Idea(req.body);
+    const idea = new Idea({ facebookId: req.body.facebookId, author: req.user.display_name });
     idea.save()
       .then(() => res.json(idea))
       .catch(err => res.send(err));
@@ -33,7 +33,10 @@ router.route('/:idea_id')
 
 router.route('/:idea_id/vote')
   .post(protect, (req, res) => {
-    Idea.findByIdAndUpdate(req.params.idea_id, { $inc: { votes: 1 } }, { new: true }).exec()
+    Idea.findByIdAndUpdate(req.params.idea_id, {
+      $inc: { votes: 1 },
+      $push: { voted: req.user.facebookId },
+    }, { new: true }).exec()
       .then(idea => res.json(idea))
       .catch(err => res.send(err));
   });

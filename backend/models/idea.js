@@ -11,6 +11,7 @@ const IdeaSchema = new Schema({
     body: { type: String, required: true },
     author: { type: String, required: true },
   }],
+  voted: [String],
 });
 
 module.exports = mongoose.model('Idea', IdeaSchema);
