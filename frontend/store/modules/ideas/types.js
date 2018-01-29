@@ -4,7 +4,10 @@ const types = {
     SET_ERROR: 'setError',
     CLEAR_ERROR: 'clearError',
   },
-  action: {},
+  action: {
+    FETCH_IDEAS: 'fetchIdeas',
+    POST_IDEA: 'postIdeas',
+  },
 };
 
 export default types;

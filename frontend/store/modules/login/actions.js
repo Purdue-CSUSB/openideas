@@ -11,11 +11,8 @@ const actions = {
         }).then((res) => {
           commit(types.mutation.SET_USER, { name: res.data.name });
           commit(types.mutation.SET_LOGGED_IN);
-        }).catch((err) => {
-          // eslint-disable-next-line
-          console.log(err);
-          commit(types.mutation.SET_LOGGED_OUT);
-        });
+          commit(types.mutation.CLEAR_ERROR);
+        }).catch(() => commit(types.mutation.SET_ERROR, 'Failed to sign in.'));
       });
   },
   logOut({ commit }) {
