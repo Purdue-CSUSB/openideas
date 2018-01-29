@@ -12,6 +12,14 @@ const mutations = {
     state.user = null;
     state.isAuthenticated = false;
   },
+  setError(state, message) {
+    state.error = true;
+    state.errorMessage = message;
+  },
+  clearError(state) {
+    state.error = false;
+    state.errorMessage = '';
+  },
 };
 
 export default mutations;

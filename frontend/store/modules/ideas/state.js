@@ -1,6 +1,5 @@
 const state = {
-  user: null,
-  isAuthenticated: false,
+  ideas: [],
   error: false,
   errorMessage: '',
 };
