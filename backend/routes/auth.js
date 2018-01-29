@@ -17,10 +17,7 @@ router.post('/facebook', (req, res) => {
       }).then((userData) => {
         User.findOrCreate(
           { facebookId: userData.data.id },
-          {
-            display_name: userData.data.name,
-            email: '',
-          },
+          { display_name: userData.data.name },
         ).then((user) => {
           req.session.user = user.result;
           res.json(tokenResponse.data);
