@@ -45,7 +45,7 @@ router.route('/:idea_id/comment')
   .post(protect, (req, res) => {
     Idea.findByIdAndUpdate(
       req.params.idea_id,
-      { $push: { comments: { author: req.body.author, body: req.body.body } } },
+      { $push: { comments: { author: req.user.display_name, body: req.body.body } } },
       { new: true },
     ).exec()
       .then(idea => res.json(idea))
