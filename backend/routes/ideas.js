@@ -11,6 +11,14 @@ const protect = (req, res, next) => {
   }
 };
 
+const voteOnce = (req, res, next) => {
+  if (!req.user || Idea.findById(req.params.idea_id).voted.includes(req.user.facebookId)) {
+    res.code(401);
+  } else {
+    next();
+  }
+};
+
 router.route('/')
   .post(protect, (req, res) => {
     const idea = new Idea({ facebookId: req.body.facebookId, author: req.user.display_name });
@@ -29,10 +37,20 @@ router.route('/:idea_id')
     Idea.findById(req.params.idea_id).exec()
       .then(idea => res.json(idea))
       .catch(err => res.send(err));
+  })
+  .patch((req, res) => {
+    Idea.findByIdAndUpdate(req.params.idea_id).exec()
+      .then(idea => res.json(idea))
+      .catch(err => res.send(err));
+  })
+  .delete((req, res) => {
+    Idea.findByIdAndRemove(req.params.idea_id).exec()
+      .then(idea => res.json(idea))
+      .catch(err => res.send(err));
   });
 
 router.route('/:idea_id/vote')
-  .post(protect, (req, res) => {
+  .post(protect, voteOnce, (req, res) => {
     Idea.findByIdAndUpdate(req.params.idea_id, {
       $inc: { votes: 1 },
       $push: { voted: req.user.facebookId },
