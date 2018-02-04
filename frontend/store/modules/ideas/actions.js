@@ -1,6 +1,5 @@
 import makeApi from './Api';
 import types from './types';
-import { type } from 'os';
 
 const Ideas = makeApi('/ideas');
 
