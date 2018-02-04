@@ -1,6 +1,8 @@
 const types = {
   mutation: {
     SET_IDEAS: 'setIdeas',
+    SET_IDEA: 'setIdea',
+    SET_COMMENTS: 'setComments',
     SET_ERROR: 'setError',
     CLEAR_ERROR: 'clearError',
   },
