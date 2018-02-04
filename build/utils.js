@@ -63,8 +63,7 @@ exports.cssLoaders = function (options) {
     scss: generateLoaders('sass', {
       data: "@import '~@/assets/variables';\n",
     }),
-    stylus: generateLoaders('stylus'),
-    styl: generateLoaders('stylus')
+    stylus: generateLoaders('stylus')
   }
 }
 

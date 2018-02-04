@@ -1,18 +1,15 @@
 <template lang="pug">
 #home.container.grid-lg
-  siteHeader
   hero
 </template>
 
 <script>
 
-import hero from '@/components/hero';
-import siteHeader from '@/components/siteHeader';
+import hero from '@/components/Hero';
 
 export default {
   name: 'Home',
   components: {
-    siteHeader,
     hero,
   },
   data() {

@@ -1,18 +1,21 @@
 <template lang="pug">
 #app
-  router-view
-  siteFooter.section.section-footer
+  siteHeader
+  router-view.content
+  siteFooter
 </template>
 
 <script>
-import navbar from '@/components/navbar';
-import siteFooter from '@/components/siteFooter';
+import navbar from '@/components/Navbar';
+import siteFooter from '@/components/SiteFooter';
+import siteHeader from '@/components/SiteHeader';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     navbar,
     siteFooter,
+    siteHeader,
   },
 };
 </script>
@@ -22,11 +25,15 @@ export default {
 #app:first-child {
   padding-top: 0.85rem;
 }
+.content {
+  flex: 1;
+}
 #app {
   border-top-style: solid;
   border-top-width: 0.3rem;
   border-top-color: $primary-color;
-  flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
-  padding: 1rem;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 </style>

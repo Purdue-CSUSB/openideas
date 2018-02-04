@@ -1,9 +1,9 @@
 <template lang="pug">
-#site-header
+#site-header.container.grid-xl
   header.navbar
     section.navbar-section
       navbarSiteName 💡 OpenIdeas
-      navbarLink.active(to='/') Home
+      navbarLink(to='/') Home
       navbarLink(to='ideas') All Ideas
       navbarLink(to='about') About
     section.navbar-section
@@ -11,15 +11,16 @@
 </template>
 
 <script>
-import navbarLink from '@/components/navbarLink';
-import navbarSiteName from '@/components/navbarSiteName';
+import NavbarLink from '@/components/NavbarLink';
+import NavbarSiteName from '@/components/NavbarSiteName';
 
 export default {
-  components: {
-    navbarLink,
-    navbarSiteName,
-  },
   name: 'SiteHeader',
+  components: {
+    NavbarLink,
+    NavbarSiteName,
+  },
+
 };
 </script>
 

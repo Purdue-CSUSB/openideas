@@ -33,4 +33,7 @@ export default {
   color: $dark-color;
   font-weight: 600;
 }
+.btn:focus {
+    box-shadow: none;
+}
 </style>

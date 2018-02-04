@@ -1,25 +1,41 @@
 <template lang="pug">
-footer.section-footer
-  div.container.grid-lg Hey what's up?
+footer.footer.section-footer
+  div.container.grid-xl
+    div.columns
+      div.column.col-3.col-sm-8
+        ul
+          li
+            router-link(to='terms') Terms
+          li
+            router-link(to='privacy') Privacy
+      div.column.col-2.col-sm-8.col-sm
+        img(:src="require('@/assets/usb-wordmark-dark-mono.png')").img-responsive
+        p Made with ❤️ by USB.
+    p.text-center &copy; Copyright 2018 USB
 </template>
 
 <script>
+// import logo from '@/assets/usb-wordmark-dark-mono.png';
+
 export default {
-  name: 'siteFooter',
+  name: 'SiteFooter',
 };
 </script>
 
 <style scoped>
 .section-footer {
-  color: #acb3c2;
-  padding: 1.8rem .75rem 1rem .75rem;
-  position: relative;
-  z-index: 200;
-  background-color: #2b2b2b;
-  flex-shrink: 0;
+  background: #333333;
+  color: white;
 }
 
-.section-footer a {
-  color: #667189;
+p {
+  font-size: 0.6rem;
+  font-weight: 300;
+  line-height: 0.8rem;
 }
+
+a {
+  color: white;
+}
+
 </style>

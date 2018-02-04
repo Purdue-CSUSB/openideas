@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'idea-card',
+  name: 'IdeaCard',
   props: {
     idea: Object,
     index: Number,
