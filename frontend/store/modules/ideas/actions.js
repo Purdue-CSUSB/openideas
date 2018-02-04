@@ -11,11 +11,16 @@ const actions = {
         commit(types.mutation.CLEAR_ERROR);
       }).catch(() => commit(types.mutation.SET_ERROR, 'Failed to fetch ideas.'));
   },
+  fetchIdeaById() {},
   postIdea({ dispatch, commit }, idea) {
     Ideas.post('/', idea)
       .then(() => dispatch(types.action.FETCH_IDEAS))
       .catch(() => commit(types.mutation.SET_ERROR, 'Failed to post idea.'));
   },
+  postComment() {},
+  voteIdeaById() {},
+  deleteIdeaById() {},
+  editIdeaById() {},
 };
 
 export default actions;
