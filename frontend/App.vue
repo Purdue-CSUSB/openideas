@@ -1,21 +1,21 @@
 <template lang="pug">
 #app
-  siteHeader
+  site-header
   router-view.content
-  siteFooter
+  site-footer
 </template>
 
 <script>
-import navbar from '@/components/Navbar';
-import siteFooter from '@/components/SiteFooter';
-import siteHeader from '@/components/SiteHeader';
+import Navbar from '@/components/Navbar';
+import SiteFooter from '@/components/SiteFooter';
+import SiteHeader from '@/components/SiteHeader';
 
 export default {
   name: 'App',
   components: {
-    navbar,
-    siteFooter,
-    siteHeader,
+    Navbar,
+    SiteFooter,
+    SiteHeader,
   },
 };
 </script>

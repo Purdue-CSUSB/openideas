@@ -5,7 +5,7 @@
 
 <script>
 
-import hero from '@/components/Hero';
+import hero from '@/components/hero';
 
 export default {
   name: 'Home',

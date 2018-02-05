@@ -17,8 +17,14 @@
 export default {
   name: 'IdeaCard',
   props: {
-    idea: Object,
-    index: Number,
+    idea: {
+      type: Object,
+      default: null,
+    },
+    index: {
+      type: Number,
+      default: null,
+    },
   },
 };
 </script>
