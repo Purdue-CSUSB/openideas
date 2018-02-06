@@ -4,10 +4,11 @@ import Home from '@/containers/Home';
 import Terms from '@/containers/Terms';
 import PageNotFound from '@/containers/PageNotFound';
 import Privacy from '@/containers/Privacy';
+import LoginCallbackHandler from '@/containers/LoginCallbackHandler';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history', // enable HTML5 history mode
   linkExactActiveClass: 'active',
   routes: [
@@ -27,9 +28,23 @@ export default new Router({
       component: Privacy,
     },
     {
+      path: '/login',
+      name: 'LoginCallbackHandler',
+      component: LoginCallbackHandler,
+    },
+    {
       path: '*',
       name: 'PageNotFound',
       component: PageNotFound,
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/_=_') {
+    return next(false);
+  }
+  return next();
+});
+
+export default router;
