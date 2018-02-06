@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import siteHeader from '@/components/siteHeader';
-import hero from '@/components/hero';
+import siteHeader from '@/components/SiteHeader';
+import hero from '@/components/Hero';
 
 export default {
   name: 'Home',

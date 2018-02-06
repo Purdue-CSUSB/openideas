@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import navbarLink from '@/components/navbarLink';
-import navbarSiteName from '@/components/navbarSiteName';
+import navbarLink from '@/components/NavbarLink';
+import navbarSiteName from '@/components/NavbarSiteName';
 import { mapActions } from 'vuex';
 import types from '../store/modules/login/types';
 
