@@ -4,13 +4,12 @@
 </template>
 
 <script>
-
-import hero from '@/components/Hero';
+import Hero from '@/components/Hero';
 
 export default {
   name: 'Home',
   components: {
-    hero,
+    Hero,
   },
   data() {
     return {
