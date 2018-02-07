@@ -6,14 +6,13 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar';
+
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 
 export default {
   name: 'App',
   components: {
-    Navbar,
     SiteFooter,
     SiteHeader,
   },
