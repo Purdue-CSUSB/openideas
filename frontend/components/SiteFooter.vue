@@ -1,5 +1,5 @@
 <template lang="pug">
-footer.footer.section-footer
+footer.footer
   div.container.grid-xl
     div.columns
       div.column.col-3.col-xl-3.col-lg-4.col-md-12.col-sm-12.col-mr-auto
@@ -11,7 +11,7 @@ footer.footer.section-footer
           li
             a(href="https://github.com/Purdue-CSUSB/openideas") GitHub
       div.column.col-2.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-ml-auto
-        img(:src="require('@/assets/usb-wordmark-dark-mono.png')").img-responsive
+        img(:src="require('@/assets/usb-wordmark-dark-mono.png')").img-responsive.logo
         p.text-center Made with <i class="fa fa-heart"></i> and <i class="fa fa-coffee"></i> by USB
       div.column.col-md-4.show-md.show-sm.col-sm-3
 </template>
@@ -25,9 +25,10 @@ export default {
 </script>
 
 <style scoped>
-.section-footer {
+.footer {
   background: #333333;
   color: white;
+  padding-top: 0.8rem;
 }
 
 p {
@@ -54,5 +55,10 @@ a {
 .links li:not(:last-child) {
     padding-right: 1.3rem;
 }
+
+.logo {
+  margin-bottom: 0.5rem;
+}
+
 
 </style>
