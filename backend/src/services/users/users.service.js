@@ -1,8 +1,8 @@
-import createService from 'feathers-mongoose';
-import createModel from '../../models/users.model';
-import hooks from './users.hooks';
+const createService = require('feathers-mongoose');
+const createModel = require('../../models/users.model');
+const hooks = require('./users.hooks');
 
-export default (app) => {
+module.exports = (app) => {
   const Model = createModel(app);
   const paginate = app.get('paginate');
 

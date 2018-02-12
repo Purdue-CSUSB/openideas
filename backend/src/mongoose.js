@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-export default (app) => {
+module.exports = (app) => {
   mongoose.connect(app.get('mongodb'), {});
   mongoose.Promise = global.Promise;
 

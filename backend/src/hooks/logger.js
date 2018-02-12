@@ -1,7 +1,7 @@
 // A hook that logs service method before, after and error
 // See https://github.com/winstonjs/winston for documentation
 // about the logger.
-import logger from 'winston';
+const logger = require('winston');
 
 // To see more detailed messages, uncomment the following line
 // logger.level = 'debug';
@@ -20,4 +20,4 @@ const fn = (context) => {
   }
 };
 
-export default () => fn;
+module.exports = () => fn;

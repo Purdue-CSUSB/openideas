@@ -1,8 +1,7 @@
-import users from './users/users.service';
-import ideas from './ideas/ideas.service';
-
+const users = require('./users/users.service');
+const ideas = require('./ideas/ideas.service');
 // eslint-disable-next-line no-unused-vars
-export default (app) => {
+module.exports = (app) => {
   app.configure(users)
     .configure(ideas);
 };

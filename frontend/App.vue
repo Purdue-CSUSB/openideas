@@ -6,15 +6,24 @@
 </template>
 
 <script>
-
+import { createNamespacedHelpers } from 'vuex';
+import types from '@/store/login/types';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
+
+const { mapActions } = createNamespacedHelpers('login');
 
 export default {
   name: 'App',
   components: {
     SiteFooter,
     SiteHeader,
+  },
+  methods: {
+    ...mapActions([types.action.RETRIEVE_TOKEN]),
+  },
+  mounted() {
+    this.retrieveToken();
   },
 };
 </script>

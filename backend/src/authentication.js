@@ -1,10 +1,10 @@
-import authentication from '@feathersjs/authentication';
-import jwt from '@feathersjs/authentication-jwt';
+const authentication = require('@feathersjs/authentication');
+const jwt = require('@feathersjs/authentication-jwt');
 
-import oauth2 from '@feathersjs/authentication-oauth2';
-import FacebookStrategy from 'passport-facebook';
+const oauth2 = require('@feathersjs/authentication-oauth2');
+const FacebookStrategy = require('passport-facebook');
 
-export default (app) => {
+module.exports = (app) => {
   const config = app.get('authentication');
 
   // Set up authentication with the secret

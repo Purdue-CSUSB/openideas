@@ -1,19 +1,19 @@
-import compress from 'compression';
-import cors from 'cors';
-import helmet from 'helmet';
-import logger from 'winston';
+const compress = require('compression');
+const cors = require('cors');
+const helmet = require('helmet');
+const logger = require('winston');
 
-import feathers from '@feathersjs/feathers';
-import configuration from '@feathersjs/configuration';
-import express from '@feathersjs/express';
+const feathers = require('@feathersjs/feathers');
+const configuration = require('@feathersjs/configuration');
+const express = require('@feathersjs/express');
 
-import middleware from './middleware';
-import services from './services';
-import appHooks from './app.hooks';
+const middleware = require('./middleware');
+const services = require('./services');
+const appHooks = require('./app.hooks');
 
-import authentication from './authentication';
+const authentication = require('./authentication');
 
-import mongoose from './mongoose';
+const mongoose = require('./mongoose');
 
 const app = express(feathers());
 
@@ -45,4 +45,4 @@ app.use(express.errorHandler({ logger }));
 
 app.hooks(appHooks);
 
-export default app;
+module.exports = app;
