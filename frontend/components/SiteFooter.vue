@@ -11,7 +11,8 @@ footer.footer
           li
             a(href="https://github.com/Purdue-CSUSB/openideas") GitHub
       div.column.col-2.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-ml-auto
-        img(:src="require('@/assets/usb-wordmark-dark-mono.png')").img-responsive.logo
+        a(href="https://purdueusb.com", target="_blank")
+          img(:src="require('@/assets/usb-wordmark-dark.png')").img-responsive.logo
         p.text-center Made with <i class="fa fa-heart"></i> and <i class="fa fa-coffee"></i> by USB
       div.column.col-md-4.show-md.show-sm.col-sm-3
 </template>
@@ -24,7 +25,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .footer {
   background: #333333;
   color: white;
@@ -39,6 +40,13 @@ p {
 
 a {
   color: white;
+}
+
+img {
+  filter: grayscale(1);
+  &:hover {
+    filter: grayscale(0);
+  }
 }
 
 .links {
