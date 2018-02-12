@@ -1,68 +1,13 @@
 // Variables are loaded by webpack. See util.js.
-
+// @import 'assets/variables.scss';
 // Import full Spectre source code
 @import "../node_modules/spectre.css/src/spectre";
+// @import "../node_modules/font-awesome/scss/font-awesome";
+@import '~font-awesome/scss/font-awesome';
+// @import "~font-awesome/css/font-awesome";
+
+
 
 html {
   height: 100%;
-}
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
-}
-.content {
-  flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
-  padding: 20px;
-}
-.footer {
-  flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
-  padding: 20px;
-}
-
-// Ripped from the Spectre docs
-.section-hero {
-  padding: 1rem .5rem;
-}
-
-.section-hero .docs-brand {
-  position: absolute;
-  top: .85rem;
-}
-
-.section-hero .docs-brand h2 {
-  color: #5755d9;
-}
-
-.section-hero .column {
-  padding: .4rem;
-}
-
-.section-updates {
-  padding: 4.5rem .5rem 3.5rem .5rem;
-}
-
-.section-updates .card {
-  border: 0;
-  color: #727e96;
-  margin-bottom: 1rem;
-}
-
-.section-features {
-  padding: 4.5rem .5rem;
-}
-
-.section-features .column {
-  padding: .4rem;
-}
-
-.section-footer {
-  color: #acb3c2;
-  padding: 1.8rem .75rem 1rem .75rem;
-  position: relative;
-  z-index: 200;
-}
-
-.section-footer a {
-  color: #667189;
 }

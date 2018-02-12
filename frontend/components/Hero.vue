@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'hero',
+  name: 'Hero',
 };
 </script>
 
@@ -21,6 +21,7 @@ export default {
   background-size: 60rem;
   background-position-y: 50%;
   color: white;
+  margin-bottom: 2rem;
 }
 
 h1 {

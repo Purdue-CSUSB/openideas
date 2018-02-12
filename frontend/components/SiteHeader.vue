@@ -1,9 +1,9 @@
 <template lang="pug">
-#site-header
+#site-header.container.grid-xl
   header.navbar
     section.navbar-section
       navbarSiteName 💡 OpenIdeas
-      navbarLink.active(to='/') Home
+      navbarLink(to='/') Home
       navbarLink(to='ideas') All Ideas
       navbarLink(to='about') About
     section.navbar-section
@@ -15,17 +15,17 @@
 </template>
 
 <script>
-import navbarLink from '@/components/NavbarLink';
-import navbarSiteName from '@/components/NavbarSiteName';
+import NavbarLink from '@/components/NavbarLink';
+import NavbarSiteName from '@/components/NavbarSiteName';
 import { mapActions } from 'vuex';
 import types from '../store/modules/login/types';
 
 export default {
-  components: {
-    navbarLink,
-    navbarSiteName,
-  },
   name: 'SiteHeader',
+  components: {
+    NavbarLink,
+    NavbarSiteName,
+  },
   computed: {
     user() {
       return this.$store.state.login.user;

@@ -1,11 +1,21 @@
 <template lang="pug">
 #app
-  router-view
+  site-header
+  router-view.content
+  site-footer
 </template>
 
 <script>
+
+import SiteFooter from '@/components/SiteFooter';
+import SiteHeader from '@/components/SiteHeader';
+
 export default {
-  name: 'app',
+  name: 'App',
+  components: {
+    SiteFooter,
+    SiteHeader,
+  },
 };
 </script>
 
@@ -14,9 +24,15 @@ export default {
 #app:first-child {
   padding-top: 0.85rem;
 }
+.content {
+  flex: 1;
+}
 #app {
   border-top-style: solid;
   border-top-width: 0.3rem;
   border-top-color: $primary-color;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 </style>
