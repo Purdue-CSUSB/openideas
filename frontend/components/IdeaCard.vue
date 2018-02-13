@@ -4,7 +4,7 @@
     .column.col-2.text-center.votes-container
       h2 {{ idea.votes }}
       p.subtitle votes
-      button.btn.btn-sm.btn-primary
+      button.btn.btn-sm.btn-primary.btn-block
         i.fa.fa-chevron-up
 
     .column
@@ -43,7 +43,6 @@ h2{
 }
 
 button {
-  width: 100%;
   font-size: 0.5rem;
   height: 0.5rem;
   padding: 0.15rem 0.3rem;

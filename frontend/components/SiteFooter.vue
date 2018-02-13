@@ -59,20 +59,12 @@ img {
 
 .links li {
     display: inline-block;
-<<<<<<< HEAD
-    font-size: 0.6rem;
-=======
     font-size: small;
->>>>>>> Initial ideas feed
     font-weight: 300;
 }
 
 .links li:not(:last-child) {
     padding-right: 1.3rem;
 }
-
-.logo {
-}
-
 
 </style>
