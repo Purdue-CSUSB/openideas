@@ -13,7 +13,7 @@ footer.footer
       div.column.col-2.col-xl-2.col-lg-2.col-md-3.col-sm-5.col-ml-auto
         a(href="https://purdueusb.com", target="_blank")
           img(:src="require('@/assets/usb-wordmark-dark.png')").img-responsive.logo
-        p.text-center Made with <i class="fa fa-heart"></i> and <i class="fa fa-coffee"></i> by USB
+        p.text-center Made by USB
       div.column.col-md-4.show-md.show-sm.col-sm-3
 </template>
 
@@ -30,6 +30,7 @@ export default {
   background: #333333;
   color: white;
   padding-top: 0.5rem;
+  margin-top: 3rem;
 }
 
 p {

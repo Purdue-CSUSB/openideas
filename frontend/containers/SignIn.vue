@@ -14,6 +14,10 @@
           div.form-group
             label.form-label(for="email") Email
             input.form-input(type="text", id="email", placeholder="pete@purdue.edu")
+            p.msg(v-if="showMsg") {{ nfmsg }}
+
+            label.form-label(for="name" v-if="showMsg") Name
+            input.form-input(v-if="showMsg" type="text", id="name", placeholder="Purdue Pete")
 
           button.btn.btn-primary.btn-block Next
         p.text-center Need an account? #[button.btn.btn-link Sign Up]
@@ -25,17 +29,31 @@
 <script>
 export default {
   name: 'LoginCallbackHandler',
-  created() {
-    // TODO: delete?
-    // eslint-disable-next-line
-    console.log('LoginCallbackHandler created.');
+  props: {
+    showMsg: {
+      type: Boolean,
+      default: false,
+    }
+  },
+  data() {
+    return {
+      nfmsg: 'It looks like you\'re new to OpenIdeas! Tell us your name.',
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
+form button:nth-last-of-type(1) {
+  margin-top: 1.5rem;
+}
 p, .btn-link {
   font-size: small;
+}
+
+p.msg {
+  margin-top: 1.0rem;
+  font-size: 0.7rem;
 }
 
 button {

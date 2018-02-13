@@ -4,8 +4,7 @@
     .column.col-2.text-center.votes-container
       h2 {{ idea.votes }}
       p.subtitle votes
-      button.btn.btn-sm.btn-primary.btn-block
-        i.fa.fa-chevron-up
+      button.btn.btn-sm.btn-primary.btn-block Upvote
 
     .column
       .card-header
@@ -42,9 +41,8 @@ h2{
   margin-bottom: 0;
 }
 
-button {
-  font-size: 0.5rem;
-  height: 0.5rem;
+button.btn-sm {
+  font-size: 0.6rem;
   padding: 0.15rem 0.3rem;
 }
 </style>
