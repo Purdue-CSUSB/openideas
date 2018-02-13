@@ -4,7 +4,7 @@ import Home from '@/containers/Home';
 import Terms from '@/containers/Terms';
 import PageNotFound from '@/containers/PageNotFound';
 import Privacy from '@/containers/Privacy';
-import LoginCallbackHandler from '@/containers/LoginCallbackHandler';
+import SignIn from '@/containers/SignIn';
 
 Vue.use(Router);
 
@@ -24,13 +24,13 @@ const router = new Router({
     },
     {
       path: '/privacy',
-      name: 'Privacy Policy',
+      name: 'PrivacyPolicy',
       component: Privacy,
     },
     {
-      path: '/login',
-      name: 'LoginCallbackHandler',
-      component: LoginCallbackHandler,
+      path: '/signin',
+      name: 'SignIn',
+      component: SignIn,
     },
     {
       path: '*',

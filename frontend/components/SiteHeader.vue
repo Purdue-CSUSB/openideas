@@ -7,11 +7,7 @@
       navbarLink(to='ideas') All Ideas
       navbarLink(to='about') About
     section.navbar-section
-      a.btn.btn-link(@click='logIn' v-if='!isAuthenticated')
-        span Login
-      //- TODO: implement logOut action
-      a.btn.btn-link(@click='logOut' v-if='isAuthenticated')
-        span {{ user.name }}
+      navbarLink(to='signin') Sign In / Sign Up
 </template>
 
 <script>
