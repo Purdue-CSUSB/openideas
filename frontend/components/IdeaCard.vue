@@ -1,5 +1,5 @@
 <template lang="pug">
-#idea-card
+.idea-card
   .columns
     .column.col-2.text-center.votes-container
       h2 {{ idea.votes }}
