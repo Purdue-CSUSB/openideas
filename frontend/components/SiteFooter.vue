@@ -10,7 +10,7 @@ footer.footer
             router-link(to='privacy') Privacy
           li
             a(href="https://github.com/Purdue-CSUSB/openideas") GitHub
-      div.column.col-2.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-ml-auto
+      div.column.col-2.col-xl-2.col-lg-2.col-md-3.col-sm-5.col-ml-auto
         a(href="https://purdueusb.com", target="_blank")
           img(:src="require('@/assets/usb-wordmark-dark.png')").img-responsive.logo
         p.text-center Made with <i class="fa fa-heart"></i> and <i class="fa fa-coffee"></i> by USB
@@ -59,7 +59,11 @@ img {
 
 .links li {
     display: inline-block;
+<<<<<<< HEAD
     font-size: 0.6rem;
+=======
+    font-size: small;
+>>>>>>> Initial ideas feed
     font-weight: 300;
 }
 

@@ -1,16 +1,17 @@
 <template lang="pug">
 #idea-card
-  .card.bg-secondary
-    .columns
-      .col-mr-auto.text-center#votes
-        button.btn.btn-sm.btn-primary
-          i.icon.icon-arrow-up
-        h3.card-title {{ idea.votes }}
-      .column
-        .card-header
-          router-link.h5.card-title(:to='idea._id') {{ idea.title }}
-        .card-body
-          p {{ idea.description }}
+  .columns
+    .column.col-2.text-center.votes-container
+      h2 {{ idea.votes }}
+      p.subtitle votes
+      button.btn.btn-sm.btn-primary
+        i.fa.fa-chevron-up
+
+    .column
+      .card-header
+        router-link.h5.card-title(:to='idea._id') {{ idea.title }}
+      .card-body
+        p {{ idea.description }}
 </template>
 
 <script>
@@ -29,9 +30,22 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
-.card
-  margin: 15px
-#votes
-  margin: 30px
+<style lang="scss" scoped>
+.votes-container{
+
+  p {
+    font-size: x-small;
+  }
+}
+h2{
+  color: $primary-color;
+  margin-bottom: 0;
+}
+
+button {
+  width: 100%;
+  font-size: 0.5rem;
+  height: 0.5rem;
+  padding: 0.15rem 0.3rem;
+}
 </style>
