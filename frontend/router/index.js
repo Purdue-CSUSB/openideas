@@ -9,6 +9,7 @@ import SignIn from '@/containers/SignIn';
 import Magic from '@/containers/Magic';
 import Ideas from '@/containers/Ideas';
 import New from '@/containers/New';
+import IdeasFeed from '@/components/IdeasFeed';
 
 Vue.use(Router);
 
@@ -25,6 +26,7 @@ const router = new Router({
   routes: [
     { path: '/', name: 'Home', component: Home },
     { path: '/ideas', name: 'Ideas', component: Ideas },
+    { path: '/ideasFeed', name: 'Ideas', component: IdeasFeed },
     { path: '/new', name: 'New', component: New, beforeEnter: requireUser() },
     { path: '/terms', name: 'Terms', component: Terms },
     { path: '/privacy', name: 'PrivacyPolicy', component: Privacy },

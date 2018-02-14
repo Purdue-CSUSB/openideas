@@ -11,6 +11,12 @@
         router-link(:to='idea._id.toString()') #[h4.card-title {{ idea.title }}]
       .card-body
         p {{ idea.description }}
+      .card-actions
+        ul
+          li
+            router-link(to='terms') Terms
+          li
+            router-link(to='privacy') Privacy
 </template>
 
 <script>
@@ -34,6 +40,26 @@ export default {
 
   p {
     font-size: x-small;
+  }
+}
+.card-body {
+  p {
+    font-size: 0.7rem;
+  }
+}
+
+.card-actions {
+  font-size: 0.6rem;
+  ul {
+    color: red;
+    padding: 0;
+    li {
+      display: inline-block;
+
+      &:not(:last-child) {
+      padding-right: 1.3rem;
+      }
+    }
   }
 }
 h2{
