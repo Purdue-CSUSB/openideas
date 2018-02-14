@@ -15,7 +15,7 @@
 import NavbarLink from '@/components/NavbarLink';
 import NavbarSiteName from '@/components/NavbarSiteName';
 import { createNamespacedHelpers } from 'vuex';
-import types from '../store/modules/login/types';
+import types from '@/store/login/types';
 
 const { mapActions } = createNamespacedHelpers('login');
 
