@@ -6,7 +6,7 @@ const logger = require('winston');
 // To see more detailed messages, uncomment the following line
 // logger.level = 'debug';
 
-const fn = (context) => {
+const hook = (context) => {
   // This debugs the service call and a stringified version of the hook context
   // You can customize the mssage (and logger) to your needs
   logger.info(`${context.type} app.service('${context.path}').${context.method}()`);
@@ -20,4 +20,4 @@ const fn = (context) => {
   }
 };
 
-module.exports = () => fn;
+module.exports = () => hook;

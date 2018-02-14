@@ -24,6 +24,7 @@ export default {
   },
   mounted() {
     this.retrieveToken();
+    this.$store.dispatch('login/retrieveToken');
   },
 };
 </script>
