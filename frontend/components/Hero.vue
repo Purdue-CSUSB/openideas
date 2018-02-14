@@ -4,7 +4,7 @@
     h1 Your Voice Matters
     h4
       small.subtitle  We're sure that Purdue CS students have many great ideas for their community. OpenIdeas is the best place to share and discuss those ideas. Let's get the conversations started!
-    button.btn.btn-lg.btn-primary Get Started
+    router-link(to='signin').btn.btn-lg.btn-primary Get Started
 </template>
 
 <script>
@@ -32,7 +32,7 @@ p {
   font-size: 1rem;
 }
 
-button {
+a.btn {
   $new-primary-color: darken( $primary-color, 10% );
   $new-border-color: darken( $primary-color, 15% );
   background-color: $new-primary-color !important;

@@ -1,20 +1,19 @@
 <template lang="pug">
 footer.footer
-  div.container.grid-xl
+  div.container.grid-lg
     div.columns
-      div.column.col-3.col-xl-3.col-lg-4.col-md-12.col-sm-12.col-mr-auto
-        ul.links.text-center.centered
+      div.column.col-8.col-mr-auto
+        ul.links
           li
             router-link(to='terms') Terms
           li
             router-link(to='privacy') Privacy
           li
             a(href="https://github.com/Purdue-CSUSB/openideas") GitHub
-      div.column.col-2.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-ml-auto
+      div.column.col-4
         a(href="https://purdueusb.com", target="_blank")
           img(:src="require('@/assets/usb-wordmark-dark.png')").img-responsive.logo
-        p.text-center Made with <i class="fa fa-heart"></i> and <i class="fa fa-coffee"></i> by USB
-      div.column.col-md-4.show-md.show-sm.col-sm-3
+        p.text-center Made by USB
 </template>
 
 <script>
@@ -30,6 +29,7 @@ export default {
   background: #333333;
   color: white;
   padding-top: 0.5rem;
+  margin-top: 3rem;
 }
 
 p {
@@ -59,7 +59,7 @@ img {
 
 .links li {
     display: inline-block;
-    font-size: 0.6rem;
+    font-size: small;
     font-weight: 300;
 }
 
@@ -67,8 +67,9 @@ img {
     padding-right: 1.3rem;
 }
 
-.logo {
-}
 
+a.active {
+  text-decoration: none;
+}
 
 </style>
