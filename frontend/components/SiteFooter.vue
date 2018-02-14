@@ -29,13 +29,14 @@ export default {
 .footer {
   background: #333333;
   color: white;
-  padding-top: 0.8rem;
+  padding-top: 0.5rem;
 }
 
 p {
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   font-weight: 300;
   line-height: 0.8rem;
+  margin-bottom: 0.4rem;
 }
 
 a {
@@ -44,6 +45,9 @@ a {
 
 img {
   filter: grayscale(1);
+  max-height: 2.4rem;
+  margin-left: auto;
+  margin-right: auto;
   &:hover {
     filter: grayscale(0);
   }
@@ -51,12 +55,11 @@ img {
 
 .links {
   padding: 0;
-  margin-top: 1.5rem;
 }
 
 .links li {
     display: inline-block;
-    font-size: smaller;
+    font-size: 0.6rem;
     font-weight: 300;
 }
 
@@ -65,7 +68,6 @@ img {
 }
 
 .logo {
-  margin-bottom: 0.5rem;
 }
 
 
