@@ -1,61 +1,67 @@
 <template lang="pug">
 
   #signin.container.grid-lg
-    <div class="modal modal-lg">
-      <a href="#close" class="modal-overlay" aria-label="Close"></a>
-      <div class="modal-container">
-        div.loading.loading-lg
-      </div>
-    </div>
-    div.columns
-      div.column.col-4.col-mx-auto.col-md-7.col-sm-10
+    .columns
+      .column.col-4.col-mx-auto.col-md-7.col-sm-10
         h3.text-center Welcome
-        form
-          div.form-group
-            label.form-label(for="email") Email
-            input.form-input(type="text", id="email", placeholder="pete@purdue.edu")
+        .form-group
+          label.form-label(for="email") Email
+          input.form-input(v-model="email" type="text", id="email", placeholder="pete@purdue.edu")
 
-            <transition name="fade" mode="in-out">
-            div.contain(v-if="showMsg")
-              div.toast
-                p.msg {{ nfmsg }} If you aren't new, double check your email address and try again.
-              label.form-label(for="name" ) Name
-              input.form-input(type="text", id="name", placeholder="Purdue Pete")
+          button.btn.btn-primary.btn-block(
+            @click='signIn(email)'
+            v-if='!signingUp'
+          ) Next
+          transition(name="fade" mode="in-out" v-else)
+            .contain
+              label.form-label(for="name") Name
+              input.form-input(v-model="name" type="text", id="name", placeholder="Purdue Pete")
+              button.btn.btn-primary.btn-block(@click='signUp({ email, name })') Sign Up
 
-              div.toast.toast-success
-                p.msg Great! Check your email for a login link.
-            </transition>
-          button.btn.btn-primary.btn-block(@click.prevent='toggle') Next
-        p.text-center Need an account? #[button.btn.btn-link Sign Up]
-
-
+        p.text-center Need an account?
+          button.btn.btn-link(@click="toggle()") Sign Up
 </template>
 
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
+import types from '@/store/user/types';
+
+const { mapActions } = createNamespacedHelpers('user');
+
 export default {
-  name: 'LoginCallbackHandler',
-  props: {
-    showMsg: {
-      type: Boolean,
-      default: false,
-    },
-  },
   data() {
     return {
-      nfmsg: 'It looks like you\'re new to OpenIdeas!',
+      signingUp: false,
+      email: '',
+      name: '',
     };
   },
   methods: {
+    ...mapActions([types.action.CHECK_EMAIL, types.action.CREATE_ACCOUNT]),
     toggle() {
-      this.showMsg = !this.showMsg;
+      this.signingUp = !this.signingUp;
     },
+    signIn(email) {
+      this.checkEmail(email)
+      /* eslint-disable */
+        .then(user => console.log(user))
+        .catch(() => this.toggle());
+    },
+    signUp(credentials) {
+      this.createAccount(credentials)
+        .then(user => console.log(user))
+        .catch(err => console.log(err));
+    },
+  },
+  mounted() {
+    if (this.signingUp) this.toggle();
   },
 };
 </script>
 
 <style lang="scss" scoped>
-form button:nth-last-of-type(1) {
+.btn-primary {
   margin-top: 1.5rem;
 }
 p, .btn-link {
@@ -64,6 +70,7 @@ p, .btn-link {
 
 .toast {
   margin-top: 1.0rem;
+  margin-bottom: 1.0rem;
   .msg {
     margin: 0;
     font-size: 0.7rem;

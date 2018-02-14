@@ -1,4 +1,5 @@
 const sendMagicLink = () => (context) => {
+  if (context.result === undefined) return Promise.resolve(context);
   const mailer = context.app.service('mailer');
   const from = 'ideas@purdueusb.com';
   const to = context.id;

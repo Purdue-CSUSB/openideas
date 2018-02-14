@@ -8,7 +8,7 @@
 
     .column
       .card-header
-        router-link(:to='idea._id') #[h4.card-title {{ idea.title }}]
+        router-link(:to='idea._id.toString()') #[h4.card-title {{ idea.title }}]
       .card-body
         p {{ idea.description }}
 </template>

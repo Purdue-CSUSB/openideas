@@ -7,11 +7,11 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex';
-import types from '@/store/login/types';
+import types from '@/store/user/types';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 
-const { mapActions } = createNamespacedHelpers('login');
+const { mapActions } = createNamespacedHelpers('user');
 
 export default {
   name: 'App',
@@ -24,7 +24,6 @@ export default {
   },
   mounted() {
     this.retrieveToken();
-    this.$store.dispatch('login/retrieveToken');
   },
 };
 </script>

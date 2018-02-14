@@ -1,17 +1,14 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import login from './login';
+import user from './user';
 import ideas from './ideas';
-import state from './state';
-import mutations from './mutations';
+
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state,
-  mutations,
   modules: {
-    login,
+    user,
     ideas,
   },
   strict: process.env.NODE_ENV !== 'production',
