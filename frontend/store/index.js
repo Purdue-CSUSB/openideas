@@ -1,16 +1,20 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import user from './user';
-import ideas from './ideas';
+import feathersVuex from 'feathers-vuex';
+import feathers from './feathers';
+import authSettings from './auth';
 
+const { service, auth } = feathersVuex(feathers, { idField: '_id', enableEvents: false });
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  modules: {
-    user,
-    ideas,
-  },
+  plugins: [
+    service('users'),
+    service('email-lookup'),
+    service('magic-links'),
+    auth(authSettings),
+  ],
   strict: process.env.NODE_ENV !== 'production',
 });
 

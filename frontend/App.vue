@@ -6,12 +6,9 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-import types from '@/store/user/types';
+import { mapActions } from 'vuex';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
-
-const { mapActions } = createNamespacedHelpers('user');
 
 export default {
   name: 'App',
@@ -20,10 +17,10 @@ export default {
     SiteHeader,
   },
   methods: {
-    ...mapActions([types.action.RETRIEVE_TOKEN]),
+    ...mapActions('auth', ['retrieveSession']),
   },
   mounted() {
-    this.retrieveToken();
+    this.retrieveSession();
   },
 };
 </script>

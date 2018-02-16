@@ -10,7 +10,7 @@
 
           transition(name="fade" mode="out-in")
             button.btn.btn-primary.btn-block(
-              @click='signIn(email)'
+              @click='checkEmail(email)'
               v-if='!signingUp'
             ) Next
             .contain(v-else)
@@ -24,11 +24,8 @@
 
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-import types from '@/store/user/types';
+import { mapActions } from 'vuex';
 import flash from '@/mixins';
-
-const { mapActions } = createNamespacedHelpers('user');
 
 export default {
   mixins: [flash],
@@ -40,30 +37,25 @@ export default {
     };
   },
   methods: {
-    ...mapActions([
-      types.action.CHECK_EMAIL,
-      types.action.CREATE_ACCOUNT,
-      types.action.SEND_LINK,
-    ]),
+    ...mapActions('email-lookup', ['get']),
+    ...mapActions('magic-links', ['create']),
     toggle() {
       this.signingUp = !this.signingUp;
     },
-    signIn(email) {
-      this.checkEmail(email)
-      /* eslint-disable */
-        .then(user => this.sendLink(user.email))
-        .catch(() => this.toggle());
-    },
-    signUp(credentials) {
-      this.createAccount(credentials)
-        .then(user => this.sendLink(user.email))
-        .catch(err => console.log('err', err));
+    checkEmail(email) {
+      this.get(email)
+        .then((user) => {
+          this.flash(`Welcome back, ${user.name}!`, 'success');
+          this.create({ email });
+        })
+        .catch(() => {
+          this.flash('Hmm looks like we don\'t have your email...', 'warning');
+          this.toggle();
+        });
     },
   },
   mounted() {
     if (this.signingUp) this.toggle();
-    this.flash('hi!', 'success');
-    this.flash('hi', 'warning')
   },
 };
 </script>

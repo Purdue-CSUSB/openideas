@@ -4,10 +4,11 @@ const jwt = require('@feathersjs/authentication-jwt');
 const { Verifier } = jwt;
 
 class MagicVerifier extends Verifier {
-  /* eslint-disable class-methods-use-this */
   verify(req, payload, done) {
-    console.log(req);
-    done(null, {}, payload);
+    return this.app.service('users').find({ query: { token: payload.tok } })
+      // eslint-disable-next-line
+      .then(res => done(null, res.data[0], { ...payload, userId: res.data[0]._id }))
+      .catch(err => done(err));
   }
 }
 

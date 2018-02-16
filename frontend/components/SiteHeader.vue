@@ -7,18 +7,28 @@
       navbarLink(to='ideas') All Ideas
       navbarLink(to='about') About
     section.navbar-section
-      navbarLink(to='signin') Sign In / Sign Up
+      navbarItem(v-if='accessToken' @click.native='signOut') {{ user.name }}
+      navbarLink(v-else to='signin') Sign In / Sign Up
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 import NavbarLink from '@/components/NavbarLink';
 import NavbarSiteName from '@/components/NavbarSiteName';
+import NavbarItem from '@/components/NavbarItem';
 
 export default {
   name: 'SiteHeader',
   components: {
     NavbarLink,
     NavbarSiteName,
+    NavbarItem,
+  },
+  computed: {
+    ...mapState('auth', ['accessToken', 'user']),
+  },
+  methods: {
+    ...mapActions('auth', ['signOut']),
   },
 };
 </script>

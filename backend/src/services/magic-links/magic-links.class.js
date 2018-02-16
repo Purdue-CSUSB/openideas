@@ -8,13 +8,15 @@ class Service {
     this.mailer = app.service('mailer');
     this.users = app.service('users');
     this.auth = app.service('authentication');
+    this.authConfig = app.get('authentication');
     this.createJWT = app.passport.createJWT;
   }
 
   create(data) {
-    return this.createJWT({ tok: randomString(20) }, {
-      secret: this.auth.secret,
-      jwt: this.auth.magicLink,
+    const payload = randomString(20);
+    return this.createJWT({ tok: payload }, {
+      secret: this.authConfig.secret,
+      jwt: this.authConfig.magicLink,
     }).then((token) => {
       const link = `http://localhost:8080/magic?token=${token}`;
       const to = data.email;
@@ -26,7 +28,11 @@ class Service {
       };
       return this.mailer.create(message)
         .then(() => {
-          Promise.resolve(this.users.patch(null, { token }, { query: { email: data.email } }));
+          Promise.resolve(this.users.patch(
+            null,
+            { token: payload },
+            { query: { email: data.email } },
+          ));
         }).catch(err => Promise.reject(err));
     });
   }

@@ -3,17 +3,16 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-import types from '@/store/user/types';
-
-const { mapActions } = createNamespacedHelpers('user');
+import { mapActions } from 'vuex';
 
 export default {
   methods: {
-    ...mapActions([types.action.AUTH]),
+    ...mapActions('auth', ['signIn']),
   },
   mounted() {
-    this.auth(this.$route.query.token);
+    this.signIn(this.$route.query.token)
+      .then(() => this.$router.push('/'))
+      .catch(() => this.$router.push('/signin'));
   },
 };
 </script>
