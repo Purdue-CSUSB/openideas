@@ -7,7 +7,7 @@
       navbarLink(to='ideas') All Ideas
       navbarLink(to='about') About
     section.navbar-section
-      navbarItem(v-if='accessToken' @click.native='signOut') {{ user.name }}
+      navbarItem(v-if='user && accessToken' @click.native='signOut') {{ user.name }}
       navbarLink(v-else to='signin') Sign In / Sign Up
 </template>
 

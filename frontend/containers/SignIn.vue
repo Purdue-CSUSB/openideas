@@ -16,7 +16,7 @@
             .contain(v-else)
               label.form-label(for="name") Name
               input.form-input(v-model="name" type="text", id="name", placeholder="Purdue Pete")
-              button.btn.btn-primary.btn-block(@click='signUp({ email, name })') Sign Up
+              button.btn.btn-primary.btn-block(@click='createAccount({ email, name })') Sign Up
 
         p.text-center Need an account?
           button.btn.btn-link(@click="toggle()") Sign Up
@@ -39,6 +39,7 @@ export default {
   methods: {
     ...mapActions('email-lookup', ['get']),
     ...mapActions('magic-links', ['create']),
+    ...mapActions('auth', ['signUp']),
     toggle() {
       this.signingUp = !this.signingUp;
     },
@@ -52,6 +53,14 @@ export default {
           this.flash('Hmm looks like we don\'t have your email...', 'warning');
           this.toggle();
         });
+    },
+    createAccount(credentials) {
+      this.signUp(credentials)
+        .then((user) => {
+          this.flash(`Welcome to OpenIdeas, ${user.name} We're sending a magic link to ${user.email}.`);
+          this.create({ email: user.email });
+        })
+        .catch(() => this.flash('Oops, looks like we had some trouble creating your account.'));
     },
   },
   mounted() {

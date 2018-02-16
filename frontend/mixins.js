@@ -5,7 +5,7 @@ const flash = {
     return { flashes: [] };
   },
   methods: {
-    flash(message, type = 'primary') {
+    flash(message, type = 'success') {
       this.flashes.push({ message, type });
     },
     removeFlash(index) {

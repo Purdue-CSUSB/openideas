@@ -24,6 +24,11 @@ const auth = {
       return dispatch('logout')
         .then(() => commit('clearUser'));
     },
+    signUp({ dispatch }, credentials) {
+      return dispatch('users/create', credentials, { root: true })
+        .then(user => Promise.resolve(user))
+        .catch(err => Promise.reject(err));
+    },
   },
 };
 
