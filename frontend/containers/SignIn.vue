@@ -2,6 +2,7 @@
   #signin.container.grid-lg
     .columns
       .column.col-4.col-mx-auto.col-md-7.col-sm-10
+        Flash(:flashes='flashes' @removeFlash='index => removeFlash(index)')
         h3.text-center Welcome
         .form-group
           label.form-label(for="email") Email
@@ -25,10 +26,12 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 import types from '@/store/user/types';
+import flash from '@/mixins';
 
 const { mapActions } = createNamespacedHelpers('user');
 
 export default {
+  mixins: [flash],
   data() {
     return {
       signingUp: false,
@@ -59,6 +62,8 @@ export default {
   },
   mounted() {
     if (this.signingUp) this.toggle();
+    this.flash('hi!', 'success');
+    this.flash('hi', 'warning')
   },
 };
 </script>
@@ -69,15 +74,6 @@ export default {
 }
 p, .btn-link {
   font-size: small;
-}
-
-.toast {
-  margin-top: 1.0rem;
-  margin-bottom: 1.0rem;
-  .msg {
-    margin: 0;
-    font-size: 0.7rem;
-  }
 }
 
 button {

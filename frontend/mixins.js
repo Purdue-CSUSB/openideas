@@ -2,11 +2,14 @@ import Flash from '@/components/Flash';
 
 const flash = {
   data() {
-    return { flash: [] };
+    return { flashes: [] };
   },
   methods: {
-    flash(message, type) {
-      this.flash.push({ message, type });
+    flash(message, type = 'primary') {
+      this.flashes.push({ message, type });
+    },
+    removeFlash(index) {
+      this.flashes.splice(index, 1);
     },
   },
   components: { Flash },
