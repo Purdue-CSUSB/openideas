@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const logger = require('winston');
+const dotenv = require('dotenv');
 const app = require('./app');
 
 const port = app.get('port');

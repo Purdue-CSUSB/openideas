@@ -1,6 +1,5 @@
 class Service {
   setup(app) {
-    this.app = app;
     this.users = app.service('users');
   }
 

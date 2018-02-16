@@ -5,6 +5,7 @@ import Terms from '@/containers/Terms';
 import PageNotFound from '@/containers/PageNotFound';
 import Privacy from '@/containers/Privacy';
 import SignIn from '@/containers/SignIn';
+import Magic from '@/containers/Magic';
 
 Vue.use(Router);
 
@@ -31,6 +32,11 @@ const router = new Router({
       path: '/signin',
       name: 'SignIn',
       component: SignIn,
+    },
+    {
+      path: '/magic',
+      name: 'Magic',
+      component: Magic,
     },
     {
       path: '*',

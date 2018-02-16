@@ -4,6 +4,8 @@ const types = {
     RETRIEVE_TOKEN: 'retrieveToken',
     CHECK_EMAIL: 'checkEmail',
     CREATE_ACCOUNT: 'createAccount',
+    AUTH: 'auth',
+    SEND_LINK: 'sendLink',
   },
 };
 

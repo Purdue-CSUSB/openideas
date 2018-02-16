@@ -1,11 +1,11 @@
 import state from './state';
-import mutations from './mutations';
+// import mutations from './mutations';
 import actions from './actions';
 
 const user = {
   namespaced: true,
   state,
-  mutations,
+  // mutations,
   actions,
 };
 

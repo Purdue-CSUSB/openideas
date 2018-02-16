@@ -6,6 +6,7 @@ module.exports = (app) => {
   const users = new mongooseClient.Schema({
     email: { type: mongoose.SchemaTypes.Email, required: true },
     name: { type: String, required: true },
+    token: { type: String, default: null },
   }, {
     timestamps: true,
   });

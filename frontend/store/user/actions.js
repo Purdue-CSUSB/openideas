@@ -7,16 +7,28 @@ const actions = {
       .then(res => console.log(res))
       .catch(err => console.log(err));
   },
-  checkEmail({ commit }, email) {
+  checkEmail({}, email) {
     return feathers.service('email-lookup').get(email)
-      .then(res => Promise.resolve(res.data))
+      .then(user => Promise.resolve(user))
       .catch(err => Promise.reject(err));
   },
-  createAccount({ commit }, credentials) {
+  createAccount({}, credentials) {
     return feathers.service('users').create(credentials)
-      .then(res => Promise.resolve(res.data))
+      .then(user => Promise.resolve(user))
       .catch(err => Promise.reject(err));
   },
+  auth({}, accessToken) {
+    return feathers.authenticate({
+      strategy: 'magicLink',
+      accessToken,
+    }).then(res => console.log(res))
+    .catch(err => console.log(err));
+  },
+  sendLink({}, email) {
+    return feathers.service('magic-links').create({ email })
+      .then(user => console.log('user', user))
+      .catch(err => console.log('err', err));
+  }
 };
 
 export default actions;

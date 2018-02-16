@@ -17,19 +17,6 @@
     lodash.pick "^4.4.0"
     passport-jwt "^3.0.0"
 
-"@feathersjs/authentication-local@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@feathersjs/authentication-local/-/authentication-local-1.1.0.tgz#36471468a54ba74f3780b3f49d9b6cfbb6ac9e2a"
-  dependencies:
-    "@feathersjs/errors" "^3.0.0"
-    bcryptjs "^2.3.0"
-    debug "^3.1.0"
-    lodash.get "^4.4.2"
-    lodash.merge "^4.6.0"
-    lodash.omit "^4.5.0"
-    lodash.pick "^4.4.0"
-    passport-local "^1.0.0"
-
 "@feathersjs/authentication@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@feathersjs/authentication/-/authentication-2.1.1.tgz#876312a4768bb3a9ec28371c7c022240b170d518"
@@ -351,10 +338,6 @@ bcrypt-pbkdf@^1.0.0:
   resolved "https://registry.yarnpkg.com/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.1.tgz#63bc5dcb61331b92bc05fd528953c33462a06f8d"
   dependencies:
     tweetnacl "^0.14.3"
-
-bcryptjs@^2.3.0:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
 
 binary-extensions@^1.0.0:
   version "1.11.0"
@@ -2738,12 +2721,6 @@ passport-jwt@^3.0.0:
   dependencies:
     jsonwebtoken "^7.0.0"
     passport-strategy "^1.0.0"
-
-passport-local@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/passport-local/-/passport-local-1.0.0.tgz#1fe63268c92e75606626437e3b906662c15ba6ee"
-  dependencies:
-    passport-strategy "1.x.x"
 
 passport-strategy@1.x.x, passport-strategy@^1.0.0:
   version "1.0.0"

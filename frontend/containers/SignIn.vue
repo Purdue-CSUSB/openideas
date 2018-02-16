@@ -1,5 +1,4 @@
 <template lang="pug">
-
   #signin.container.grid-lg
     .columns
       .column.col-4.col-mx-auto.col-md-7.col-sm-10
@@ -8,12 +7,12 @@
           label.form-label(for="email") Email
           input.form-input(v-model="email" type="text", id="email", placeholder="pete@purdue.edu")
 
-          button.btn.btn-primary.btn-block(
-            @click='signIn(email)'
-            v-if='!signingUp'
-          ) Next
-          transition(name="fade" mode="in-out" v-else)
-            .contain
+          transition(name="fade" mode="out-in")
+            button.btn.btn-primary.btn-block(
+              @click='signIn(email)'
+              v-if='!signingUp'
+            ) Next
+            .contain(v-else)
               label.form-label(for="name") Name
               input.form-input(v-model="name" type="text", id="name", placeholder="Purdue Pete")
               button.btn.btn-primary.btn-block(@click='signUp({ email, name })') Sign Up
@@ -38,20 +37,24 @@ export default {
     };
   },
   methods: {
-    ...mapActions([types.action.CHECK_EMAIL, types.action.CREATE_ACCOUNT]),
+    ...mapActions([
+      types.action.CHECK_EMAIL,
+      types.action.CREATE_ACCOUNT,
+      types.action.SEND_LINK,
+    ]),
     toggle() {
       this.signingUp = !this.signingUp;
     },
     signIn(email) {
       this.checkEmail(email)
       /* eslint-disable */
-        .then(user => console.log(user))
+        .then(user => this.sendLink(user.email))
         .catch(() => this.toggle());
     },
     signUp(credentials) {
       this.createAccount(credentials)
-        .then(user => console.log(user))
-        .catch(err => console.log(err));
+        .then(user => this.sendLink(user.email))
+        .catch(err => console.log('err', err));
     },
   },
   mounted() {
