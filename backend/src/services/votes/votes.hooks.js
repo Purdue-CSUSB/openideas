@@ -3,9 +3,9 @@ const { queryWithCurrentUser } = require('feathers-authentication-hooks');
 
 module.exports = {
   before: {
-    all: [authenticate('jwt')],
+    all: [authenticate('jwt'), queryWithCurrentUser()],
     find: [],
-    get: [queryWithCurrentUser()],
+    get: [],
     create: [],
     update: [],
     patch: [],
