@@ -14,9 +14,11 @@
       .card-actions
         ul
           li
-            router-link(to='terms') Terms
+            router-link(to='comment') Comments
           li
-            router-link(to='privacy') Privacy
+            router-link(to='edit') Edit
+          li
+            router-link(to='delete') Delete
 </template>
 
 <script>
@@ -46,6 +48,10 @@ export default {
   p {
     font-size: 0.7rem;
   }
+}
+
+ul {
+  margin: 0;
 }
 
 .card-actions {
