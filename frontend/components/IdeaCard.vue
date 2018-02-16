@@ -14,7 +14,7 @@
       .card-actions
         ul
           li
-            router-link(to='comment') Comments
+            router-link(to='comment') Comments (32)
           li
             router-link(to='edit') Edit
           li
@@ -48,6 +48,7 @@ export default {
   p {
     font-size: 0.7rem;
   }
+
 }
 
 ul {
@@ -66,6 +67,10 @@ ul {
       padding-right: 1.3rem;
       }
     }
+  }
+
+  a {
+    color: blue;
   }
 }
 h2{
@@ -86,4 +91,5 @@ button.btn-sm {
 .idea-card {
   margin-bottom: 1rem;
 }
+
 </style>
