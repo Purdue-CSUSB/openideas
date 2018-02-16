@@ -5,12 +5,6 @@ class Service {
     this.ideas = app.service('ideas');
   }
 
-  get(id, params) {
-    return this.ideas.get(id)
-      .then(idea => Promise.resolve(idea.voted.includes(params.query.userId)))
-      .catch(err => Promise.reject(err));
-  }
-
   create(data, params) {
     return this.ideas.patch(data.id, { $inc: { votes: 1 }, $push: { voted: params.query.userId } })
       .then(idea => Promise.resolve(idea))
