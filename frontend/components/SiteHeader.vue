@@ -5,6 +5,7 @@
       navbarSiteName 💡 OpenIdeas
       navbarLink(to='/') Home
       navbarLink(to='ideas') All Ideas
+      navbarLink(to='new' v-if='user && accessToken') New Idea
       navbarLink(to='about') About
     section.navbar-section
       navbarItem(v-if='user && accessToken' @click.native='signOut') {{ user.name }}

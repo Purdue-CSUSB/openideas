@@ -13,6 +13,8 @@ const store = new Vuex.Store({
     service('users'),
     service('email-lookup'),
     service('magic-links'),
+    service('ideas'),
+    service('votes'),
     auth(authSettings),
   ],
   strict: process.env.NODE_ENV !== 'production',

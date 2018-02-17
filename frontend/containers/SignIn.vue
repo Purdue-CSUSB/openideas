@@ -46,7 +46,7 @@ export default {
     checkEmail(email) {
       this.get(email)
         .then((user) => {
-          this.flash(`Welcome back, ${user.name}!`, 'success');
+          this.flash(`Welcome back, ${user.name}!`);
           this.create({ email });
         })
         .catch(() => {
@@ -64,7 +64,13 @@ export default {
     },
   },
   mounted() {
-    if (this.signingUp) this.toggle();
+    this.signingUp = false;
+  },
+  beforeRouteEnter(to, from, next) {
+    if (from.path === '/magic') {
+      next(vm => vm.flash('Looks like that link didn\'t work... Try sending another.', 'error'));
+    }
+    next();
   },
 };
 </script>
