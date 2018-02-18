@@ -6,7 +6,13 @@
         h3.text-center Welcome
         .form-group
           label.form-label(for="email") Email
-          input.form-input(v-model="email" type="text", id="email", placeholder="pete@purdue.edu")
+          input.form-input(
+            v-model="email"
+            type="text"
+            id="email"
+            placeholder="pete@purdue.edu"
+            @keyup.enter='signingUp ? createAccount({ email, name }) : checkEmail(email)'
+          )
 
           transition(name="fade" mode="out-in")
             button.btn.btn-primary.btn-block(
@@ -15,7 +21,13 @@
             ) Next
             .contain(v-else)
               label.form-label(for="name") Name
-              input.form-input(v-model="name" type="text", id="name", placeholder="Purdue Pete")
+              input.form-input(
+                v-model="name"
+                type="text"
+                id="name"
+                placeholder="Purdue Pete"
+                @keyup.enter='createAccount({ email, name })'
+              )
               button.btn.btn-primary.btn-block(@click='createAccount({ email, name })') Sign Up
 
         p.text-center Need an account?
@@ -37,17 +49,17 @@ export default {
     };
   },
   methods: {
-    ...mapActions('email-lookup', ['get']),
-    ...mapActions('magic-links', ['create']),
+    ...mapActions('email-lookup', { lookupEmail: 'get' }),
+    ...mapActions('magic-links', { sendLink: 'create' }),
     ...mapActions('auth', ['signUp']),
     toggle() {
       this.signingUp = !this.signingUp;
     },
     checkEmail(email) {
-      this.get(email)
+      this.lookupEmail(email)
         .then((user) => {
-          this.flash(`Welcome back, ${user.name}!`);
-          this.create({ email });
+          this.flash(`Welcome back, ${user.name}! Check your inbox for a magic link.`);
+          this.sendLink({ email });
         })
         .catch(() => {
           this.flash('Hmm looks like we don\'t have your email...', 'warning');
@@ -58,7 +70,7 @@ export default {
       this.signUp(credentials)
         .then((user) => {
           this.flash(`Welcome to OpenIdeas, ${user.name} We're sending a magic link to ${user.email}.`);
-          this.create({ email: user.email });
+          this.sendLink({ email: user.email });
         })
         .catch(() => this.flash('Oops, looks like we had some trouble creating your account.'));
     },
