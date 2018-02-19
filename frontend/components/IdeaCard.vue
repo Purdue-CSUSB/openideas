@@ -8,9 +8,17 @@
 
     .column
       .card-header
-        router-link(:to='idea._id.toString()') #[h4.card-title {{ idea.title }}]
+        router-link(:to='idea._id') #[h4.card-title {{ idea.title }}]
       .card-body
         p {{ idea.description }}
+      .card-actions
+        ul
+          li
+            router-link(to='comment') Comments (32)
+          li
+            router-link(to='edit') Edit
+          li
+            router-link(to='delete') Delete
 </template>
 
 <script>
@@ -36,6 +44,37 @@ export default {
     font-size: x-small;
   }
 }
+.card-body {
+  p {
+    font-size: 0.7rem;
+    line-height: 1.1rem;
+    margin-bottom: 0;
+  }
+
+}
+
+ul {
+  margin: 0;
+}
+
+.card-actions {
+  font-size: 0.6rem;
+  ul {
+    color: red;
+    padding: 0;
+    li {
+      display: inline-block;
+      &:not(:last-child) {
+      padding-right: 1.3rem;
+      }
+
+    }
+  }
+
+  a {
+    color: rgb(0, 140, 221);
+  }
+}
 h2{
   color: $primary-color;
   margin-bottom: 0;
@@ -52,6 +91,7 @@ button.btn-sm {
   color: $dark-color;
 }
 .idea-card {
-  margin-bottom: 1rem;
+  margin-bottom: 1.8rem;
 }
+
 </style>

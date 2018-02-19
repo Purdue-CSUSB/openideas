@@ -2,7 +2,7 @@
 footer.footer
   div.container.grid-lg
     div.columns
-      div.column.col-8.col-mr-auto
+      div.column.col-8
         ul.links
           li
             router-link(to='terms') Terms
@@ -10,7 +10,7 @@ footer.footer
             router-link(to='privacy') Privacy
           li
             a(href="https://github.com/Purdue-CSUSB/openideas") GitHub
-      div.column.col-4
+      div.column.col-4.col-ml-auto.col-sm-12
         a(href="https://purdueusb.com", target="_blank")
           img(:src="require('@/assets/usb-wordmark-dark.png')").img-responsive.logo
         p.text-center Made by USB
@@ -30,6 +30,13 @@ export default {
   color: white;
   padding-top: 0.5rem;
   margin-top: 3rem;
+}
+
+@media (max-width: 600px) {
+  .column{
+      width: 100%;
+      text-align: center;
+  }
 }
 
 p {
@@ -63,13 +70,20 @@ img {
     font-weight: 300;
 }
 
-.links li:not(:last-child) {
-    padding-right: 1.3rem;
+.links li {
+    &:not(:last-child) {
+      padding-right: 1.3rem;
+      }
 }
 
 
 a.active {
   text-decoration: none;
 }
+
+ul {
+  margin-left: 0;
+}
+
 
 </style>
