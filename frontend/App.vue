@@ -6,7 +6,7 @@
 </template>
 
 <script>
-
+import { mapActions } from 'vuex';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 
@@ -15,6 +15,12 @@ export default {
   components: {
     SiteFooter,
     SiteHeader,
+  },
+  methods: {
+    ...mapActions('auth', ['retrieveSession']),
+  },
+  mounted() {
+    this.retrieveSession();
   },
 };
 </script>

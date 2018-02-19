@@ -5,37 +5,31 @@
       navbarSiteName 💡 OpenIdeas
       navbarLink(to='/') Home
       navbarLink(to='ideas') All Ideas
+      navbarLink(to='new' v-if='user && accessToken') New Idea
       navbarLink(to='about') About
     section.navbar-section
-      a.btn.btn-link(@click='logIn' v-if='!isAuthenticated')
-        span Login
-      //- TODO: implement logOut action
-      a.btn.btn-link(@click='logOut' v-if='isAuthenticated')
-        span {{ user.name }}
+      navbarItem(v-if='user && accessToken' @click.native='signOut') {{ user.name }}
+      navbarLink(v-else to='signin') Sign In / Sign Up
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 import NavbarLink from '@/components/NavbarLink';
 import NavbarSiteName from '@/components/NavbarSiteName';
-import { mapActions } from 'vuex';
-import types from '../store/modules/login/types';
+import NavbarItem from '@/components/NavbarItem';
 
 export default {
   name: 'SiteHeader',
   components: {
     NavbarLink,
     NavbarSiteName,
+    NavbarItem,
   },
   computed: {
-    user() {
-      return this.$store.state.login.user;
-    },
-    isAuthenticated() {
-      return this.$store.state.login.isAuthenticated;
-    },
+    ...mapState('auth', ['accessToken', 'user']),
   },
   methods: {
-    ...mapActions([types.action.LOG_IN, types.action.LOG_OUT]),
+    ...mapActions('auth', ['signOut']),
   },
 };
 </script>

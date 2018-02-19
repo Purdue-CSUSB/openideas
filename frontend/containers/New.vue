@@ -1,5 +1,6 @@
 <template lang="pug">
 #new
+
 </template>
 
 <script>
