@@ -71,7 +71,9 @@ img {
 }
 
 .links li {
-    padding-right: 1.3rem;
+    &:not(:last-child) {
+      padding-right: 1.3rem;
+      }
 }
 
 

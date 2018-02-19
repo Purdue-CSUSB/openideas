@@ -62,7 +62,6 @@ ul {
     padding: 0;
     li {
       display: inline-block;
-
       &:not(:last-child) {
       padding-right: 1.3rem;
       }
