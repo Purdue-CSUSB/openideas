@@ -91,7 +91,7 @@ button.btn-sm {
   color: $dark-color;
 }
 .idea-card {
-  margin-bottom: 1rem;
+  margin-bottom: 1.8rem;
 }
 
 </style>
