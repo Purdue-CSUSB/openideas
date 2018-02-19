@@ -8,7 +8,7 @@
 
     .column
       .card-header
-        router-link(:to='idea._id.toString()') #[h4.card-title {{ idea.title }}]
+        router-link(:to='idea._id') #[h4.card-title {{ idea.title }}]
       .card-body
         p {{ idea.description }}
       .card-actions
@@ -47,6 +47,8 @@ export default {
 .card-body {
   p {
     font-size: 0.7rem;
+    line-height: 1.1rem;
+    margin-bottom: 0;
   }
 
 }
@@ -65,11 +67,12 @@ ul {
       &:not(:last-child) {
       padding-right: 1.3rem;
       }
+
     }
   }
 
   a {
-    color: blue;
+    color: rgb(0, 140, 221);
   }
 }
 h2{
