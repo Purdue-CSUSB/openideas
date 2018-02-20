@@ -1,18 +1,15 @@
 <template lang="pug">
 #home.container.grid-lg
   hero
-  ideas-feed
 </template>
 
 <script>
 import Hero from '@/components/Hero';
-import IdeasFeed from '@/components/IdeasFeed';
 
 export default {
   name: 'Home',
   components: {
     Hero,
-    IdeasFeed,
   },
   data() {
     return {

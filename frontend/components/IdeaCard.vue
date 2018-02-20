@@ -27,11 +27,7 @@ export default {
   props: {
     idea: {
       type: Object,
-      default: null,
-    },
-    index: {
-      type: Number,
-      default: null,
+      required: true,
     },
   },
 };
