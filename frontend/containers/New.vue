@@ -1,6 +1,6 @@
 <template lang="pug">
 #new
-
+  h1 New Idea
 </template>
 
 <script>
