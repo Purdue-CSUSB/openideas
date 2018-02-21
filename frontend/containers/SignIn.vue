@@ -12,10 +12,7 @@
         )
 
         transition(name="fade" mode="out-in")
-          button.btn.btn-primary.btn-block(
-            @click='checkEmail(email)'
-            v-if='!signingUp'
-          ) Next
+          CustomButton.btn-block(type='primary' @click='checkEmail(email)' v-if='!signingUp') Next
           .contain(v-else)
             TextField(
               label='Name'
@@ -23,7 +20,7 @@
               placeholder='Purdue Pete'
               @keyup.enter.native='createAccount({ email, name })'
             )
-            button.btn.btn-primary.btn-block(@click='createAccount({ email, name })') Sign Up
+            CustomButton.btn-block(type='primary' @click='createAccount({ email, name })') Sign Up
 
         p.text-center Need an account?
           button.btn.btn-link(@click="toggle()") Sign Up
@@ -33,11 +30,12 @@
 <script>
 import { mapActions } from 'vuex';
 import TextField from '@/components/TextField';
+import CustomButton from '@/components/CustomButton';
 import flash from '@/mixins';
 
 export default {
   mixins: [flash],
-  components: { TextField },
+  components: { TextField, CustomButton },
   data() {
     return {
       signingUp: false,
@@ -85,15 +83,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.btn-primary {
-  margin-top: 1.5rem;
-}
+
 p, .btn-link {
   font-size: small;
-}
-
-button {
-  padding-top: 0.2rem;
 }
 
 .fade-enter-active, .fade-leave-active {
