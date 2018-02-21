@@ -1,14 +1,20 @@
 <template lang="pug">
 ul.links
   li(v-for='link in links')
-    router-link(v-if='!link.external', :to='link.to') {{ link.name }}
-    a(v-if='link.external', :href='link.to') {{ link.name }}
+    a(v-if='isExternal(link.to)' :href='link.to') {{ link.name }}
+    router-link(v-else :to='link.to') {{ link.name }}
+
 </template>
 
 <script>
 export default {
   props: {
     links: Array,
+  },
+  methods: {
+    isExternal(to) {
+      return to.startsWith('https://') || to.startsWith('http://');
+    },
   },
 };
 </script>

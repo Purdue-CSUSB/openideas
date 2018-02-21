@@ -24,18 +24,14 @@ export default {
         {
           name: 'Terms',
           to: '/terms',
-          index: 0,
         },
         {
           name: 'Privacy',
           to: '/privacy',
-          index: 1,
         },
         {
           name: 'GitHub',
           to: 'https://github.com/Purdue-CSUSB/openideas',
-          external: true,
-          index: 2,
         },
       ],
     };

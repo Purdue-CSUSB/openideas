@@ -1,33 +1,28 @@
 <template lang="pug">
 #home.container.grid-lg
-  hero
+  hero(title="Your Voice Matters", subtitle="We know that Purdue CS students have many great ideas for their community! That's why we created OpenIdeas, the best place to share and discuss those ideas. Let's get the conversations started!")
+    button-link(to='/signin' type='primary') Get Started
 </template>
 
 <script>
 import Hero from '@/components/Hero';
+import ButtonLink from '@/components/ButtonLink';
 
 export default {
   name: 'Home',
   components: {
     Hero,
-  },
-  data() {
-    return {
-      ideas: [
-        {
-          title: 'Make CS better',
-          description: 'Fix stuff',
-          author: 'mess@purdue.edu',
-          votes: 1,
-        },
-        {
-          title: 'Make CS worse',
-          description: 'Break stuff',
-          author: 'jh@purdue.edu',
-          votes: 0,
-        },
-      ],
-    };
+    ButtonLink,
   },
 };
 </script>
+
+<style lang="scss" scoped>
+a.btn {
+  $new-primary-color: darken( $primary-color, 10% );
+  $new-border-color: darken( $primary-color, 15% );
+  background-color: $new-primary-color !important;
+  border-color: $new-border-color !important;
+  margin-top: 1rem;
+}
+</style>
