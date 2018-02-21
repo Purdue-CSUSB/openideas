@@ -8,7 +8,7 @@
 
     .column
       .card-header
-        router-link(:to='idea._id') #[h4.card-title {{ idea.title }}]
+        router-link(:to='idea._id' append) #[h4.card-title {{ idea.title }}]
       .card-body
         p {{ idea.description }}
       .card-actions

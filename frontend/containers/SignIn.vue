@@ -69,7 +69,7 @@ export default {
           this.flash(`Welcome to OpenIdeas, ${user.name} We're sending a magic link to ${user.email}.`);
           this.sendLink({ email: user.email });
         })
-        .catch(() => this.flash('Oops, looks like we had some trouble creating your account.'));
+        .catch(() => this.flash('Oops, looks like we had some trouble creating your account.', 'error'));
     },
   },
   mounted() {
