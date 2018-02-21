@@ -9,15 +9,23 @@ import SignIn from '@/containers/SignIn';
 import Magic from '@/containers/Magic';
 import Ideas from '@/containers/Ideas';
 import New from '@/containers/New';
-import IdeasFeed from '@/components/IdeasFeed';
 
 Vue.use(Router);
 
-const requireUser = () => (to, from, next) => {
-  if (store.auth.state.user && store.auth.state.accessToken) {
+const requireSignedIn = () => (to, from, next) => {
+  if (store.state.auth.accessToken) {
     next();
+  } else {
+    next('/signin');
   }
-  next('/signin');
+};
+
+const requireSignedOut = () => (to, from, next) => {
+  if (!store.state.auth.accessToken) {
+    next();
+  } else {
+    next('/');
+  }
 };
 
 const router = new Router({
@@ -26,11 +34,10 @@ const router = new Router({
   routes: [
     { path: '/', name: 'Home', component: Home },
     { path: '/ideas', name: 'Ideas', component: Ideas },
-    { path: '/ideasFeed', name: 'Ideas', component: IdeasFeed },
-    { path: '/new', name: 'New', component: New, beforeEnter: requireUser() },
+    { path: '/new', name: 'New', component: New, beforeEnter: requireSignedIn() },
     { path: '/terms', name: 'Terms', component: Terms },
     { path: '/privacy', name: 'PrivacyPolicy', component: Privacy },
-    { path: '/signin', name: 'SignIn', component: SignIn },
+    { path: '/signin', name: 'SignIn', component: SignIn, beforeEnter: requireSignedOut() },
     { path: '/magic', name: 'Magic', component: Magic },
     { path: '*', name: 'PageNotFound', component: PageNotFound },
   ],

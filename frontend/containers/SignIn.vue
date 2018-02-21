@@ -4,31 +4,26 @@
       .column.col-4.col-mx-auto.col-md-7.col-sm-10
         Flash(:flashes='flashes' @removeFlash='index => removeFlash(index)')
         h3.text-center Welcome
-        .form-group
-          label.form-label(for="email") Email
-          input.form-input(
-            v-model="email"
-            type="text"
-            id="email"
-            placeholder="pete@purdue.edu"
-            @keyup.enter='signingUp ? createAccount({ email, name }) : checkEmail(email)'
-          )
+        TextField(
+          label='Email'
+          v-model='email'
+          placeholder='pete@purdue.edu'
+          @keyup.enter.native='signingUp ? createAccount({ email, name }) : checkEmail(email)'
+        )
 
-          transition(name="fade" mode="out-in")
-            button.btn.btn-primary.btn-block(
-              @click='checkEmail(email)'
-              v-if='!signingUp'
-            ) Next
-            .contain(v-else)
-              label.form-label(for="name") Name
-              input.form-input(
-                v-model="name"
-                type="text"
-                id="name"
-                placeholder="Purdue Pete"
-                @keyup.enter='createAccount({ email, name })'
-              )
-              button.btn.btn-primary.btn-block(@click='createAccount({ email, name })') Sign Up
+        transition(name="fade" mode="out-in")
+          button.btn.btn-primary.btn-block(
+            @click='checkEmail(email)'
+            v-if='!signingUp'
+          ) Next
+          .contain(v-else)
+            TextField(
+              label='Name'
+              v-model='name'
+              placeholder='Purdue Pete'
+              @keyup.enter.native='createAccount({ email, name })'
+            )
+            button.btn.btn-primary.btn-block(@click='createAccount({ email, name })') Sign Up
 
         p.text-center Need an account?
           button.btn.btn-link(@click="toggle()") Sign Up
@@ -37,10 +32,12 @@
 
 <script>
 import { mapActions } from 'vuex';
+import TextField from '@/components/TextField';
 import flash from '@/mixins';
 
 export default {
   mixins: [flash],
+  components: { TextField },
   data() {
     return {
       signingUp: false,
