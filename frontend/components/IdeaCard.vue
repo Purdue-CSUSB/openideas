@@ -1,7 +1,7 @@
 <template lang="pug">
 .idea-card
   .columns
-    .column.col-2.col-sm-3.text-center.votes-container
+    .column.col-1.col-md-2.col-sm-3.text-center.votes-container
       h2 {{ idea.votes }}
       p.subtitle votes
       button.btn.btn-sm.btn-primary.btn-block Upvote
@@ -55,6 +55,7 @@ ul {
 
 .card-actions {
   font-size: 0.6rem;
+  margin-top: 0.35rem;
   ul {
     color: red;
     padding: 0;
@@ -79,6 +80,9 @@ h2{
 button.btn-sm {
   font-size: 0.6rem;
   padding: 0.15rem 0.3rem;
+  max-width:3.0rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 .card-header a {
   text-decoration: none;
