@@ -1,25 +1,24 @@
 <template lang="pug">
 #new.container.grid-lg
-  h1 New Idea
-  form.form-horizontal
+  h3 New Idea
+  form
     div.form-group
-      div.col-3.col-sm-12
-        label.form-label(for="input-example-1") Title
-      div.col-9.col-sm-12
-        input.form-input(type="text" id="title" placeholder="My Awesome Idea")
+      label.form-label(for="title") Title
+      input.form-input(type="text" id="title" placeholder="My Awesome Idea")
     div.form-group
-      div.col-3.col-sm-12
-        label.form-label(for="input-example-1") Description
-      div.col-9.col-sm-12
-        textarea.form-input(type="text" id="description" placeholder="Tell everyone about your idea- this is where the discussion begins!")
+      label.form-label(for="description") Description
+      textarea.form-input(type="text" id="description" placeholder="Tell everyone about your idea- this is where the discussion begins!")
     div.form-group
-
-      div.col-9.col-sm-12.col-ml-auto
-        button.btn.btn-primary Submit
+      custom-button(type="primary") Submit
 </template>
 
 <script>
+import CustomButton from '@/components/CustomButton';
+
 export default {
   name: 'New',
+  components: {
+    CustomButton,
+  },
 };
 </script>

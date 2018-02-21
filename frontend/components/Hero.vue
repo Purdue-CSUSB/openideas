@@ -1,15 +1,19 @@
 <template lang="pug">
 #hero.columns
   .column.col-10.col-mx-auto
-    h1 Your Voice Matters
+    h1 {{ title }}
     h4
-      small.subtitle  We're sure that Purdue CS students have many great ideas for their community. OpenIdeas is the best place to share and discuss those ideas. Let's get the conversations started!
-    router-link(to='signin').btn.btn-lg.btn-primary Get Started
+      small.subtitle  {{ subtitle }}
+    slot
 </template>
 
 <script>
 export default {
   name: 'Hero',
+  props: {
+    title: String,
+    subtitle: String,
+  },
 };
 </script>
 
@@ -32,11 +36,4 @@ p {
   font-size: 1rem;
 }
 
-a.btn {
-  $new-primary-color: darken( $primary-color, 10% );
-  $new-border-color: darken( $primary-color, 15% );
-  background-color: $new-primary-color !important;
-  border-color: $new-border-color !important;
-  margin-top: 1rem;
-}
 </style>

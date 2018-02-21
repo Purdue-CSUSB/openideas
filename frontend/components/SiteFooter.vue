@@ -3,13 +3,7 @@ footer.footer
   div.container.grid-lg
     div.columns
       div.column.col-8
-        ul.links
-          li
-            router-link(to='terms') Terms
-          li
-            router-link(to='privacy') Privacy
-          li
-            a(href="https://github.com/Purdue-CSUSB/openideas") GitHub
+        footer-links(:links='links')
       div.column.col-4.col-ml-auto.col-sm-12
         a(href="https://purdueusb.com", target="_blank")
           img(:src="require('@/assets/usb-wordmark-dark.png')").img-responsive.logo
@@ -17,10 +11,31 @@ footer.footer
 </template>
 
 <script>
-// import logo from '@/assets/usb-wordmark-dark-mono.png';
+import FooterLinks from '@/components/FooterLinks';
 
 export default {
   name: 'SiteFooter',
+  components: {
+    FooterLinks,
+  },
+  data() {
+    return {
+      links: [
+        {
+          name: 'Terms',
+          to: '/terms',
+        },
+        {
+          name: 'Privacy',
+          to: '/privacy',
+        },
+        {
+          name: 'GitHub',
+          to: 'https://github.com/Purdue-CSUSB/openideas',
+        },
+      ],
+    };
+  },
 };
 </script>
 
@@ -46,9 +61,6 @@ p {
   margin-bottom: 0.4rem;
 }
 
-a {
-  color: white;
-}
 
 img {
   filter: grayscale(1);
@@ -59,31 +71,5 @@ img {
     filter: grayscale(0);
   }
 }
-
-.links {
-  padding: 0;
-}
-
-.links li {
-    display: inline-block;
-    font-size: small;
-    font-weight: 300;
-}
-
-.links li {
-    &:not(:last-child) {
-      padding-right: 1.3rem;
-      }
-}
-
-
-a.active {
-  text-decoration: none;
-}
-
-ul {
-  margin-left: 0;
-}
-
 
 </style>

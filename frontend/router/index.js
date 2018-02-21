@@ -9,6 +9,7 @@ import SignIn from '@/containers/SignIn';
 import Magic from '@/containers/Magic';
 import Ideas from '@/containers/Ideas';
 import New from '@/containers/New';
+import About from '@/containers/About';
 
 Vue.use(Router);
 
@@ -39,6 +40,7 @@ const router = new Router({
     { path: '/privacy', name: 'PrivacyPolicy', component: Privacy },
     { path: '/signin', name: 'SignIn', component: SignIn, beforeEnter: requireSignedOut() },
     { path: '/magic', name: 'Magic', component: Magic },
+    { path: '/about', name: 'About', component: About },
     { path: '*', name: 'PageNotFound', component: PageNotFound },
   ],
 });
