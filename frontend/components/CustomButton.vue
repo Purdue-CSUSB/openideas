@@ -1,5 +1,5 @@
 <template lang="pug">
-button(:class='["btn", buttonClass]') #[slot]
+button(:class='["btn", buttonClass]' @click='$emit("click")') #[slot]
 </template>
 
 <script>
