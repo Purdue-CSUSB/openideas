@@ -8,6 +8,7 @@ import Privacy from '@/containers/Privacy';
 import SignIn from '@/containers/SignIn';
 import Magic from '@/containers/Magic';
 import Ideas from '@/containers/Ideas';
+import Idea from '@/containers/Idea';
 import New from '@/containers/New';
 import About from '@/containers/About';
 
@@ -35,6 +36,7 @@ const router = new Router({
   routes: [
     { path: '/', name: 'Home', component: Home },
     { path: '/ideas', name: 'Ideas', component: Ideas },
+    { path: '/ideas/:id', name: 'Idea', component: Idea },
     { path: '/new', name: 'New', component: New, beforeEnter: requireSignedIn() },
     { path: '/terms', name: 'Terms', component: Terms },
     { path: '/privacy', name: 'PrivacyPolicy', component: Privacy },
