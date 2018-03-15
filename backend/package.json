@@ -38,6 +38,7 @@
     "compression": "^1.7.1",
     "cors": "^2.8.4",
     "dotenv": "^5.0.0",
+    "email-templates": "^3.5.1",
     "email-validator": "^1.1.1",
     "feathers-authentication-hooks": "^0.1.6",
     "feathers-hooks-common": "^4.7.0",
