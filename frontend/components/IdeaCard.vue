@@ -34,8 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.votes-container{
-
+.votes-container {
   p {
     font-size: x-small;
   }
@@ -46,7 +45,6 @@ export default {
     line-height: 1.1rem;
     margin-bottom: 0;
   }
-
 }
 
 ul {
@@ -62,9 +60,8 @@ ul {
     li {
       display: inline-block;
       &:not(:last-child) {
-      padding-right: 1.3rem;
+        padding-right: 1.3rem;
       }
-
     }
   }
 
@@ -72,7 +69,7 @@ ul {
     color: rgb(0, 140, 221);
   }
 }
-h2{
+h2 {
   color: $primary-color;
   margin-bottom: 0;
 }
@@ -80,18 +77,17 @@ h2{
 button.btn-sm {
   font-size: 0.6rem;
   padding: 0.15rem 0.3rem;
-  max-width:3.0rem;
+  max-width: 3rem;
   margin-left: auto;
   margin-right: auto;
 }
 .card-header a {
   text-decoration: none;
 }
-.card-title{
+.card-title {
   color: $dark-color;
 }
 .idea-card {
   margin-bottom: 1.8rem;
 }
-
 </style>

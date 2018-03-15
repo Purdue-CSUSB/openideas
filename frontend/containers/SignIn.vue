@@ -3,7 +3,8 @@
     .columns
       .column.col-4.col-mx-auto.col-md-7.col-sm-10
         Flash(:flashes='flashes' @removeFlash='index => removeFlash(index)')
-        h3.text-center Welcome
+        h3 Welcome to OpenIdeas!
+        p.large Enter your email to get started.
         TextField(
           label='Email'
           v-model='email'
@@ -52,22 +53,33 @@ export default {
     },
     checkEmail(email) {
       this.lookupEmail(email)
-        .then((user) => {
-          this.flash(`Welcome back, ${user.name}! Check your inbox for a magic link.`);
+        .then(user => {
+          this.flash(
+            `Welcome back, ${user.name}! Check your inbox for a magic link.`
+          );
           this.sendLink({ email });
         })
         .catch(() => {
-          this.flash('Hmm looks like we don\'t have your email...', 'warning');
+          this.flash("Hmm looks like we don't have your email...", 'warning');
           this.toggle();
         });
     },
     createAccount(credentials) {
       this.signUp(credentials)
-        .then((user) => {
-          this.flash(`Welcome to OpenIdeas, ${user.name} We're sending a magic link to ${user.email}.`);
+        .then(user => {
+          this.flash(
+            `Welcome to OpenIdeas, ${user.name} We're sending a magic link to ${
+              user.email
+            }.`
+          );
           this.sendLink({ email: user.email });
         })
-        .catch(() => this.flash('Oops, looks like we had some trouble creating your account.', 'error'));
+        .catch(() =>
+          this.flash(
+            'Oops, looks like we had some trouble creating your account.',
+            'error'
+          )
+        );
     },
   },
   mounted() {
@@ -75,7 +87,12 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     if (from.path === '/magic') {
-      next(vm => vm.flash('Looks like that link didn\'t work... Try sending another.', 'error'));
+      next(vm =>
+        vm.flash(
+          "Looks like that link didn't work... Try sending another.",
+          'error'
+        )
+      );
     }
     next();
   },
@@ -83,16 +100,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-p, .btn-link {
+p,
+.btn-link {
   font-size: small;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+p.large {
+  font-size: 0.8rem;
+}
+.btn-link {
+  padding-top: 0.23rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
-
 </style>

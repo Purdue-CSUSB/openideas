@@ -19,8 +19,8 @@ export default {
 
 <style lang="scss" scoped>
 a.btn {
-  $new-primary-color: darken( $primary-color, 10% );
-  $new-border-color: darken( $primary-color, 15% );
+  $new-primary-color: darken($primary-color, 10%);
+  $new-border-color: darken($primary-color, 15%);
   background-color: $new-primary-color !important;
   border-color: $new-border-color !important;
   margin-top: 1rem;

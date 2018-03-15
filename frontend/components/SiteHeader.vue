@@ -36,6 +36,6 @@ export default {
 
 <style lang="scss">
 #site-header {
-  margin-bottom: 2.0rem;
+  margin-bottom: 2rem;
 }
 </style>

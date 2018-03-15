@@ -5,8 +5,7 @@ a.btn.btn-link
 </template>
 
 <script>
-export default {
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
@@ -26,6 +25,6 @@ export default {
   font-weight: 600;
 }
 .btn:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 </style>

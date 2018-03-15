@@ -8,7 +8,9 @@ export default {
     type: String,
   },
   computed: {
-    buttonClass() { return `btn-${this.type}`; },
+    buttonClass() {
+      return `btn-${this.type}`;
+    },
   },
 };
 </script>

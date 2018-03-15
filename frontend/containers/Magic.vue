@@ -11,7 +11,7 @@ export default {
   },
   mounted() {
     this.signIn(this.$route.query.token)
-      .then(() => this.$router.push('/'))
+      .then(() => this.$router.push('/ideas'))
       .catch(() => this.$router.push('/signin'));
   },
 };

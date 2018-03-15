@@ -4,7 +4,10 @@ import feathersVuex from 'feathers-vuex';
 import feathers from './feathers';
 import authSettings from './auth';
 
-const { service, auth } = feathersVuex(feathers, { idField: '_id', enableEvents: false });
+const { service, auth } = feathersVuex(feathers, {
+  idField: '_id',
+  enableEvents: false,
+});
 
 Vue.use(Vuex);
 
