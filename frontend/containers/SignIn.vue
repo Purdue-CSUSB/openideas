@@ -1,3 +1,4 @@
+
 <template lang="pug">
   #signin.container.grid-lg
     .columns
@@ -57,7 +58,7 @@ export default {
           this.flash(
             `Welcome back, ${user.name}! Check your inbox for a magic link.`
           );
-          this.sendLink({ email });
+          this.sendLink({ email: user.email, name: user.name });
         })
         .catch(() => {
           this.flash("Hmm looks like we don't have your email...", 'warning');
@@ -72,7 +73,7 @@ export default {
               user.email
             }.`
           );
-          this.sendLink({ email: user.email });
+          this.sendLink({ email: user.email, name: user.name });
         })
         .catch(() =>
           this.flash(

@@ -1148,9 +1148,9 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
-email-templates@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/email-templates/-/email-templates-3.5.1.tgz#43e13090fdd5bdc0ccfb6f038a44a9984f07758d"
+email-templates@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/email-templates/-/email-templates-3.5.2.tgz#f180d15a8901cf59e80996d8befd7521a79f4de8"
   dependencies:
     "@ladjs/i18n" "^0.2.0"
     auto-bind "^1.1.0"
@@ -1525,6 +1525,14 @@ feathers-hooks-common@^4.7.0:
     debug "^3.0.0"
     process "0.11.10"
     traverse "^0.6.6"
+
+feathers-mailer@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/feathers-mailer/-/feathers-mailer-3.0.0.tgz#8225f87d05011f5c850f4843ee4228a5c855c89a"
+  dependencies:
+    debug "^3.1.0"
+    nodemailer "^4.4.2"
+    uberproto "^1.2.0"
 
 feathers-mongoose@^6.1.0:
   version "6.1.0"
@@ -3018,7 +3026,7 @@ nodemailer-mailgun-transport@^1.3.6:
     lodash.startswith "^4.0.1"
     mailgun-js "^0.13.1"
 
-nodemailer@^4.2.0, nodemailer@^4.4.1:
+nodemailer@^4.2.0, nodemailer@^4.4.1, nodemailer@^4.4.2:
   version "4.6.3"
   resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-4.6.3.tgz#c3b7e97fb72f46d4a475c406a15ed23a45dbcddc"
 
