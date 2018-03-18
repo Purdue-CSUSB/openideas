@@ -1,7 +1,7 @@
 <template lang="pug">
 .beta-wrapper
   .modal#modal-id(:class='{ active: modal }')
-    a.modal-overlay(@click="this.toggle", aria-label="Close", aria-role="button")
+    a.modal-overlay(@click="this.toggle", aria-label="Close", role="button", tabindex="0")
     .modal-container
       .modal-header
         button.btn.btn-clear.float-right(@click="this.toggle", aria-label="Close")
