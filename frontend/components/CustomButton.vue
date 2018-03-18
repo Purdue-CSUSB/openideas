@@ -1,5 +1,5 @@
 <template lang="pug">
-button(:class='["btn", buttonClass]') #[slot]
+button(:class='["btn", buttonClass]' @click='$emit("click")') #[slot]
 </template>
 
 <script>
@@ -8,7 +8,9 @@ export default {
     type: String,
   },
   computed: {
-    buttonClass() { return `btn-${this.type}`; },
+    buttonClass() {
+      return `btn-${this.type}`;
+    },
   },
 };
 </script>

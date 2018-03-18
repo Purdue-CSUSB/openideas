@@ -1,0 +1,33 @@
+
+meta(name="viewport", content="width=device-width")
+meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+title Your OpenIdeas Sign In Link
+link(rel="stylesheet", href="main.css", data-inline, media="all", type="text/css")
+
+table.body
+  tr
+    td
+    td.container
+      .content
+        span.preheader Sign in to OpenIdeas with this email.
+        table.main
+          tr
+            td.wrapper
+              table
+                tr
+                  td
+                    h1.align-center 💡 OpenIdeas
+                    p Hi #{name},
+                    p Here's the link you requested to sign into OpenIdeas.
+
+                    table.btn.btn-primary
+                      tr
+                        td(align='center')
+                          table
+                            tr
+                              td #[a(href=link) Login]
+
+                    p Or, copy and paste this link in your browser:
+                      br
+                      a(href=link) #{link}
+                    p Thanks for sharing your ideas with us!

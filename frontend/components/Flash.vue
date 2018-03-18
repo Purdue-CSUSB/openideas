@@ -19,8 +19,8 @@ export default {
 
 <style lang="scss" scoped>
 .toast {
-  margin-top: 1.0rem;
-  margin-bottom: 1.0rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   .msg {
     margin: 0;
     font-size: 0.7rem;

@@ -1,14 +1,14 @@
 <template lang="pug">
 .idea-card
   .columns
-    .column.col-2.col-sm-3.text-center.votes-container
+    .column.col-1.col-md-2.col-sm-3.text-center.votes-container
       h2 {{ idea.votes }}
       p.subtitle votes
       button.btn.btn-sm.btn-primary.btn-block Upvote
 
     .column
       .card-header
-        router-link(:to='idea._id') #[h4.card-title {{ idea.title }}]
+        router-link(:to='`/ideas/${idea._id}`' append) #[h4.card-title {{ idea.title }}]
       .card-body
         p {{ idea.description }}
       .card-actions
@@ -34,8 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.votes-container{
-
+.votes-container {
   p {
     font-size: x-small;
   }
@@ -46,7 +45,6 @@ export default {
     line-height: 1.1rem;
     margin-bottom: 0;
   }
-
 }
 
 ul {
@@ -55,15 +53,15 @@ ul {
 
 .card-actions {
   font-size: 0.6rem;
+  margin-top: 0.35rem;
   ul {
     color: red;
     padding: 0;
     li {
       display: inline-block;
       &:not(:last-child) {
-      padding-right: 1.3rem;
+        padding-right: 1.3rem;
       }
-
     }
   }
 
@@ -71,7 +69,7 @@ ul {
     color: rgb(0, 140, 221);
   }
 }
-h2{
+h2 {
   color: $primary-color;
   margin-bottom: 0;
 }
@@ -79,15 +77,17 @@ h2{
 button.btn-sm {
   font-size: 0.6rem;
   padding: 0.15rem 0.3rem;
+  max-width: 3rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 .card-header a {
   text-decoration: none;
 }
-.card-title{
+.card-title {
   color: $dark-color;
 }
 .idea-card {
   margin-bottom: 1.8rem;
 }
-
 </style>

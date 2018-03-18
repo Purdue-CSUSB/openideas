@@ -4,9 +4,9 @@
     section.navbar-section
       navbarSiteName 💡 OpenIdeas
       navbarLink(to='/') Home
-      navbarLink(to='ideas') All Ideas
-      navbarLink(to='new' v-if='user && accessToken') New Idea
-      navbarLink(to='about') About
+      navbarLink(to='/ideas') All Ideas
+      navbarLink(to='/new' v-if='user && accessToken') New Idea
+      navbarLink(to='/about') About
     section.navbar-section
       navbarItem(v-if='user && accessToken' @click.native='signOut') {{ user.name }}
       navbarLink(v-else to='signin') Sign In / Sign Up
@@ -36,6 +36,6 @@ export default {
 
 <style lang="scss">
 #site-header {
-  margin-bottom: 2.0rem;
+  margin-bottom: 2rem;
 }
 </style>

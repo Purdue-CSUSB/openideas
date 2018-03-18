@@ -3,6 +3,9 @@ const base64url = require('base64url');
 
 const randomString = length => base64url(crypto.randomBytes(length));
 
+const Email = require('email-templates');
+const path = require('path');
+
 class Service {
   setup(app) {
     this.mailer = app.service('mailer');
@@ -19,21 +22,58 @@ class Service {
       jwt: this.authConfig.magicLink,
     }).then((token) => {
       const link = `http://localhost:8080/magic?token=${token}`;
+      const email = new Email({
+        views: {
+          root: 'src/mail-templates',
+        },
+        transport: {
+          jsonTransport: true,
+        },
+        juice: true,
+        juiceResources: {
+          preserveImportant: true,
+          webResources: {
+            //
+            // this is the relative directory to your CSS/image assets
+            // and its default path is `build/`:
+            //
+            // e.g. if you have the following in the `<head`> of your template:
+            // `<link rel="stylesheet" href="style.css" data-inline="data-inline">`
+            // then this assumes that the file `build/style.css` exists
+            //
+            relativeTo: path.resolve('src/mail-templates'),
+            //
+            // but you might want to change it to something like:
+            // relativeTo: path.join(__dirname, '..', 'assets')
+            // (so that you can re-use CSS/images that are used in your web-app)
+            //
+          },
+        },
+      });
+
       const to = data.email;
       const from = 'ideas@purdueusb.com';
       const subject = 'Your OpenIdeas Magic Link';
-      const html = `Welcome to OpenIdeas!\nClick <a href="${link}"> to sign in.`;
-      const message = {
-        to, from, subject, html,
-      };
-      return this.mailer.create(message)
+      return email
+        .render('magic/html', {
+          link,
+          name: data.name,
+        })
+        .then((html) => {
+          const message = {
+            to, from, subject, html,
+          };
+          return message;
+        })
+        .then(message => this.mailer.create(message))
         .then(() => {
           Promise.resolve(this.users.patch(
             null,
             { token: payload },
             { query: { email: data.email } },
           ));
-        }).catch(err => Promise.reject(err));
+        })
+        .catch(console.error);
     });
   }
 

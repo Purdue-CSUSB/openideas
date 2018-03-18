@@ -45,12 +45,13 @@ export default {
   color: white;
   padding-top: 0.5rem;
   margin-top: 3rem;
+  padding-bottom: 0.5rem;
 }
 
 @media (max-width: 600px) {
-  .column{
-      width: 100%;
-      text-align: center;
+  .column {
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -61,7 +62,6 @@ p {
   margin-bottom: 0.4rem;
 }
 
-
 img {
   filter: grayscale(1);
   max-height: 2.4rem;
@@ -71,5 +71,4 @@ img {
     filter: grayscale(0);
   }
 }
-
 </style>
