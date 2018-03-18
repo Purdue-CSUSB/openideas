@@ -54,7 +54,7 @@ class Service {
       const to = data.email;
       const from = 'ideas@purdueusb.com';
       const subject = 'Your OpenIdeas Magic Link';
-      email
+      return email
         .render('magic/html', {
           link,
           name: data.name,
