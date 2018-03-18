@@ -1,7 +1,7 @@
 <template lang="pug">
 .idea-card
   .columns
-    .column.col-1.col-md-2.col-sm-3.text-center.votes-container
+    .column.col-2.col-md-2.col-sm-3.text-center.votes-container
       h2 {{ idea.votes }}
       p.subtitle votes
       button.btn.btn-sm.btn-primary.btn-block Upvote
@@ -40,6 +40,8 @@ export default {
   }
 }
 .card-body {
+  white-space: pre-line;
+
   p {
     font-size: 0.7rem;
     line-height: 1.1rem;

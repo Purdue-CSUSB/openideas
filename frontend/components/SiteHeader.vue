@@ -1,15 +1,16 @@
 <template lang="pug">
 #site-header.container.grid-xl
-  header.navbar
-    section.navbar-section
-      navbarSiteName 💡 OpenIdeas
-      navbarLink(to='/') Home
-      navbarLink(to='/ideas') All Ideas
-      navbarLink(to='/new' v-if='user && accessToken') New Idea
-      navbarLink(to='/about') About
-    section.navbar-section
-      navbarItem(v-if='user && accessToken' @click.native='signOut') {{ user.name }}
-      navbarLink(v-else to='signin') Sign In / Sign Up
+  header
+    nav.columns.text-center
+      section.col-5.col-mr-auto.col-sm-12.col-md-10.col-lg-7.col-xl-6
+        navbarSiteName 💡 OpenIdeas
+        navbarLink(to='/').hide-sm Home
+        navbarLink(to='/ideas') All Ideas
+        navbarLink(to='/new' v-if='user && accessToken') New Idea
+        navbarLink(to='/about') About
+      section.col-2.col-sm-12
+        navbarItem(v-if='user && accessToken' @click.native='signOut') {{ user.name }}
+        navbarLink(v-else to='signin') Sign In / Sign Up
 </template>
 
 <script>
@@ -34,7 +35,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #site-header {
   margin-bottom: 2rem;
 }

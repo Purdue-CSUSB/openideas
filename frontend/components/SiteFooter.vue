@@ -4,7 +4,7 @@ footer.footer
     div.columns
       div.column.col-8
         footer-links(:links='links')
-      div.column.col-4.col-ml-auto.col-sm-12
+      div.column.col-3.col-ml-auto.col-sm-12
         a(href="https://purdueusb.com", target="_blank")
           img(:src="require('@/assets/usb-wordmark-dark.png')").img-responsive.logo
         p.text-center Made by USB
