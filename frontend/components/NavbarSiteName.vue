@@ -2,7 +2,6 @@
 router-link.btn.btn-link(to="/", exact-active-class="notactive")
       span <slot/>
       <span class="badge" data-badge="Beta">
-
       </span>
 </template>
 
