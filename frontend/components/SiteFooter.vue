@@ -22,6 +22,10 @@ export default {
     return {
       links: [
         {
+          name: 'About',
+          to: '/about',
+        },
+        {
           name: 'Terms',
           to: '/terms',
         },
