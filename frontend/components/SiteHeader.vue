@@ -11,10 +11,10 @@
       section.col-3.col-md-12
         navbarItem(v-if='user && accessToken' @click.native='signOut')
           span.name {{ user.name }}
-          figure.avatar.avatar-md.ml-2(data-initial="JH")
-            img(:src="require('@/assets/lisa_happy.gif')")
+          figure.avatar.avatar-md.ml-2(:data-initial="user.name | initials")
+            //- img(:src="require('@/assets/lisa_happy.gif')")
 
-        navbarLink(v-else to='signin') Sign In / Sign Up
+        navbarLink(v-else to='/signin') Sign In / Sign Up
 </template>
 
 <script>
@@ -35,6 +35,12 @@ export default {
   },
   methods: {
     ...mapActions('auth', ['signOut']),
+  },
+  filters: {
+    initials(name) {
+      const split = name.split(' ');
+      return split[0][0] + split[1][0];
+    },
   },
 };
 </script>

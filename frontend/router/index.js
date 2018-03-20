@@ -35,7 +35,7 @@ const router = new Router({
   linkExactActiveClass: 'active',
   routes: [
     { path: '/', name: 'Home', component: Home },
-    { path: '/ideas', name: 'Ideas', component: Ideas },
+    { path: '/ideas/', name: 'Ideas', component: Ideas },
     { path: '/ideas/:id', name: 'Idea', component: Idea },
     {
       path: '/new',

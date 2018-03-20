@@ -56,7 +56,9 @@ export default {
       this.lookupEmail(email)
         .then(user => {
           this.flash(
-            `Welcome back, ${user.name}! Check your inbox for a magic link.`
+            `Welcome back, ${
+              user.name
+            }! Check your inbox for a magic login link.`
           );
           this.sendLink({ email: user.email, name: user.name });
         })
@@ -69,9 +71,9 @@ export default {
       this.signUp(credentials)
         .then(user => {
           this.flash(
-            `Welcome to OpenIdeas, ${user.name} We're sending a magic link to ${
-              user.email
-            }.`
+            `Welcome to OpenIdeas, ${
+              user.name
+            } We're sending a magic login link to ${user.email}.`
           );
           this.sendLink({ email: user.email, name: user.name });
         })

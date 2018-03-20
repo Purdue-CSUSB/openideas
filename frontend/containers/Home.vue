@@ -20,7 +20,7 @@
             dd Contributions are welcome and encouraged! #[a(href="https://github.com/Purdue-CSUSB/openideas/blob/master/CONTRIBUTING.md") Get started].
           p
       .modal-footer
-        button.btn.btn-primary OK
+        button.btn.btn-primary(@click="this.toggle") OK
   #home.container.grid-lg
     hero(title="Your Voice Matters", subtitle="We know that Purdue CS students have many great ideas for their community! That's why we created OpenIdeas, the best place to share and discuss those ideas. Let's get the conversations started!")
       button-link(to='/signin' type='primary') Get Started
@@ -43,10 +43,10 @@ export default {
     };
   },
   mounted() {
-    const cookie = getCookie('firstVisit');
-    if (cookie === null) {
+    const cookie = getCookie('lastVisit');
+    if (cookie === null || cookie < 1521384435934) {
       this.modal = true;
-      setCookie('firstVisit', Date.now());
+      setCookie('lastVisit', Date.now());
     }
   },
   methods: {
@@ -59,8 +59,6 @@ export default {
 
 <style lang="scss" scoped>
 #home a.btn {
-  $new-primary-color: darken($primary-color, 10%);
-  $new-border-color: darken($primary-color, 15%);
   background-color: $new-primary-color !important;
   border-color: $new-border-color !important;
   margin-top: 1rem;
