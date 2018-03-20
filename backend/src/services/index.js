@@ -3,6 +3,7 @@ const ideas = require('./ideas/ideas.service');
 const votes = require('./votes/votes.service');
 const links = require('./magic-links/magic-links.service');
 const lookup = require('./email-lookup/email-lookup.service');
+const comments = require('./comments/comments.service');
 const mailer = require('./mailer.service');
 
 module.exports = (app) => {
@@ -11,5 +12,6 @@ module.exports = (app) => {
     .configure(votes)
     .configure(links)
     .configure(lookup)
+    .configure(comments)
     .configure(mailer);
 };

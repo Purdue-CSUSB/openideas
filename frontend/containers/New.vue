@@ -27,7 +27,13 @@ export default {
       description: '',
     };
   },
-  methods: { ...mapActions('ideas', { submitIdea: 'create' }) },
+  methods: {
+    ...mapActions('ideas', ['create']),
+    submitIdea(idea) {
+      this.create(idea).then(() => this.$router.push('/ideas'))
+        .catch(err => console.log(err));
+    },
+  },
   computed: { ...mapState('auth', ['user']) },
 };
 </script>

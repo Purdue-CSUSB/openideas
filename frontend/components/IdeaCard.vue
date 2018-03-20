@@ -4,7 +4,7 @@
     .column.col-1.col-md-2.col-sm-3.text-center.votes-container
       h2 {{ idea.votes }}
       p.subtitle votes
-      button.btn.btn-sm.btn-primary.btn-block Upvote
+      button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ id: idea._id })') Upvote
 
     .column
       .card-header
@@ -14,20 +14,31 @@
       .card-actions
         ul
           li
-            router-link(to='comment') Comments (32)
+            router-link.btn.btn-link.btn-sm(to='comment') Comments ({{ idea.comments.length }})
           li
-            router-link(to='edit') Edit
+            button.btn.btn-link.btn-sm(disabled) Edit
           li
-            router-link(to='delete') Delete
+            button.btn.btn-link.btn-sm(@click='deleteIdea(idea._id)') Delete
 </template>
 
 <script>
+import { mapActions, mapMutations } from 'vuex';
+
 export default {
   name: 'IdeaCard',
   props: {
     idea: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    ...mapActions('ideas', { removeRemote: 'remove' }),
+    ...mapActions('votes', { addVote: 'create' }),
+    ...mapMutations('ideas', { removeLocal: 'removeItem' }),
+    deleteIdea(_id) {
+      this.removeLocal(_id);
+      this.removeRemote(_id);
     },
   },
 };
@@ -65,7 +76,7 @@ ul {
     }
   }
 
-  a {
+  a, button.btn-sm {
     color: rgb(0, 140, 221);
   }
 }
@@ -74,7 +85,7 @@ h2 {
   margin-bottom: 0;
 }
 
-button.btn-sm {
+a.btn-sm, button.btn-sm {
   font-size: 0.6rem;
   padding: 0.15rem 0.3rem;
   max-width: 3rem;
