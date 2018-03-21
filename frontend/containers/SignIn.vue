@@ -94,6 +94,8 @@ export default {
           'error'
         )
       );
+    } else {
+      next();
     }
   },
 };

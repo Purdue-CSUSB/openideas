@@ -11,7 +11,7 @@ module.exports = (app) => {
       author: { type: ObjectId, required: true, ref: 'Users' },
       _id: { type: ObjectId, default: () => new ObjectId() },
     }],
-    voted: [ObjectId],
+    voted: [{ type: ObjectId, ref: 'Users' }],
   }, {
     timestamps: true,
   });

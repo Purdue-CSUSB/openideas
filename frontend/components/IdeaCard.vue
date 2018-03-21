@@ -2,7 +2,7 @@
 .idea-card
   .columns
     .column.col-1.col-md-2.col-sm-3.text-center.votes-container
-      h2 {{ idea.votes }}
+      h2 {{ idea.voted.length }}
       p.subtitle votes
       button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ id: idea._id })') Upvote
 
@@ -76,7 +76,8 @@ ul {
     }
   }
 
-  a, button.btn-sm {
+  a,
+  button.btn-sm {
     color: rgb(0, 140, 221);
   }
 }
@@ -85,7 +86,8 @@ h2 {
   margin-bottom: 0;
 }
 
-a.btn-sm, button.btn-sm {
+a.btn-sm,
+button.btn-sm {
   font-size: 0.6rem;
   padding: 0.15rem 0.3rem;
   max-width: 3rem;
