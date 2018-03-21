@@ -1,16 +1,17 @@
 module.exports = (app) => {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
+  const { ObjectId } = Schema;
   const ideas = new Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
     author: { type: String, required: true },
-    votes: { type: Number, default: 0 },
     comments: [{
       body: { type: String, required: true },
-      author: { type: String, required: true },
+      author: { type: ObjectId, required: true, ref: 'Users' },
+      _id: { type: ObjectId, default: () => new ObjectId() },
     }],
-    voted: [String],
+    voted: [{ type: ObjectId, ref: 'Users' }],
   }, {
     timestamps: true,
   });
