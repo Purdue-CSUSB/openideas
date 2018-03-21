@@ -32,6 +32,7 @@ export default {
     submitIdea(idea) {
       this.create(idea)
         .then(() => this.$router.push('/ideas'))
+        // eslint-disable-next-line
         .catch(err => console.log(err));
     },
   },

@@ -11,8 +11,8 @@
       section.col-3.col-md-12
         navbarItem(v-if='user && accessToken' @click.native='signOut')
           span.name {{ user.name }}
-          figure.avatar.avatar-md.ml-2(:data-initial="user.name | initials")
-            //- img(:src="require('@/assets/lisa_happy.gif')")
+          figure.avatar.ml-2(:data-initial="user.name | initials")
+            gravatar(:email="user.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
 
         navbarLink(v-else to='/signin') Sign In / Sign Up
 </template>
@@ -22,6 +22,7 @@ import { mapState, mapActions } from 'vuex';
 import NavbarLink from '@/components/NavbarLink';
 import NavbarSiteName from '@/components/NavbarSiteName';
 import NavbarItem from '@/components/NavbarItem';
+import Gravatar from 'vue-gravatar';
 
 export default {
   name: 'SiteHeader',
@@ -29,18 +30,27 @@ export default {
     NavbarLink,
     NavbarSiteName,
     NavbarItem,
+    Gravatar,
   },
   computed: {
     ...mapState('auth', ['accessToken', 'user']),
   },
   methods: {
     ...mapActions('auth', ['signOut']),
+    errorHandle() {
+      this.hasGravatar = false;
+    },
   },
   filters: {
     initials(name) {
       const split = name.split(' ');
       return split[0][0] + split[1][0];
     },
+  },
+  data() {
+    return {
+      hasGravatar: true,
+    };
   },
 };
 </script>
