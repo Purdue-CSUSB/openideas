@@ -9,6 +9,19 @@
         "problemMatcher": [
           "$eslint-stylish"
         ]
-      }
+      },
+      {
+        "type": "npm",
+        "script": "start",
+        "path": "backend/",
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "type": "npm",
+        "script": "start",
+        "problemMatcher": [],
+        "group": "build"
+      },
     ]
   }
