@@ -24,8 +24,8 @@
             )
             CustomButton.btn-block(type='primary' @click='createAccount({ email, name })') Sign Up
 
-        p.text-center Need an account?
-          button.btn.btn-link(@click="toggle()") Sign Up
+        p.text-center {{ signingUp ? 'Have' : 'Need' }} an account?
+          button.btn.btn-link(@click="toggle()") Sign {{ signingUp ? 'In' : 'Up' }}
 </template>
 
 
@@ -96,8 +96,9 @@ export default {
           'error'
         )
       );
+    } else {
+      next();
     }
-    next();
   },
 };
 </script>

@@ -1,10 +1,10 @@
 <template lang="pug">
 .idea-card
   .columns
-    .column.col-2.col-md-2.col-sm-3.text-center.votes-container
-      h2 {{ idea.votes }}
+    .column.col-1.col-md-2.col-sm-3.text-center.votes-container
+      h2 {{ idea.voted.length }}
       p.subtitle votes
-      button.btn.btn-sm.btn-primary.btn-block Upvote
+      button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ id: idea._id })') Upvote
 
     .column.col-9
       .card-header
@@ -14,12 +14,12 @@
         p(v-else) {{ idea.description | truncate(450)}}
       .card-actions
         ul
-          //- li
-          //-   router-link(to='comment') Comments (32)
-          //- li
-          //-   router-link(to='edit') Edit
-          //- li
-          //-   router-link(to='delete') Delete
+          li
+            router-link.btn.btn-link.btn-sm(to='comment') Comments ({{ idea.comments.length }})
+          li
+            button.btn.btn-link.btn-sm(disabled) Edit
+          li
+            button.btn.btn-link.btn-sm(@click='deleteIdea(idea._id)') Delete
       .comments(v-if='isFullCard').column.col-8.col-sm-12
         comment(:user='user')
 
@@ -27,6 +27,7 @@
 
 <script>
 import Vue from 'vue';
+import { mapActions, mapMutations } from 'vuex';
 import Comment from '@/components/CommentAvatar';
 import Simpsonify from '@/../node_modules/simpsonify';
 import VueTruncate from '@/../node_modules/vue-truncate-filter';
@@ -52,6 +53,15 @@ export default {
     return {
       user: Simpsonify.getUsers(1)[0],
     };
+  },
+  methods: {
+    ...mapActions('ideas', { removeRemote: 'remove' }),
+    ...mapActions('votes', { addVote: 'create' }),
+    ...mapMutations('ideas', { removeLocal: 'removeItem' }),
+    deleteIdea(_id) {
+      this.removeLocal(_id);
+      this.removeRemote(_id);
+    },
   },
 };
 </script>
@@ -90,7 +100,8 @@ ul {
     }
   }
 
-  a {
+  a,
+  button.btn-sm {
     color: rgb(0, 140, 221);
   }
 }
@@ -98,9 +109,12 @@ h2 {
   color: $primary-color;
   margin-bottom: 0;
 }
+
 h4 > a {
   color: $dark-color;
 }
+
+a.btn-sm,
 button.btn-sm {
   font-size: 0.6rem;
   padding: 0.15rem 0.3rem;
