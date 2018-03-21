@@ -8,7 +8,8 @@ module.exports = (app) => {
     author: { type: String, required: true },
     comments: [{
       body: { type: String, required: true },
-      author: { type: String, required: true },
+      author: { type: ObjectId, required: true, ref: 'Users' },
+      _id: { type: ObjectId, default: () => new ObjectId() },
     }],
     voted: [ObjectId],
   }, {
