@@ -97,6 +97,10 @@ ul {
       &:not(:last-child) {
         padding-right: 1.3rem;
       }
+      a:first-child {
+        padding-left: 0;
+        border-left-width: 0;
+      }
     }
   }
 

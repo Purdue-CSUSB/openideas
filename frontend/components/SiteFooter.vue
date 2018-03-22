@@ -71,6 +71,7 @@ img {
   max-height: 2.4rem;
   margin-left: auto;
   margin-right: auto;
+  transition: all 0.2s ease;
   &:hover {
     filter: grayscale(0);
   }

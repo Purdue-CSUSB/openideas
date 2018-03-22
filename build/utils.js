@@ -59,7 +59,7 @@ exports.cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
+    sass: generateLoaders('sass', { indentedSyntax: true, data: "@import '~@/assets/variables';\n", }),
     scss: generateLoaders('sass', {
       data: "@import '~@/assets/variables';\n",
     }),
