@@ -30,7 +30,9 @@ export default {
   methods: {
     ...mapActions('ideas', ['create']),
     submitIdea(idea) {
-      this.create(idea).then(() => this.$router.push('/ideas'))
+      this.create(idea)
+        .then(() => this.$router.push('/ideas'))
+        // eslint-disable-next-line
         .catch(err => console.log(err));
     },
   },

@@ -16,6 +16,7 @@ const store = new Vuex.Store({
     service('users'),
     service('email-lookup'),
     service('magic-links'),
+    service('comments'),
     service('ideas'),
     service('votes'),
     auth(authSettings),

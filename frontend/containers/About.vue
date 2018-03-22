@@ -10,7 +10,7 @@
   p OpenIdeas was created in Spring 2018 by then-seniors Matt Ess and Jay Hankins. The Board saw a need to collect ideas for improving our CS community, and we thought there was no better application of our computer science educations than to create an app to solve this problem.
 
   h5 Special Thanks
-  p We'd like to extend a special thanks to our long-time advisors and friends, Buster Dunsmore and Doug Comer. With their support, both educational and moral, we are empowered to represent our community, and that is a total honor. Hopefully this web app doesn't have too many bugs!
+  p We'd like to extend a special thanks to our advisors, Buster Dunsmore and Doug Comer. With their support, both educational and moral, we are empowered to represent our community, and that is a total honor.
 
   h5 Get Involved
   p Getting involved with OpenIdeas is easy. We welcome contributions to our GitHub repository.

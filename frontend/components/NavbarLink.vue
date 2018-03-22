@@ -23,7 +23,7 @@ export default {
 }
 
 .active span {
-  padding-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
   padding-left: 0.4rem;
   padding-right: 0.4rem;
   border-bottom-style: solid;
@@ -35,5 +35,25 @@ export default {
 }
 .btn:focus {
   box-shadow: none;
+}
+
+@media (max-width: 600px) {
+  .active span {
+    padding-bottom: 0.4rem;
+    padding-top: 0.4rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    border-left-style: solid;
+    border-left-color: $primary-color;
+    border-left-width: 0.2rem;
+    border-bottom-style: none;
+
+    color: $dark-color;
+    font-weight: 600;
+    margin-left: 0rem;
+  }
+  span {
+    margin-left: 0.6rem;
+  }
 }
 </style>

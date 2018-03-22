@@ -34,7 +34,7 @@ export default {
 }
 a {
   color: white;
-  &:active {
+  &.active {
     text-decoration: none;
   }
 }

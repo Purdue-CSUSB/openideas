@@ -1,5 +1,8 @@
 $fa-font-path: '~font-awesome/fonts';
 
 $primary-color: #F4BA47;
+$primary-url-color: darken($primary-color, 15%);
 $dark-color: rgb(46, 46, 46);
 $hero-img: image-url('assets/img/hero.jpg', false, false);
+$new-primary-color: darken($primary-color, 10%);
+$new-border-color: darken($primary-color, 15%);

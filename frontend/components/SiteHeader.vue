@@ -1,15 +1,15 @@
 <template lang="pug">
-#site-header.container.grid-xl
-  header.navbar
-    section.navbar-section
+header.container.grid-xl
+  nav.columns
+    section.column.col-9.menu-left
       navbarSiteName 💡 OpenIdeas
-      navbarLink(to='/') Home
+      navbarLink(to='/').hide-sm Home
       navbarLink(to='/ideas') All Ideas
       navbarLink(to='/new' v-if='user && accessToken') New Idea
-      navbarLink(to='/about') About
-    section.navbar-section
-      navbarItem(v-if='user && accessToken' @click.native='signOut') {{ user.name }}
-      navbarLink(v-else to='signin') Sign In / Sign Up
+      navbarLink(to='/about' v-if='!(user && accessToken)') About
+    section.column.col-3.text-right
+      UserDropdown(v-if='user && accessToken', :user="user")
+      navbarLink(v-else to='/signin').text-center Sign In / Sign Up
 </template>
 
 <script>
@@ -17,6 +17,7 @@ import { mapState, mapActions } from 'vuex';
 import NavbarLink from '@/components/NavbarLink';
 import NavbarSiteName from '@/components/NavbarSiteName';
 import NavbarItem from '@/components/NavbarItem';
+import UserDropdown from '@/components/UserDropdown';
 
 export default {
   name: 'SiteHeader',
@@ -24,6 +25,7 @@ export default {
     NavbarLink,
     NavbarSiteName,
     NavbarItem,
+    UserDropdown,
   },
   computed: {
     ...mapState('auth', ['accessToken', 'user']),
@@ -34,8 +36,34 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#site-header {
+<style lang="scss" scoped>
+header {
   margin-bottom: 2rem;
+}
+
+span.name {
+  font-size: 0.7rem;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 600px) {
+  nav {
+    display: flex;
+    flex-direction: row;
+  }
+  .menu-left {
+    display: flex;
+    flex-direction: column;
+    .btn {
+      text-align: left;
+    }
+  }
+  .user-container {
+    flex-direction: column;
+  }
 }
 </style>

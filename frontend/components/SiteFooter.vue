@@ -4,7 +4,7 @@ footer.footer
     div.columns
       div.column.col-8
         footer-links(:links='links')
-      div.column.col-4.col-ml-auto.col-sm-12
+      div.column.col-3.col-ml-auto.col-sm-12
         a(href="https://purdueusb.com", target="_blank")
           img(:src="require('@/assets/usb-wordmark-dark.png')").img-responsive.logo
         p.text-center Made by USB
@@ -21,6 +21,10 @@ export default {
   data() {
     return {
       links: [
+        {
+          name: 'About',
+          to: '/about',
+        },
         {
           name: 'Terms',
           to: '/terms',
@@ -67,6 +71,7 @@ img {
   max-height: 2.4rem;
   margin-left: auto;
   margin-right: auto;
+  transition: all 0.2s ease;
   &:hover {
     filter: grayscale(0);
   }

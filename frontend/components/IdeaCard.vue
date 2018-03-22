@@ -6,11 +6,12 @@
       p.subtitle votes
       button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ id: idea._id })') Upvote
 
-    .column
+    .column.col-9
       .card-header
-        router-link(:to='`/ideas/${idea._id}`' append) #[h4.card-title {{ idea.title }}]
+        h4.card-title #[router-link(:to='`/ideas/${idea._id}`' append) {{ idea.title }}]
       .card-body
-        p {{ idea.description }}
+        p(v-if='isFullCard') {{ idea.description }}
+        p(v-else) {{ idea.description | truncate(450)}}
       .card-actions
         ul
           li
@@ -19,18 +20,39 @@
             button.btn.btn-link.btn-sm(disabled) Edit
           li
             button.btn.btn-link.btn-sm(@click='deleteIdea(idea._id)') Delete
+      .comments(v-if='isFullCard').column.col-8.col-sm-12
+        comment(:user='user')
+
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapActions, mapMutations } from 'vuex';
+import Comment from '@/components/CommentAvatar';
+import Simpsonify from '@/../node_modules/simpsonify';
+import VueTruncate from '@/../node_modules/vue-truncate-filter';
+
+Vue.use(VueTruncate);
 
 export default {
   name: 'IdeaCard',
+  components: { Comment },
+  computed: {
+    isFullCard() {
+      return this.$route.params.id;
+    },
+  },
   props: {
     idea: {
       type: Object,
       required: true,
     },
+    isFullCard: Boolean,
+  },
+  data() {
+    return {
+      user: Simpsonify.getUsers(1)[0],
+    };
   },
   methods: {
     ...mapActions('ideas', { removeRemote: 'remove' }),
@@ -51,8 +73,10 @@ export default {
   }
 }
 .card-body {
+  white-space: pre-line;
+
   p {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     line-height: 1.1rem;
     margin-bottom: 0;
   }
@@ -73,6 +97,10 @@ ul {
       &:not(:last-child) {
         padding-right: 1.3rem;
       }
+      a:first-child {
+        padding-left: 0;
+        border-left-width: 0;
+      }
     }
   }
 
@@ -84,6 +112,10 @@ ul {
 h2 {
   color: $primary-color;
   margin-bottom: 0;
+}
+
+h4 > a {
+  color: $dark-color;
 }
 
 a.btn-sm,

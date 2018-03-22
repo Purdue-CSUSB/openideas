@@ -1,8 +1,10 @@
 <template lang="pug">
 #ideas.container.grid-lg
-  h3 All Ideas
-  template(v-for='idea in list')
-    IdeaCard(:idea='idea')
+  .columns
+    .column.col-8.col-lg-12
+      h3 All Ideas
+      template(v-for='idea in list')
+        IdeaCard(:idea='idea')
 </template>
 
 <script>
