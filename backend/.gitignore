@@ -112,3 +112,5 @@ lib/
 data/
 config/default.json
 config/production.json
+
+public/
