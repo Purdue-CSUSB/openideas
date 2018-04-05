@@ -7,7 +7,6 @@
       "autoFix": true
     }
   ],
-  "eslint.autoFixOnSave": true,
-  "prettier.eslintIntegration": true,
+  // "eslint.autoFixOnSave": true,
   "eslint.enable": true,
 }

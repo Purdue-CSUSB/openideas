@@ -1,7 +1,7 @@
 <template lang="pug">
 .idea-card
   .columns
-    .column.col-1.col-md-2.col-sm-3.text-center.votes-container
+    .column.col-2.col-sm-3.text-center.votes-container
       h2 {{ idea.voted.length }}
       p.subtitle votes
       button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ id: idea._id })') Upvote
