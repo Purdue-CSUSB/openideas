@@ -4,7 +4,7 @@
     .column.col-2.col-sm-3.text-center.votes-container
       h2 {{ idea.voted.length }}
       p.subtitle votes
-      button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ id: idea._id })') Upvote
+      button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ ideaId: idea._id })') Upvote
 
     .column.col-9
       .card-header

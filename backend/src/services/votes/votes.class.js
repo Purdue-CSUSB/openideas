@@ -1,20 +1,22 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable class-methods-use-this */
+const MissingQueryParameter = param => new Error(`Missing required query parameter ${param}`);
+
 class Service {
   setup(app) {
     this.ideas = app.service('ideas');
   }
 
-  create(data, params) {
-    return this.ideas.patch(params.query.postId, { $push: { voted: params.query.userId } })
+  create({ ideaId }, params) {
+    if (ideaId === undefined) return Promise.reject(MissingQueryParameter('ideaId'));
+    return this.ideas.patch(ideaId, { $push: { voted: params.query.userId } })
       .then(idea => Promise.resolve(idea))
       .catch(err => Promise.reject(err));
   }
 
   remove(id, params) {
+    if (params.query.userId === undefined) return Promise.reject(MissingQueryParameter('userId'));
     return this.ideas.patch(id, { $pull: { voted: params.query.userId } })
       .then(idea => Promise.resolve(idea))
-      .catch(err => Promise.resolve(err));
+      .catch(err => Promise.reject(err));
   }
 }
 

@@ -1,6 +1,6 @@
 <template lang="pug">
 #ideas.container.grid-lg
-  idea-card(:idea='idea')
+  idea-card(:idea='idea' v-if='idea')
 </template>
 
 <script>
