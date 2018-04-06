@@ -28,7 +28,7 @@
 <script>
 import Vue from 'vue';
 import { mapActions, mapMutations } from 'vuex';
-import Comment from '@/components/CommentAvatar';
+import Comment from '@/components/Comments';
 import Simpsonify from '@/../node_modules/simpsonify';
 import VueTruncate from '@/../node_modules/vue-truncate-filter';
 

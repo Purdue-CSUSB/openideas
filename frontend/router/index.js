@@ -10,6 +10,7 @@ import Magic from '@/containers/Magic';
 import Ideas from '@/containers/Ideas';
 import Idea from '@/containers/Idea';
 import New from '@/containers/New';
+import Profile from '@/containers/Profile';
 import About from '@/containers/About';
 
 Vue.use(Router);
@@ -26,7 +27,7 @@ const requireSignedOut = () => (to, from, next) => {
   if (!store.state.auth.accessToken) {
     next();
   } else {
-    next('/');
+    next('/ideas');
   }
 };
 
@@ -43,6 +44,7 @@ const router = new Router({
       component: New,
       beforeEnter: requireSignedIn(),
     },
+
     { path: '/terms', name: 'Terms', component: Terms },
     { path: '/privacy', name: 'PrivacyPolicy', component: Privacy },
     {
@@ -50,6 +52,12 @@ const router = new Router({
       name: 'SignIn',
       component: SignIn,
       beforeEnter: requireSignedOut(),
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile,
+      beforeEnter: requireSignedIn(),
     },
     { path: '/magic', name: 'Magic', component: Magic },
     { path: '/about', name: 'About', component: About },

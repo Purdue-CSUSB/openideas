@@ -6,7 +6,7 @@
         gravatar(:email="user.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
   ul.menu
     li.menu-item
-      a(href="/profile") Profile
+      router-link(to="/profile") Profile
     li.menu-item
       button.btn.btn-link(@click='signOut') Log Out
 </template>
