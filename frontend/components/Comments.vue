@@ -6,7 +6,7 @@
         figure.avatar(:data-initial="user.name | initials")
           img(:src="user.avatarUrl")
     .tile-content
-      p.tile-title.mt-1 #[span.name {{ user.firstName }} {{ user.lastName }}]
+      p.tile-title.mt-1 #[span.name {{ user.name }}]
       p.comment shared this idea.
 
   .tile
@@ -16,7 +16,7 @@
           img(:src="user.avatarUrl")
     .tile-content
       .input-group
-        textarea.form-input(placeholder="Your comment here")
+        textarea.mt-1.form-input(placeholder="Your comment here")
 
 </template>
 
@@ -75,5 +75,9 @@ p.tile-title
 
 textarea
   font-size: 0.65rem
+  resize: none
+  border-style: none
+  padding: 0
+  margin-top: 0.3rem
 
 </style>
