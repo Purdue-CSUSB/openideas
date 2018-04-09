@@ -1,3 +1,4 @@
+import Gravatar from 'vue-gravatar';
 import Flash from '@/components/Flash';
 
 export const flash = {
@@ -49,7 +50,7 @@ export const focus = {
   },
 };
 
-/* eslint-disable */
+/* eslint-disable no-param-reassign */
 export const autoresize = {
   directives: {
     autoresize: {
@@ -57,7 +58,7 @@ export const autoresize = {
         el.style.height = `${el.scrollHeight}px`;
         el.style.overflow = 'hidden';
         el.style.resize = 'none';
-        function OnInput() {
+        function onInput() {
           this.style.height = 'auto';
           this.style.height = `${this.scrollHeight}px`;
           this.scrollTop = this.scrollHeight;
@@ -66,8 +67,24 @@ export const autoresize = {
             this.scrollTop + this.scrollHeight
           );
         }
-        el.addEventListener('input', OnInput, false);
+        el.addEventListener('input', onInput, false);
       },
     },
+  },
+};
+
+export const grav = {
+  components: {
+    Gravatar,
+  },
+  methods: {
+    errorHandle() {
+      this.hasGravatar = false;
+    },
+  },
+  data() {
+    return {
+      hasGravatar: true,
+    };
   },
 };

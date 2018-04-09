@@ -1,30 +1,25 @@
 <template lang="pug">
 #ideas.container.grid-lg
-  idea-card(:idea='idea' v-if='idea')
+  idea-card(:idea='current' v-if='current' :isFullCard='true')
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import IdeaCard from '@/components/IdeaCard';
 
 export default {
   name: 'Idea',
   computed: {
-    ...mapGetters('ideas', { getLocal: 'get' }),
+    ...mapGetters('ideas', { current: 'current' }),
   },
   components: { IdeaCard },
   methods: {
     ...mapActions('ideas', { fetch: 'get' }),
+    ...mapMutations('ideas', { setCurrent: 'setCurrent' }),
   },
-  data() {
-    return {
-      idea: null,
-    };
-  },
-  // TODO: need to fix this by looking into returning a promise from the fetch/get action in ideas.
   mounted() {
     this.fetch(this.$route.params.id);
-    this.idea = this.getLocal(this.$route.params.id);
+    this.setCurrent(this.$route.params.id);
   },
 };
 </script>

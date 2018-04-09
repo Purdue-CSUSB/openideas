@@ -3,7 +3,7 @@
   a(href="#", tabindex="0").btn.btn-link.dropdown-toggle
     span {{ user.name }}
     figure.avatar(:data-initial="user.name | initials")
-        gravatar(:email="user.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
+      gravatar(:email="user.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
   ul.menu
     li.menu-item
       router-link(to="/profile") Profile
@@ -13,11 +13,10 @@
 
 <script>
 import { mapActions } from 'vuex';
-import Gravatar from 'vue-gravatar';
-import { initials } from '@/mixins';
+import { initials, grav } from '@/mixins';
 
 export default {
-  mixins: [initials],
+  mixins: [initials, grav],
   name: 'UserDropdown',
   props: {
     user: {
@@ -25,19 +24,8 @@ export default {
       required: true,
     },
   },
-  components: {
-    Gravatar,
-  },
-  data() {
-    return {
-      hasGravatar: true,
-    };
-  },
   methods: {
     ...mapActions('auth', ['signOut']),
-    errorHandle() {
-      this.hasGravatar = false;
-    },
   },
 };
 </script>

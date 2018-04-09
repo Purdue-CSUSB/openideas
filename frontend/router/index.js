@@ -38,6 +38,7 @@ const router = new Router({
     { path: '/', name: 'Home', component: Home },
     { path: '/ideas/', name: 'Ideas', component: Ideas },
     { path: '/ideas/:id', name: 'Idea', component: Idea },
+    { path: '/idea', name: 'IdeaImplicit', component: Idea },
     {
       path: '/new',
       name: 'New',

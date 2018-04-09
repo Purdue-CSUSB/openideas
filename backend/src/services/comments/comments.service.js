@@ -1,12 +1,15 @@
-// Initializes the `Comments` service on path `/comments`
-const createService = require('./comments.class.js');
+// Initializes the `comments` service on path `/comments`
+const createService = require('feathers-mongoose');
+const createModel = require('../../models/comments.model');
 const hooks = require('./comments.hooks');
 
 module.exports = (app) => {
+  const Model = createModel(app);
   const paginate = app.get('paginate');
 
   const options = {
     name: 'comments',
+    Model,
     paginate,
   };
 

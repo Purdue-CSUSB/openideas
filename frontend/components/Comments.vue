@@ -1,19 +1,19 @@
 <template lang="pug">
 .comments
-  .tile
+  .tile(v-if='author')
     .tile-icon
       .example-tile-icon
-        figure.avatar(:data-initial="user.name | initials")
-          img(:src="user.avatarUrl")
+        figure.avatar(:data-initial="author.name | initials")
+          gravatar(:email="author.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
     .tile-content
-      p.tile-title.mt-1 #[span.name {{ user.name }}]
+      p.tile-title.mt-1 #[span.name {{ author.name }}]
       p.comment shared this idea.
 
-  .tile
+  .tile(v-if='user')
     .tile-icon
       .example-tile-icon
         figure.avatar(:data-initial="user.name | initials")
-          img(:src="user.avatarUrl")
+          gravatar(:email="user.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
     .tile-content
       .input-group
         textarea.mt-1.form-input(placeholder="Your comment here", v-autoresize="true", @focus="showButton")
@@ -23,10 +23,13 @@
 
 <script>
 import { mapState } from 'vuex';
-import { initials, autoresize } from '@/mixins';
+import { initials, autoresize, grav } from '@/mixins';
 
 export default {
-  mixins: [initials, autoresize],
+  mixins: [initials, autoresize, grav],
+  props: {
+    author: Object,
+  },
   data() {
     return { body: '', isCommenting: false };
   },

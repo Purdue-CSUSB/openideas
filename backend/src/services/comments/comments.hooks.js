@@ -1,21 +1,27 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
-const { queryWithCurrentUser } = require('feathers-authentication-hooks');
+
+const assembleAuthor = () => context => context.app.service('users').get(context.data.author)
+  .then((user) => {
+    // eslint-disable-next-line
+    context.result.author = user;
+    return Promise.resolve(context);
+  }).catch(err => Promise.reject(err));
 
 module.exports = {
   before: {
-    all: [authenticate('jwt')],
+    all: [],
     find: [],
     get: [],
-    create: [queryWithCurrentUser()],
-    update: [],
-    patch: [],
-    remove: [],
+    create: [authenticate('jwt')],
+    update: [authenticate('jwt')],
+    patch: [authenticate('jwt')],
+    remove: [authenticate('jwt')],
   },
 
   after: {
     all: [],
     find: [],
-    get: [],
+    get: [assembleAuthor()],
     create: [],
     update: [],
     patch: [],
