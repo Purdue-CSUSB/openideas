@@ -10,11 +10,11 @@
           label='Email'
           v-model='email'
           placeholder='pete@purdue.edu'
-          @keyup.enter.native='signingUp ? createAccount({ email, name }) : checkEmail(email)'
+          @keyup.enter.native='isShowing ? createAccount({ email, name }) : checkEmail(email)'
         )
 
         transition(name="fade" mode="out-in")
-          CustomButton.btn-block(type='primary' @click='checkEmail(email)' v-if='!signingUp') Next
+          CustomButton.btn-block(type='primary' @click='checkEmail(email)' v-if='!isShowing') Next
           .contain(v-else)
             TextField(
               label='Name'
@@ -24,8 +24,8 @@
             )
             CustomButton.btn-block(type='primary' @click='createAccount({ email, name })') Sign Up
 
-        p.text-center {{ signingUp ? 'Have' : 'Need' }} an account?
-          button.btn.btn-link(@click="toggle()") Sign {{ signingUp ? 'In' : 'Up' }}
+        p.text-center {{ isShowing ? 'Have' : 'Need' }} an account?
+          button.btn.btn-link(@click="toggleShow()") Sign {{ isShowing ? 'In' : 'Up' }}
 </template>
 
 
@@ -33,14 +33,13 @@
 import { mapActions } from 'vuex';
 import TextField from '@/components/TextField';
 import CustomButton from '@/components/CustomButton';
-import { flash } from '@/mixins';
+import { flash, toggle } from '@/mixins';
 
 export default {
-  mixins: [flash],
+  mixins: [flash, toggle],
   components: { TextField, CustomButton },
   data() {
     return {
-      signingUp: false,
       email: '',
       name: '',
     };
@@ -49,9 +48,6 @@ export default {
     ...mapActions('email-lookup', { lookupEmail: 'get' }),
     ...mapActions('magic-links', { sendLink: 'create' }),
     ...mapActions('auth', ['signUp']),
-    toggle() {
-      this.signingUp = !this.signingUp;
-    },
     checkEmail(email) {
       this.lookupEmail(email)
         .then(user => {
@@ -64,7 +60,7 @@ export default {
         })
         .catch(() => {
           this.flash("Hmm looks like we don't have your email...", 'warning');
-          this.toggle();
+          this.toggleShow();
         });
     },
     createAccount(credentials) {

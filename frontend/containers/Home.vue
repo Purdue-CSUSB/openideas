@@ -1,10 +1,10 @@
 <template lang="pug">
 .beta-wrapper
-  .modal#modal-id(:class='{ active: modal }')
-    a.modal-overlay(@click="this.toggle", aria-label="Close", role="button", tabindex="0")
+  .modal#modal-id(:class='{ active: isShowing }')
+    a.modal-overlay(@click="this.toggleShow", aria-label="Close", role="button", tabindex="0")
     .modal-container
       .modal-header
-        button.btn.btn-clear.float-right(@click="this.toggle", aria-label="Close")
+        button.btn.btn-clear.float-right(@click="this.toggleShow", aria-label="Close")
         h5.modal-title 💡 Welcome to our Beta!
       .modal-body
         .content
@@ -20,7 +20,7 @@
             dd Contributions are welcome and encouraged! #[a(href="https://github.com/Purdue-CSUSB/openideas/blob/master/CONTRIBUTING.md") Get started].
           p
       .modal-footer
-        button.btn.btn-primary(@click="this.toggle") OK
+        button.btn.btn-primary(@click="this.toggleShow") OK
   #home.container.grid-lg
     hero(title="Your Voice Matters", subtitle="We know that Purdue CS students have many great ideas for their community! That's why we created OpenIdeas, the best place to share and discuss those ideas. Let's get the conversations started!")
       button-link(to='/signin' type='primary') Get Started
@@ -30,6 +30,7 @@
 import Hero from '@/components/Hero';
 import ButtonLink from '@/components/ButtonLink';
 import { setCookie, getCookie } from 'tiny-cookie';
+import { toggle } from '@/mixins';
 
 export default {
   name: 'Home',
@@ -37,22 +38,13 @@ export default {
     Hero,
     ButtonLink,
   },
-  data() {
-    return {
-      modal: false,
-    };
-  },
+  mixins: [toggle],
   mounted() {
     const cookie = getCookie('lastVisit');
     if (cookie === null || cookie < 1521384435934) {
-      this.modal = true;
+      this.isShowing = true;
       setCookie('lastVisit', Date.now());
     }
-  },
-  methods: {
-    toggle() {
-      this.modal = !this.modal;
-    },
   },
 };
 </script>

@@ -29,7 +29,6 @@
 import Vue from 'vue';
 import { mapActions, mapMutations } from 'vuex';
 import Comment from '@/components/Comments';
-import Simpsonify from '@/../node_modules/simpsonify';
 import VueTruncate from '@/../node_modules/vue-truncate-filter';
 
 Vue.use(VueTruncate);
@@ -47,12 +46,6 @@ export default {
       type: Object,
       required: true,
     },
-    isFullCard: Boolean,
-  },
-  data() {
-    return {
-      user: Simpsonify.getUsers(1)[0],
-    };
   },
   methods: {
     ...mapActions('ideas', { removeRemote: 'remove' }),

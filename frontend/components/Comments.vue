@@ -16,8 +16,9 @@
           img(:src="user.avatarUrl")
     .tile-content
       .input-group
-        textarea.mt-1.form-input(placeholder="Your comment here", v-autoresize="true")
-
+        textarea.mt-1.form-input(placeholder="Your comment here", v-autoresize="true", @focus="showButton")
+      .input-group.mt-2
+        button.btn.btn-sm.btn-primary(v-show="isCommenting") Submit
 </template>
 
 <script>
@@ -26,6 +27,11 @@ import { initials, autoresize } from '@/mixins';
 
 export default {
   mixins: [initials, autoresize],
+  data() {
+    return {
+      isCommenting: false,
+    };
+  },
   props: {
     user: {
       type: Object,
@@ -38,6 +44,14 @@ export default {
   },
   computed: {
     ...mapState('auth', ['user']),
+  },
+  methods: {
+    hideButton() {
+      this.isCommenting = false;
+    },
+    showButton() {
+      this.isCommenting = true;
+    },
   },
 };
 </script>
@@ -82,5 +96,8 @@ textarea
 
   &:focus
     padding: 0.3rem
+
+button.btn
+  font-size: 0.65rem
 
 </style>

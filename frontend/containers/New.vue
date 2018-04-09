@@ -13,8 +13,10 @@ import { mapActions, mapState } from 'vuex';
 import CustomButton from '@/components/CustomButton';
 import TextField from '@/components/TextField';
 import MyTextArea from '@/components/TextArea';
+import { autoresize } from '@/mixins';
 
 export default {
+  mixins: [autoresize],
   name: 'New',
   components: {
     CustomButton,

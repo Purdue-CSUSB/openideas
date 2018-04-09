@@ -15,6 +15,17 @@ export const flash = {
   components: { Flash },
 };
 
+export const toggle = {
+  data() {
+    return { isShowing: false };
+  },
+  methods: {
+    toggleShow() {
+      this.isShowing = !this.isShowing;
+    },
+  },
+};
+
 export const initials = {
   filters: {
     initials(name) {
@@ -28,16 +39,24 @@ export const initials = {
   },
 };
 
+export const focus = {
+  directives: {
+    focus: {
+      inserted(el) {
+        el.focus();
+      },
+    },
+  },
+};
+
 /* eslint-disable */
 export const autoresize = {
   directives: {
     autoresize: {
       inserted(el) {
-        console.log(el)
         el.style.height = `${el.scrollHeight}px`;
         el.style.overflow = 'hidden';
         el.style.resize = 'none';
-        console.log ('Done did.')
         function OnInput() {
           this.style.height = 'auto';
           this.style.height = `${this.scrollHeight}px`;
