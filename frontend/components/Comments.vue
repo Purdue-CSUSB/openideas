@@ -16,16 +16,16 @@
           img(:src="user.avatarUrl")
     .tile-content
       .input-group
-        textarea.mt-1.form-input(placeholder="Your comment here")
+        textarea.mt-1.form-input(placeholder="Your comment here", v-autoresize="true")
 
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import { initials } from '@/mixins';
+import { initials, autoresize } from '@/mixins';
 
 export default {
-  mixins: [initials],
+  mixins: [initials, autoresize],
   props: {
     user: {
       type: Object,
@@ -79,5 +79,8 @@ textarea
   border-style: none
   padding: 0
   margin-top: 0.3rem
+
+  &:focus
+    padding: 0.3rem
 
 </style>

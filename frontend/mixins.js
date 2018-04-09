@@ -27,3 +27,28 @@ export const initials = {
     },
   },
 };
+
+/* eslint-disable */
+export const autoresize = {
+  directives: {
+    autoresize: {
+      inserted(el) {
+        console.log(el)
+        el.style.height = `${el.scrollHeight}px`;
+        el.style.overflow = 'hidden';
+        el.style.resize = 'none';
+        console.log ('Done did.')
+        function OnInput() {
+          this.style.height = 'auto';
+          this.style.height = `${this.scrollHeight}px`;
+          this.scrollTop = this.scrollHeight;
+          window.scrollTo(
+            window.scrollLeft,
+            this.scrollTop + this.scrollHeight
+          );
+        }
+        el.addEventListener('input', OnInput, false);
+      },
+    },
+  },
+};
