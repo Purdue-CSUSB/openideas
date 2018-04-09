@@ -28,19 +28,7 @@ import { initials, autoresize } from '@/mixins';
 export default {
   mixins: [initials, autoresize],
   data() {
-    return {
-      isCommenting: false,
-    };
-  },
-  props: {
-    user: {
-      type: Object,
-      required: true,
-    },
-    comment: {
-      type: String,
-      required: false,
-    },
+    return { body: '', isCommenting: false };
   },
   computed: {
     ...mapState('auth', ['user']),
