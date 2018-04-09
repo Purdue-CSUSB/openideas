@@ -33,7 +33,7 @@
 import { mapActions } from 'vuex';
 import TextField from '@/components/TextField';
 import CustomButton from '@/components/CustomButton';
-import flash from '@/mixins';
+import { flash } from '@/mixins';
 
 export default {
   mixins: [flash],

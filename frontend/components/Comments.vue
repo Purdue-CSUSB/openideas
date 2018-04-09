@@ -22,8 +22,10 @@
 
 <script>
 import { mapState } from 'vuex';
+import { initials } from '@/mixins';
 
 export default {
+  mixins: [initials],
   props: {
     user: {
       type: Object,
@@ -36,12 +38,6 @@ export default {
   },
   computed: {
     ...mapState('auth', ['user']),
-  },
-  filters: {
-    initials(name) {
-      const split = name.split(' ');
-      return split[0][0] + split[1][0];
-    },
   },
 };
 </script>

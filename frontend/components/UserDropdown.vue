@@ -14,8 +14,10 @@
 <script>
 import { mapActions } from 'vuex';
 import Gravatar from 'vue-gravatar';
+import { initials } from '@/mixins';
 
 export default {
+  mixins: [initials],
   name: 'UserDropdown',
   props: {
     user: {
@@ -35,12 +37,6 @@ export default {
     ...mapActions('auth', ['signOut']),
     errorHandle() {
       this.hasGravatar = false;
-    },
-  },
-  filters: {
-    initials(name) {
-      const split = name.split(' ');
-      return split[0][0] + split[1][0];
     },
   },
 };

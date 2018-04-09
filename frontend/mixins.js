@@ -1,6 +1,6 @@
 import Flash from '@/components/Flash';
 
-const flash = {
+export const flash = {
   data() {
     return { flashes: [] };
   },
@@ -15,4 +15,15 @@ const flash = {
   components: { Flash },
 };
 
-export default flash;
+export const initials = {
+  filters: {
+    initials(name) {
+      try {
+        const split = name.split(' ');
+        return split[0][0] + split[1][0];
+      } catch (error) {
+        return name[0];
+      }
+    },
+  },
+};
