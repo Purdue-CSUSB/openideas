@@ -5,7 +5,7 @@ module.exports = (app) => {
   const ideas = new Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    author: { type: ObjectId, required: true },
+    authorId: { type: ObjectId, required: true },
     voted: [{ type: ObjectId, ref: 'Users' }],
   }, {
     timestamps: true,

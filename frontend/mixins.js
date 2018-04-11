@@ -1,4 +1,3 @@
-import Gravatar from 'vue-gravatar';
 import Flash from '@/components/Flash';
 
 export const flash = {
@@ -70,21 +69,5 @@ export const autoresize = {
         el.addEventListener('input', onInput, false);
       },
     },
-  },
-};
-
-export const grav = {
-  components: {
-    Gravatar,
-  },
-  methods: {
-    errorHandle() {
-      this.hasGravatar = false;
-    },
-  },
-  data() {
-    return {
-      hasGravatar: true,
-    };
   },
 };

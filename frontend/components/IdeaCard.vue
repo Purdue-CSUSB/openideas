@@ -8,20 +8,20 @@
 
     .column.col-9
       .card-header
-        h4.card-title #[router-link(:to='`ideas/${idea._id}`') {{ idea.title }}]
+        h4.card-title #[router-link(:to='`/ideas/${idea._id}`') {{ idea.title }}]
       .card-body
         p(v-if='isFullCard') {{ idea.description }}
         p(v-else) {{ idea.description | truncate(450)}}
       .card-actions
         ul
           li
-            a.btn.btn-link.btn-sm Comments ({{ idea.comments !== undefined ? idea.comments.length : '0' }})
+            a.btn.btn-link.btn-sm Comments ({{ idea.numComments }})
           li
             button.btn.btn-link.btn-sm(disabled) Edit
           li
             button.btn.btn-link.btn-sm(@click='deleteIdea(idea._id)') Delete
       .comments(v-if='isFullCard').column.col-8.col-sm-12
-        Comments(:author='idea.author')
+        Comments(:author='idea.author' :ideaId='idea._id')
 
 </template>
 

@@ -3,38 +3,52 @@
   .tile(v-if='author')
     .tile-icon
       .example-tile-icon
-        figure.avatar(:data-initial="author.name | initials")
-          gravatar(:email="author.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
+        user-icon(:user='author')
     .tile-content
       p.tile-title.mt-1 #[span.name {{ author.name }}]
-      p.comment shared this idea.
-
+      p.comment.text-gray shared this idea.
+  .tile(v-for='comment in idea.comments')
+    .tile-icon
+      .example-tile-icon
+        user-icon(:user='comment.author')
+    .tile-content
+      p.tile-title.mt-1 #[span.name {{ comment.author.name }}]
+      p.comment {{ comment.body }}
   .tile(v-if='user')
     .tile-icon
       .example-tile-icon
-        figure.avatar(:data-initial="user.name | initials")
-          gravatar(:email="user.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
+        user-icon(:user='user')
     .tile-content
       .input-group
-        textarea.mt-1.form-input(placeholder="Your comment here", v-autoresize="true", @focus="showButton")
+        textarea.mt-1.form-input(v-model='comment.body', placeholder="Your comment here", v-autoresize="true", @focus="showButton")
       .input-group.mt-2
-        button.btn.btn-sm.btn-primary(v-show="isCommenting") Submit
+        button.btn.btn-sm.btn-primary(v-show="isCommenting", @click='create({ ...comment, authorId: user._id })') Submit
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import { initials, autoresize, grav } from '@/mixins';
+import { mapState, mapActions, mapGetters } from 'vuex';
+import { autoresize } from '@/mixins';
+import UserIcon from '@/components/UserIcon';
 
 export default {
-  mixins: [initials, autoresize, grav],
+  mixins: [autoresize],
+  components: { UserIcon },
   props: {
     author: Object,
+    ideaId: String,
   },
   data() {
-    return { body: '', isCommenting: false };
+    return {
+      comment: {
+        body: '',
+        idea: this.ideaId,
+      },
+      isCommenting: false,
+    };
   },
   computed: {
     ...mapState('auth', ['user']),
+    ...mapGetters('ideas', { idea: 'current' }),
   },
   methods: {
     hideButton() {
@@ -43,6 +57,10 @@ export default {
     showButton() {
       this.isCommenting = true;
     },
+    create(comment) {
+      this.createRemote(comment);
+    },
+    ...mapActions('comments', { createRemote: 'create' }),
   },
 };
 </script>

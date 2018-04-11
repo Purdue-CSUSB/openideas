@@ -7,7 +7,7 @@ module.exports = (app) => {
   const { ObjectId } = Schema;
   const comments = new Schema({
     body: { type: String, required: true },
-    author: { type: ObjectId, required: true },
+    authorId: { type: ObjectId, required: true },
     idea: { type: ObjectId, required: true },
   }, {
     timestamps: true,

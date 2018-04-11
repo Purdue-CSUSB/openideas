@@ -1,11 +1,15 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
+const { populate } = require('feathers-hooks-common');
 
-const assembleAuthor = () => context => context.app.service('users').get(context.data.author)
-  .then((user) => {
-    // eslint-disable-next-line
-    context.result.author = user;
-    return Promise.resolve(context);
-  }).catch(err => Promise.reject(err));
+const commentAuthorSchema = {
+  include: {
+    service: 'users',
+    nameAs: 'author',
+    parentField: 'authorId',
+    childField: '_id',
+    provider: undefined,
+  },
+};
 
 module.exports = {
   before: {
@@ -19,9 +23,9 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [populate({ schema: commentAuthorSchema })],
     find: [],
-    get: [assembleAuthor()],
+    get: [],
     create: [],
     update: [],
     patch: [],

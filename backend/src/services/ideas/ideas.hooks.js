@@ -1,18 +1,34 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
+const { populate } = require('feathers-hooks-common');
 
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, no-underscore-dangle */
 
-const assembleComments = () => context => context.app.service('comments').find({ query: { idea: context.id } })
-  .then((comments) => {
-    context.result.comments = comments;
-    return Promise.resolve(context);
-  }).catch(err => Promise.reject(err));
+const cleanComments = () => context => context.app.service('comments')
+  .remove(null, { query: { idea: context.id } })
+  .then(() => Promise.resolve(context))
+  .catch(err => Promise.reject(err));
 
-const assembleAuthor = () => context => context.app.service('users').get(context.result.author)
-  .then((user) => {
-    context.result.author = user;
-    return Promise.resolve(context);
-  }).catch(err => Promise.reject(err));
+const authorSchema = {
+  include: {
+    service: 'users',
+    nameAs: 'author',
+    parentField: 'authorId',
+    childField: '_id',
+    provider: undefined,
+  },
+};
+
+const ideaCommentsSchema = {
+  include: {
+    service: 'comments',
+    nameAs: 'comments',
+    parentField: '_id',
+    childField: 'idea',
+    asArray: true,
+    provider: undefined,
+    ...authorSchema,
+  },
+};
 
 module.exports = {
   before: {
@@ -26,13 +42,13 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [populate({ schema: authorSchema })],
     find: [],
-    get: [assembleComments(), assembleAuthor()],
+    get: [populate({ schema: ideaCommentsSchema })],
     create: [],
     update: [],
     patch: [],
-    remove: [],
+    remove: [cleanComments()],
   },
 
   error: {

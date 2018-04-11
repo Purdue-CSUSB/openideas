@@ -2,8 +2,7 @@
 .dropdown.dropdown-right
   a(href="#", tabindex="0").btn.btn-link.dropdown-toggle
     span {{ user.name }}
-    figure.avatar(:data-initial="user.name | initials")
-      gravatar(:email="user.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
+    user-icon(:user='user')
   ul.menu
     li.menu-item
       router-link(to="/profile") Profile
@@ -13,10 +12,9 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { initials, grav } from '@/mixins';
+import UserIcon from '@/components/UserIcon';
 
 export default {
-  mixins: [initials, grav],
   name: 'UserDropdown',
   props: {
     user: {
@@ -27,6 +25,7 @@ export default {
   methods: {
     ...mapActions('auth', ['signOut']),
   },
+  components: { UserIcon },
 };
 </script>
 
