@@ -15,7 +15,7 @@
       .card-actions
         ul
           li
-            a.btn.btn-link.btn-sm Comments ({{ idea.numComments }})
+            a.btn.btn-link.btn-sm Comments ({{ idea.comments ? idea.comments.length : 0 }})
           li
             button.btn.btn-link.btn-sm(disabled) Edit
           li
@@ -58,6 +58,9 @@ export default {
     deleteIdea(_id) {
       this.removeLocal(_id);
       this.removeRemote(_id);
+      if (this.isFullCard) {
+        this.$router.push('/ideas');
+      }
     },
   },
 };

@@ -1,5 +1,8 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
-const { populate } = require('feathers-hooks-common');
+const { fastJoin } = require('feathers-hooks-common');
+const BatchLoader = require('@feathers-plus/batch-loader');
+
+const { getResultsByKey, getUniqueKeys } = BatchLoader;
 
 /* eslint-disable no-param-reassign, no-underscore-dangle */
 
@@ -8,25 +11,25 @@ const cleanComments = () => context => context.app.service('comments')
   .then(() => Promise.resolve(context))
   .catch(err => Promise.reject(err));
 
-const authorSchema = {
-  include: {
-    service: 'users',
-    nameAs: 'author',
-    parentField: 'authorId',
-    childField: '_id',
-    provider: undefined,
+const ideaResolvers = {
+  before: (context) => {
+    context._loaders = { user: {}, comments: {} };
+    context._loaders.user._id = new BatchLoader(async (keys, ctx) => {
+      const results = await ctx.app.service('users').find({ query: { _id: { $in: getUniqueKeys(keys) } }, paginate: false });
+      return getResultsByKey(keys, results, user => user._id, '!');
+    }, { context });
+    context._loaders.comments._id = new BatchLoader(async (keys, ctx) => {
+      const results = await ctx.app.service('comments').find({ query: { idea: { $in: getUniqueKeys(keys) } }, paginate: false });
+      return getResultsByKey(keys, results, comment => comment.idea, '[]');
+    }, { context });
   },
-};
-
-const ideaCommentsSchema = {
-  include: {
-    service: 'comments',
-    nameAs: 'comments',
-    parentField: '_id',
-    childField: 'idea',
-    asArray: true,
-    provider: undefined,
-    ...authorSchema,
+  joins: {
+    author: () => async (idea, context) => {
+      idea.author = await context._loaders.user._id.load(idea.authorId);
+    },
+    comments: () => async (idea, context) => {
+      idea.comments = await context._loaders.comments._id.load(idea._id);
+    },
   },
 };
 
@@ -42,9 +45,9 @@ module.exports = {
   },
 
   after: {
-    all: [populate({ schema: authorSchema })],
+    all: [fastJoin(ideaResolvers)],
     find: [],
-    get: [populate({ schema: ideaCommentsSchema })],
+    get: [],
     create: [],
     update: [],
     patch: [],

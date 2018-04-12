@@ -58,9 +58,15 @@ export default {
       this.isCommenting = true;
     },
     create(comment) {
+      // TODO: get comments.state.copy and write a custom mutation to push new comments
       this.createRemote(comment);
+      this.comment.body = '';
+      this.hideButton();
+      // TODO: rather than this ugly cuss
+      this.fetch(this.ideaId);
     },
     ...mapActions('comments', { createRemote: 'create' }),
+    ...mapActions('ideas', { fetch: 'get' }),
   },
 };
 </script>
