@@ -1,13 +1,13 @@
 <template lang="pug">
 header.container.grid-xl
   nav.columns
-    section.column.col-9.menu-left
+    section.column.col-9.col-sm-6.menu-left
       navbarSiteName 💡 OpenIdeas
       navbarLink(to='/').hide-sm Home
       navbarLink(to='/ideas') All Ideas
       navbarLink(to='/new' v-if='user && accessToken') New Idea
       navbarLink(to='/about' v-if='!(user && accessToken)') About
-    section.column.col-3.text-right
+    section.column.col-3.col-sm-6.text-right
       UserDropdown(v-if='user && accessToken', :user="user")
       navbarLink(v-else to='/signin').text-center Sign In / Sign Up
 </template>

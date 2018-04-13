@@ -21,7 +21,13 @@ class Service {
       secret: this.authConfig.secret,
       jwt: this.authConfig.magicLink,
     }).then((token) => {
-      const link = `http://localhost:8080/magic?token=${token}`;
+      // const link = `http://localhost:8080/magic?token=${token}`;
+      let link;
+      if (process.env.NODE_ENV === 'production') {
+        link = `https://ideas.purdueusb.com/magic?token=${token}`;
+      } else {
+        link = `http://localhost:8080/magic?token=${token}`;
+      }
       const email = new Email({
         views: {
           root: 'src/mail-templates',

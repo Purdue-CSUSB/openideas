@@ -2,6 +2,7 @@ const compress = require('compression');
 const cors = require('cors');
 const helmet = require('helmet');
 const logger = require('winston');
+const path = require('path');
 
 const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
@@ -26,7 +27,7 @@ app.use(compress());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Host the public folder
-app.use('/', express.static(app.get('public')));
+app.use('/', express.static(path.join(__dirname, app.get('public'))));
 
 // Set up Plugins and providers
 app.configure(express.rest());

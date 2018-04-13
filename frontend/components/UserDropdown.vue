@@ -2,18 +2,17 @@
 .dropdown.dropdown-right
   a(href="#", tabindex="0").btn.btn-link.dropdown-toggle
     span {{ user.name }}
-    figure.avatar(:data-initial="user.name | initials")
-        gravatar(:email="user.email", :size="64", default-img="404", @error="errorHandle", v-if="hasGravatar")
+    user-icon(:user='user')
   ul.menu
     li.menu-item
-      a(href="/profile") Profile
+      router-link(to="/profile") Profile
     li.menu-item
       button.btn.btn-link(@click='signOut') Log Out
 </template>
 
 <script>
 import { mapActions } from 'vuex';
-import Gravatar from 'vue-gravatar';
+import UserIcon from '@/components/UserIcon';
 
 export default {
   name: 'UserDropdown',
@@ -23,26 +22,10 @@ export default {
       required: true,
     },
   },
-  components: {
-    Gravatar,
-  },
-  data() {
-    return {
-      hasGravatar: true,
-    };
-  },
   methods: {
     ...mapActions('auth', ['signOut']),
-    errorHandle() {
-      this.hasGravatar = false;
-    },
   },
-  filters: {
-    initials(name) {
-      const split = name.split(' ');
-      return split[0][0] + split[1][0];
-    },
-  },
+  components: { UserIcon },
 };
 </script>
 

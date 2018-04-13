@@ -1,45 +1,44 @@
 <template lang="pug">
 .idea-card
   .columns
-    .column.col-1.col-md-2.col-sm-3.text-center.votes-container
-      h2 {{ idea.voted.length }}
+    .column.col-2.col-sm-3.text-center.votes-container
+      h2(v-if='idea.voted') {{ votes }}
       p.subtitle votes
-      button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ id: idea._id })') Upvote
+      button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ ideaId: idea._id })') Upvote
 
     .column.col-9
       .card-header
-        h4.card-title #[router-link(:to='`/ideas/${idea._id}`' append) {{ idea.title }}]
+        h4.card-title #[router-link(:to='`/ideas/${idea._id}`') {{ idea.title }}]
       .card-body
         p(v-if='isFullCard') {{ idea.description }}
         p(v-else) {{ idea.description | truncate(450)}}
       .card-actions
         ul
           li
-            router-link.btn.btn-link.btn-sm(to='comment') Comments ({{ idea.comments.length }})
+            a.btn.btn-link.btn-sm Comments ({{ idea.comments ? idea.comments.length : 0 }})
           li
             button.btn.btn-link.btn-sm(disabled) Edit
           li
             button.btn.btn-link.btn-sm(@click='deleteIdea(idea._id)') Delete
       .comments(v-if='isFullCard').column.col-8.col-sm-12
-        comment(:user='user')
+        Comments(:author='idea.author' :ideaId='idea._id')
 
 </template>
 
 <script>
 import Vue from 'vue';
 import { mapActions, mapMutations } from 'vuex';
-import Comment from '@/components/CommentAvatar';
-import Simpsonify from '@/../node_modules/simpsonify';
-import VueTruncate from '@/../node_modules/vue-truncate-filter';
+import Comments from '@/components/Comments';
+import VueTruncate from 'vue-truncate-filter';
 
 Vue.use(VueTruncate);
 
 export default {
   name: 'IdeaCard',
-  components: { Comment },
+  components: { Comments },
   computed: {
-    isFullCard() {
-      return this.$route.params.id;
+    votes() {
+      return this.idea.voted.length;
     },
   },
   props: {
@@ -47,12 +46,10 @@ export default {
       type: Object,
       required: true,
     },
-    isFullCard: Boolean,
-  },
-  data() {
-    return {
-      user: Simpsonify.getUsers(1)[0],
-    };
+    isFullCard: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     ...mapActions('ideas', { removeRemote: 'remove' }),
@@ -61,6 +58,9 @@ export default {
     deleteIdea(_id) {
       this.removeLocal(_id);
       this.removeRemote(_id);
+      if (this.isFullCard) {
+        this.$router.push('/ideas');
+      }
     },
   },
 };

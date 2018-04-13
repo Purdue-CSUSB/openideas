@@ -12,7 +12,7 @@ module.exports = {
   extends: 'airbnb-base',
   // required to lint *.vue files
   plugins: [
-    'html'
+    // 'html'
   ],
   // add your custom rules here
   rules: {
@@ -24,4 +24,3 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }
 }
-

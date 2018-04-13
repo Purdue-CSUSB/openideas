@@ -1,13 +1,12 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
 const { queryWithCurrentUser } = require('feathers-authentication-hooks');
 
-const onlyVoteOnce = () => context => context.app.service('ideas').get(context.data.id)
+const onlyVoteOnce = () => context => context.app.service('ideas').get(context.data.ideaId)
   .then((idea) => {
-    if (idea.voted.includes(context.params.query.userId)) {
-      Promise.reject(new Error('Can not vote more than once'));
-    } else {
-      Promise.resolve(context);
+    if (idea.voted.map(toString).includes(toString(context.params.query.userId))) {
+      return Promise.reject(new Error('Can not vote more than once'));
     }
+    return Promise.resolve(context);
   }).catch(err => Promise.reject(err));
 
 module.exports = {

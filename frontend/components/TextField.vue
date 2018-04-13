@@ -7,11 +7,15 @@
     :value='value'
     :class='className'
     @input='event => $emit("input", event.target.value)'
+    v-focus="true"
   )
 </template>
 
 <script>
+import { focus } from '@/mixins';
+
 export default {
+  mixins: [focus],
   props: {
     label: String,
     placeholder: String,
