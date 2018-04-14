@@ -69,7 +69,7 @@ export default {
           this.flash(
             `Welcome to OpenIdeas, ${
               user.name
-            } We're sending a magic login link to ${user.email}.`
+            }! We're sending a magic login link to ${user.email}.`
           );
           this.sendLink({ email: user.email, name: user.name });
         })
