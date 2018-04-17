@@ -1,7 +1,7 @@
 <template lang="pug">
 #ideas.container.grid-lg
   h3 All Ideas
-  .empty(v-if="list.length == 0")
+  .empty(v-if="!isFindPending && list.length == 0")
       p.empty-title.h5 No Ideas Found 😟
       p.empty-subtitle Be the first to create one!
       .empty-action
@@ -10,10 +10,11 @@
     .column.col-8.col-lg-12
       template(v-for='idea in list')
         IdeaCard(:idea='idea')
+      .loading.loading-lg(v-if="isFindPending")
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 import IdeaCard from '@/components/IdeaCard';
 
 export default {
@@ -21,6 +22,7 @@ export default {
   components: { IdeaCard },
   computed: {
     ...mapGetters('ideas', ['list']),
+    ...mapState('ideas', ['isFindPending']),
   },
   methods: {
     ...mapActions('ideas', ['find']),

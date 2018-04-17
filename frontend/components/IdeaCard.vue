@@ -15,7 +15,7 @@
       .card-actions
         ul
           li
-            a.btn.btn-link.btn-sm Comments ({{ idea.comments ? idea.comments.length : 0 }})
+            router-link(:to='`/ideas/${idea._id}`', exact-active-class="notactive").btn.btn-link.btn-sm Comments ({{ idea.comments ? idea.comments.length : 0 }})
           li
             button.btn.btn-link.btn-sm(disabled) Edit
           li

@@ -45,6 +45,7 @@ export default {
       this.isShowing = true;
       setCookie('lastVisit', Date.now());
     }
+    // this.$Progress.set(100);
   },
 };
 </script>
