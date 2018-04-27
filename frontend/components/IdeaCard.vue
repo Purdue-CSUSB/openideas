@@ -3,7 +3,7 @@
   .columns
     .column.col-2.col-sm-3.text-center.votes-container
       h2(v-if='idea.voted') {{ votes }}
-      p.subtitle votes
+      p.subtitle votes!
       button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ ideaId: idea._id })') Upvote
 
     .column.col-9
