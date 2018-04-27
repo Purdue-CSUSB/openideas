@@ -8,7 +8,8 @@
 
     .column.col-9
       .card-header
-        h4.card-title #[router-link(:to='`/ideas/${idea._id}`') {{ idea.title }}]
+        h4(v-if='isFullCard').card-title #[router-link(:to='`/ideas/${idea._id}`') {{ idea.title }}]
+        h4(v-else).card-title #[router-link(:to='`/ideas/${idea._id}`') {{ idea.title | truncate(130) }}]
       .card-body
         p(v-if='isFullCard') {{ idea.description }}
         p(v-else) {{ idea.description | truncate(450)}}

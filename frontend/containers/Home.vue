@@ -56,4 +56,8 @@ export default {
   border-color: $new-border-color !important;
   margin-top: 1rem;
 }
+
+.modal-container {
+  font-size: 0.8rem;
+}
 </style>
