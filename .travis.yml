@@ -1,16 +1,38 @@
-{
-  "language": "node_js",
-  "node_js": "stable",
-  "cache": {
-    "yarn": true,
-    "directories": [
-      "node_modules"
-    ]
-  },
-  "script": [
-    "yarn run build"
-  ],
-  "group": "stable",
-  "dist": "trusty",
-  "os": "linux"
-}
+language: node_js
+node_js: stable
+cache:
+- yarn: true,
+  directories:
+    - node_modules
+group: stable
+dist: trusty
+os: linux
+
+sudo: required
+services:
+  - docker
+
+env:
+  global:
+    - DOCKERHUB_USER=purduecsusb
+    # DOCKERHUB_PASS= in travis web panel
+
+before_script:
+  - docker pull purduecsusb/openideas || true
+
+script:
+  - docker build --pull --cache-from purduecsusb/openideas --tag purduecsusb/openideas .
+  - docker run purduecsusb/openideas
+  - yarn run build
+
+after_script:
+  - docker images
+
+before_deploy:
+  - docker login -u "$DOCKERHUB_USER" -p "$DOCKERHUB_PASS"
+
+deploy:
+  provider: script
+  script: docker push purduecsusb/openideas
+  on:
+    branch: master
