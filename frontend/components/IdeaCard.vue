@@ -12,7 +12,7 @@
         h4(v-else).card-title #[router-link(:to='`/ideas/${idea._id}`') {{ idea.title | truncate(130) }}]
       .card-body
         p(v-if='isFullCard') {{ idea.description }}
-        p(v-else) {{ idea.description | truncate(450)}}
+        p(v-else) {{ idea.description | truncate(450) }}
       .card-actions
         ul
           li

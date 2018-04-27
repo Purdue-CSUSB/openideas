@@ -4,6 +4,8 @@ LABEL maintainer="PurdueUSB <usb@cs.purdue.edu>"
 # Automatically set by Phusion
 # ENV NODE_ENV prodction
 
+EXPOSE 80
+
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
 
