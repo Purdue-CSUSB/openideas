@@ -115,4 +115,12 @@ textarea
 button.btn
   font-size: 0.65rem
 
+.fade-enter-active,
+.fade-leave-active
+  transition: opacity 0.15s
+
+.fade-enter, .fade-leave-to
+  opacity: 0
+
+
 </style>

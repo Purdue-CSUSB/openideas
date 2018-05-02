@@ -45,6 +45,7 @@ export default {
       this.isShowing = true;
       setCookie('lastVisit', Date.now());
     }
+    // this.$Progress.set(100);
   },
 };
 </script>
@@ -54,5 +55,9 @@ export default {
   background-color: $new-primary-color !important;
   border-color: $new-border-color !important;
   margin-top: 1rem;
+}
+
+.modal-container {
+  font-size: 0.8rem;
 }
 </style>

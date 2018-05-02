@@ -1,4 +1,5 @@
 import Flash from '@/components/Flash';
+import { mapState } from 'vuex';
 
 export const flash = {
   data() {
@@ -46,6 +47,12 @@ export const focus = {
         el.focus();
       },
     },
+  },
+};
+
+export const loadingIndicator = {
+  computed: {
+    ...mapState('ideas', ['isFindPending']),
   },
 };
 

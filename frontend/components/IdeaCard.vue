@@ -3,19 +3,20 @@
   .columns
     .column.col-2.col-sm-3.text-center.votes-container
       h2(v-if='idea.voted') {{ votes }}
-      p.subtitle votes
+      p.subtitle votes!
       button.btn.btn-sm.btn-primary.btn-block(@click='addVote({ ideaId: idea._id })') Upvote
 
     .column.col-9
       .card-header
-        h4.card-title #[router-link(:to='`/ideas/${idea._id}`') {{ idea.title }}]
+        h4(v-if='isFullCard').card-title #[router-link(:to='`/ideas/${idea._id}`') {{ idea.title }}]
+        h4(v-else).card-title #[router-link(:to='`/ideas/${idea._id}`') {{ idea.title | truncate(130) }}]
       .card-body
         p(v-if='isFullCard') {{ idea.description }}
-        p(v-else) {{ idea.description | truncate(450)}}
+        p(v-else) {{ idea.description | truncate(450) }}
       .card-actions
         ul
           li
-            a.btn.btn-link.btn-sm Comments ({{ idea.comments ? idea.comments.length : 0 }})
+            router-link(:to='`/ideas/${idea._id}`', exact-active-class="notactive").btn.btn-link.btn-sm Comments ({{ idea.comments ? idea.comments.length : 0 }})
           li
             button.btn.btn-link.btn-sm(disabled) Edit
           li
