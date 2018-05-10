@@ -9,8 +9,7 @@
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue frontend",
     "build": "node build/build.js",
-    "deploy": "surge dist openideas.surge.sh",
-    "backend": "nodemon backend/src/"
+    "deploy": "surge dist openideas.surge.sh"
   },
   "dependencies": {
     "@feathersjs/authentication-client": "^1.0.2",

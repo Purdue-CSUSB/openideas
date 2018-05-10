@@ -20,14 +20,16 @@ const app = express(feathers());
 
 // Load app configuration
 app.configure(configuration());
+
 // Enable CORS, security, compression, favicon and body parsing
 app.use(cors());
 app.use(helmet());
 app.use(compress());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 // Host the public folder
-app.use('/', express.static(path.join(__dirname, app.get('public'))));
+app.use('/', express.static(app.get('public')));
 
 // Set up Plugins and providers
 app.configure(express.rest());
@@ -41,6 +43,10 @@ app.configure(authentication);
 app.configure(services);
 
 // Configure a middleware for 404s and the error handler
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(app.get('public'), '/index.html'));
+});
+
 app.use(express.notFound());
 app.use(express.errorHandler({ logger }));
 
