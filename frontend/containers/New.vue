@@ -5,7 +5,7 @@
     TextField(v-model='title' label='Title' placeholder='My Awesome Idea!')
     MyTextArea(v-model='description' label='Description' placeholder='Tell everyone about your idea- this is where the discussion begins!')
     .form-group
-      custom-button(type="primary" @click='submitIdea({ title, description, authorId: user._id })') Submit
+      custom-button(type="primary" @click='submitIdea({ title, description, authorId: user._id })', :loading="isCreatePending") Submit
 </template>
 
 <script>
@@ -38,6 +38,9 @@ export default {
         .catch(err => console.log(err));
     },
   },
-  computed: { ...mapState('auth', ['user']) },
+  computed: {
+    ...mapState('auth', ['user']),
+    ...mapState('ideas', ['isCreatePending']),
+  },
 };
 </script>

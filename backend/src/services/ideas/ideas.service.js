@@ -4,12 +4,12 @@ const hooks = require('./ideas.hooks');
 
 module.exports = (app) => {
   const Model = createModel(app);
-  const paginate = app.get('paginate');
+  // const paginate = app.get('paginate');
 
   const options = {
     name: 'ideas',
     Model,
-    paginate,
+    // paginate,
   };
 
   // Initialize our service with any options it requires

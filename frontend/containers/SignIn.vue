@@ -22,7 +22,7 @@
               placeholder='Purdue Pete'
               @keyup.enter.native='createAccount({ email, name })'
             )
-            CustomButton.btn-block(type='primary' @click='createAccount({ email, name })', :loading="isCreatePending") Sign Up
+            CustomButton.btn-block(type='primary' @click='createAccount({ email, name })', :loading="isCreatePending", :disabled="created") Sign Up
 
         p.text-center {{ isShowing ? 'Have' : 'Need' }} an account?
           button.btn.btn-link(@click="toggleShow()") Sign {{ isShowing ? 'In' : 'Up' }}
@@ -64,7 +64,10 @@ export default {
           this.found = true;
         })
         .catch(() => {
-          this.flash("Hmm looks like we don't have your email...", 'warning');
+          this.flash(
+            "Looks like you're new around here (we didn't find an account with that email). Enter your name to sign up.",
+            'warning'
+          );
           this.toggleShow();
         });
     },
@@ -77,6 +80,7 @@ export default {
             }! We're sending a magic login link to ${user.email}.`
           );
           this.sendLink({ email: user.email, name: user.name });
+          this.created = true;
         })
         .catch(() =>
           this.flash(
@@ -89,6 +93,7 @@ export default {
   mounted() {
     this.signingUp = false;
     this.found = false;
+    this.created = false;
   },
   beforeRouteEnter(to, from, next) {
     if (from.path === '/magic') {
