@@ -22,7 +22,7 @@
       .modal-footer
         button.btn.btn-primary(@click="this.toggleShow") OK
   #home.container.grid-lg
-    hero(title="Your Voice Matters", subtitle="We know that Purdue CS students have many great ideas for their community! That's why we created OpenIdeas, the best place to share and discuss those ideas. Let's get the conversations started!")
+    hero(title="Your Voice Matters!", subtitle="We know that Purdue CS students have many great ideas for their community! That's why we created OpenIdeas, the best place to share and discuss those ideas. Let's get the conversations started!")
       button-link(to='/signin' type='primary') Get Started
 </template>
 

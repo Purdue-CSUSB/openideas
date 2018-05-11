@@ -1,5 +1,5 @@
 <template lang="pug"`>
-#terms.container.grid-lg
+#terms.container.grid-md
   h2 OpenIdeas Privacy Policy
   p This privacy policy governs your use of the software application OpenIdeas for web devices that was created by Purdue Computer Science Undergraduate Student Board.
   h4 What information does the Application obtain and how is it used?
