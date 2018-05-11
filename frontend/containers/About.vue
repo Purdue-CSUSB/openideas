@@ -1,6 +1,6 @@
 <template lang="pug">
 #about.container.grid-lg
-  h4 About
+  h2 About
   p 💡 <strong>OpenIdeas</strong> is a software project from the Computer Science Undergraduate Student Board (USB) at Purdue University.
 
   h5 About USB
