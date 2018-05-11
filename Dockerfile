@@ -17,7 +17,7 @@ COPY ./backend/package.json ./backend/yarn.lock ./backend/
 RUN cd ./backend && yarn
 
 COPY . ./
-RUN yarn build && cp -r ./dist/ ./backend/public/
+RUN yarn build && cp -r ./dist/* ./backend/public/
 
 # Multi Stage! #
 # The first stage builds everything from source
