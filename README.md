@@ -1,4 +1,4 @@
-# OpenIdeas [![Build Status](https://travis-ci.org/Purdue-CSUSB/openideas.svg?branch=master)](https://travis-ci.org/Purdue-CSUSB/openideas)
+# OpenIdeas [![Build Status](https://travis-ci.org/Purdue-CSUSB/openideas.svg?branch=master)](https://travis-ci.org/Purdue-CSUSB/openideas) [![Join the chat at https://gitter.im/purdueusb-openideas/Lobby](https://badges.gitter.im/purdueusb-openideas/Lobby.svg)](https://gitter.im/purdueusb-openideas/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > Vote on ideas to improve your community
 
