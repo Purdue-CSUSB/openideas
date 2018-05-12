@@ -35,11 +35,12 @@ Steps to reproduce the behavior:
 4. See error
 
 **Technical details:**
-
-* Node version:
-* Yarn version:
 * Platform (windows/mac/linux/docker):
 * Browser:
+
+<!-- Ignore this section if you are not developing OpenIdeas -->
+* Node version:
+* Yarn version:
 
 
 **Additional context**
