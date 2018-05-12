@@ -72,7 +72,7 @@ export default {
       }
     },
     addVoteLocal(_id) {
-      this.addedVotes += 1;
+      this.addedVotes = 1;
       this.addVote({ ideaId: _id });
     },
   },
