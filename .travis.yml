@@ -1,13 +1,5 @@
 language: node_js
 node_js: stable
-cache:
-- yarn: true
-  directories:
-    - node_modules
-
-group: stable
-dist: trusty
-os: linux
 
 sudo: required
 services:
@@ -17,6 +9,11 @@ env:
   global:
     - DOCKERHUB_USER=purduecsusb
     # DOCKERHUB_PASS= in travis web panel
+
+cache:
+- yarn: true
+  directories:
+    - node_modules
 
 before_script:
   - docker pull purduecsusb/openideas || true
