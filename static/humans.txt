@@ -1,0 +1,27 @@
+INFO:
+  OpenIdeas is built by a small team of Purdue Computer Science undergrads.
+  We would love to see this become a community project that welcomes everyone
+  who wants to experience being an open-source maintainer.
+
+TEAM:
+	Frontend Developer, Deployment Specialist: Jay Hankins
+	Contact: hankins [at] alumni.purdue.edu
+	Twitter: @jay_hankins
+	From: West Lafayette, IN
+
+	Frontend Developer: Matt Ess
+	Contact: mess [at] yelp.com
+	From: West Lafayette, IN
+
+  Maintained by Purdue Computer Science Undergraduate Student Board.
+  usb [at] cs.purdue.edu
+
+THANKS:
+	Project Sponsor: Buster Dunsmore
+
+SITE:
+	Last update: 5/19/2018
+	Language: English
+	IDE: Visual Studio Code
+  Backend: Node js / Feathers js
+  Frontend: Vue
