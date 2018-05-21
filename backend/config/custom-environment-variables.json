@@ -1,0 +1,19 @@
+{
+  "host": "HOSTNAME",
+  "port": "PORT",
+  "authentication": {
+    "jwt": {
+      "audience": "AUDIENCE"
+    },
+    "magicLink": {
+      "audience": "AUDIENCE"
+    }
+  },
+  "mongodb": "MONGODB_URL",
+  "mailgun": {
+    "auth": {
+      "api_key": "MAILGUN_KEY",
+      "domain": "MAILGUN_DOMAIN"
+    }
+  }
+}
