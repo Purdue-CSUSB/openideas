@@ -1,0 +1,47 @@
+{
+  "host": "",
+  "port": null,
+  "public": "../public/",
+  "apiPath": "/api/v1",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "8f31e437cd0dd9f974eda23c312dc61c37b4e529cf607f981eb2438da912b8023a4eb31b025240eb17e4e00b7b104db90994918b86d2e4fa6e4686450bfdacf06b350753b94fd8596d9dd809af3e038acb93f426e330b780db31fea6cec4378c1d56b78cc5c9d08fea710a982939c6c3ba4d3c416fc5f6be551459d5acf6bc8f5f0e0f67ad6dc3d1d70b3864047df5115b3c5b146f6e7148e5326ba11516ce3ceaa052a268b6ecd90db2f56fd64a4450b17c3aceb33abdac133563372c61f711cc2ecea8680aaa20bfe701dd08e3b023948bce02253913ea898c8131ca39dad81a05bcf7dda5c8abc1970e7cea79cbd0ab8d77660f279a358727268cecc3b258",
+    "strategies": [
+      "jwt",
+      "magicLink"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "magicLink": {
+      "name": "magicLink",
+      "header": {
+        "typ": "magic"
+      },
+      "audience": "",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1hr"
+    }
+  },
+  "mongodb": "",
+  "mailgun": {
+    "auth" : {
+      "api_key": "",
+      "domain": ""
+    }
+  }
+}

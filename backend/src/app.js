@@ -29,6 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Host the public folder
+console.log(app.get('public'));
 app.use('/', express.static(app.get('public')));
 
 // Set up Plugins and providers
